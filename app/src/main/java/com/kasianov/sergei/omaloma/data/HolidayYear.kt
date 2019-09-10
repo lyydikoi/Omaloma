@@ -1,6 +1,6 @@
 package com.kasianov.sergei.omaloma.data
 
-import org.joda.time.LocalDate
+import org.threeten.bp.LocalDate
 
 data class HolidayYear (
     var year: Int,

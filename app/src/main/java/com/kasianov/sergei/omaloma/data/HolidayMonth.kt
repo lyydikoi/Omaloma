@@ -1,7 +1,5 @@
 package com.kasianov.sergei.omaloma.data
 
-import java.time.Month
-
 data class HolidayMonth (
     var month: Int,
     var isClosed: Boolean = false,

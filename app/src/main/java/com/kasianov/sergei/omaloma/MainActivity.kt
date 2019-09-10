@@ -24,8 +24,8 @@ class MainActivity : AppCompatActivity() {
                 .setAction("Action", null).show()
         }
 
-        val holidayYears = CalcDatesUtils.getHolidayYears(DefaultDataSettings.startDate)
-        Toast.makeText(this, "Amount of holidays years " + holidayYears.size, Toast.LENGTH_LONG).show()
+        //val holidayYears = CalcDatesUtils.getHolidayYears(DefaultDataSettings.startDate)
+        //Toast.makeText(this, "Amount of holidays years " + holidayYears.size, Toast.LENGTH_LONG).show()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
