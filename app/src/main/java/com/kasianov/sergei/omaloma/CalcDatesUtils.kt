@@ -1,28 +1,43 @@
 package com.kasianov.sergei.omaloma
 
 import com.kasianov.sergei.omaloma.data.HolidayMonth
+import com.kasianov.sergei.omaloma.data.HolidayYear
 import org.threeten.bp.LocalDate
 import kotlin.collections.ArrayList
 
 object CalcDatesUtils {
 
-    /*fun getHolidayYears(workingStartDate: LocalDate) : ArrayList<HolidayYear> {
+    /**
+     * Calculates all holiday years from given working start date. Assumes, that user is
+     * trial period in the first year.
+     *
+     * return ArrayList<HolidayYear>
+     */
+    fun getHolidayYears(workingStartDate: LocalDate) : ArrayList<HolidayYear> {
         val firstHolidayYear = getHolidayYear(workingStartDate, true)
         val currentDate = LocalDate.now()
         val result = ArrayList<HolidayYear>()
         result.add(firstHolidayYear)
-        var nextYear = LocalDate(firstHolidayYear.startDate.withYear(firstHolidayYear.year + 1))
+        var nextYear = firstHolidayYear.startDate.plusYears(1)
         while (nextYear.isBefore(currentDate)) {
             result.add(getHolidayYear(nextYear))
-            nextYear = nextYear.withYear(nextYear.year + 1)
+            nextYear = nextYear.plusYears(1)
         }
         return result
     }
 
+    /**
+     * Returns HolidayYear instance by provided date. It contains start ans end values.
+     * Holiday year does not match calendar year. It starts on the 1st of April,
+     * and ends on the 31st of March next year.
+     * If user is in trial period, this should be defined, because it affects amount
+     * of earned holidays per month.
+     *
+     * return HolidayYear
+     */
     fun getHolidayYear(date: LocalDate, isTrial: Boolean = false): HolidayYear {
-        // Holiday year starts on the 1st of April, and ends on the 31st of March next year
         val holidayYearStart = getHolidayYearStart(date)
-        val holidayYearEnd = getHolidayYearEnd(holidayYearStart)
+        val holidayYearEnd = getHolidayYearEndByStart(holidayYearStart)
         return  HolidayYear(
                     holidayYearStart.year,
                     holidayYearStart,
@@ -33,17 +48,27 @@ object CalcDatesUtils {
                 )
     }
 
+    /**
+     * Calculates start of the Holiday Year from given date.
+     *
+     * return LocalDate
+     */
     fun getHolidayYearStart(date: LocalDate): LocalDate {
-        if (date.isAfter(LocalDate(date.year, 3, 31))) {
-            return LocalDate(date.year, 4, 1)
+        return if (date.isAfter(LocalDate.of(date.year, 3, 31))) {
+            LocalDate.of(date.year, 4, 1)
         } else {
-            return LocalDate(date.year - 1, 4, 1)
+            LocalDate.of(date.year - 1, 4, 1)
         }
     }
 
-    fun getHolidayYearEnd(date: LocalDate): LocalDate {
-        return LocalDate(date.year + 1, 3, 31)
-    }*/
+    /**
+     * Calculates the end of Holiday Year from its start date.
+     *
+     * return LocalDate
+     */
+    fun getHolidayYearEndByStart(holidayYearStart: LocalDate): LocalDate {
+        return LocalDate.of(holidayYearStart.year.plus(1), 3, 31)
+    }
 
     /**
      * Holiday Year is closed, when current date is after Holyday Year end.
@@ -65,7 +90,6 @@ object CalcDatesUtils {
         val result = ArrayList<HolidayMonth>()
         val startMonth = date.month.value
         for(i in 1..getHolidayMonthCount(startMonth)) {
-            // TODO: should I check here is Month full or not???
             result.add(HolidayMonth(i))
         }
         return result

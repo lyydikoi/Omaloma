@@ -1,5 +1,6 @@
 package com.kasianov.sergei.omaloma
 
+import com.kasianov.sergei.omaloma.data.HolidayYear
 import org.hamcrest.CoreMatchers.*
 import org.junit.Assert.assertThat
 import org.junit.Test
@@ -70,14 +71,82 @@ class CalcDatesUtilsTest {
     /**
      * Unit texts for [CalcDatesUtils.isHolidayYearClosed]
      */
-    /*fun isHolidyYearClosed_correct() {
+    /*@Test
+    fun isHolidyYearClosed_correct() {
         // Input test dates.
         val a = LocalDate.parse("2017-12-05")
-        val b = LocalDate.now()
-        val c = LocalDate.parse("2999-12-05")
+        val b = LocalDate.parse("2099-12-05")
         // Right values for test dates.
-        val isClosedA = false
+        val isClosedA = true
         val isClosedB = false
-        val isClosedC = true
+
+        val testDates = arrayListOf<LocalDate>(a, b)
+
+        for (i in 1..testDates.size) {
+            var testDate = testDates[i-1]
+            var isClosed = CalcDatesUtils.isHolidayYearClosed(testDate)
+            var rightResult = if (i == 1) isClosedA else isClosedB
+            assertThat(isClosed, `is`(rightResult))
+        }
     }*/
+
+    /**
+     * Unit tests for [CalcDatesUtils.getHolidayYearEndByStart]
+     */
+    @Test
+    fun getHolidayYearEnd_correct() {
+        // Input test dates.
+        val a = LocalDate.parse("2019-04-01")
+        val b = LocalDate.parse("2020-04-01")
+        // Right values for test dates.
+        val endDateA = LocalDate.of(2020, 3, 31)
+        val endDateB = LocalDate.of(2021, 3, 31)
+
+        // When..
+        val resultA = CalcDatesUtils.getHolidayYearEndByStart(a)
+        val resultB = CalcDatesUtils.getHolidayYearEndByStart(b)
+
+        // Then...
+        assertThat(resultA, `is`(endDateA))
+        assertThat(resultB, `is`(endDateB))
+    }
+
+    /**
+     * Unit tests for [CalcDatesUtils.getHolidayYearStart]
+     */
+    @Test
+    fun getHolidayYearStart_correct() {
+        // Input test dates.
+        val a = LocalDate.parse("2019-01-05")
+        val b = LocalDate.parse("2020-05-01")
+        // Right values for test dates.
+        val startDateA = LocalDate.of(2018, 4, 1)
+        val startDateB = LocalDate.of(2020, 4, 1)
+
+        // When..
+        val resultA = CalcDatesUtils.getHolidayYearStart(a)
+        val resultB = CalcDatesUtils.getHolidayYearStart(b)
+
+        // Then...
+        assertThat(resultA, `is`(startDateA))
+        assertThat(resultB, `is`(startDateB))
+    }
+
+    /**
+     * Unit tests for [CalcDatesUtils.getHolidayYear]
+     */
+    /*@Test
+    fun getHolidayYear_correct() {
+        // Input test date.
+        val date = LocalDate.parse("2019-01-05")
+
+        // When..
+        val result = CalcDatesUtils.getHolidayYear(date)
+
+        // Then...
+        assertThat(result, instanceOf(HolidayYear::class.java))
+    }*/
+
+
+
 }
