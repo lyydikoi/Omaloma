@@ -1,16 +1,12 @@
 package com.kasianov.sergei.omaloma
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.snackbar.Snackbar
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
-import com.kasianov.sergei.omaloma.data.DefaultDataSettings
 
 import kotlinx.android.synthetic.main.activity_main.*
-import java.time.LocalDate
-import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
