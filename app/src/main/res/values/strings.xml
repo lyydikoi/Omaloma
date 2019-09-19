@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Omaloma</string>
     <string name="action_settings">Settings</string>
+    <string name="profile">Profile</string>
+    <string name="holidays">Holidays</string>
+    <string name="planned_hoidays">Planned holidays</string>
+    <string name="absences">Absences</string>
+    <string name="main_content">Overview</string>
 </resources>

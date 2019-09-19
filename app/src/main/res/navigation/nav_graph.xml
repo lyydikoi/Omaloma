@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/nav_graph"
+        app:startDestination="@id/contentMain">
+
+    <fragment
+            android:id="@+id/contentMain"
+            android:name="com.kasianov.sergei.omaloma.ContentMainFragment"
+            android:label="fragment_content_main"
+            tools:layout="@layout/fragment_content_main" >
+        <action
+                android:id="@+id/action_contentMain_to_profile"
+                app:destination="@id/profile"
+                app:enterAnim="@anim/nav_default_enter_anim"
+                app:exitAnim="@anim/nav_default_exit_anim"
+                app:launchSingleTop="false" />
+        <action
+                android:id="@+id/action_contentMain_to_holidaysList"
+                app:destination="@id/holidaysList" />
+    </fragment>
+
+    <fragment
+            android:id="@+id/profile"
+            android:name="com.kasianov.sergei.omaloma.ProfileFragment"
+            android:label="fragment_profile"
+            tools:layout="@layout/fragment_profile" />
+
+    <fragment
+            android:id="@+id/holidaysList"
+            android:name="com.kasianov.sergei.omaloma.HolidaysList"
+            android:label="fragment_holidays_list"
+            tools:layout="@layout/fragment_holidays_list" >
+
+        <action
+                android:id="@+id/action_holidaysList_to_plannedHoliday"
+                app:destination="@id/plannedHoliday" />
+
+        <action
+                android:id="@+id/action_holidaysList_to_reportedAbsence"
+                app:destination="@id/reportedAbsence" />
+    </fragment>
+
+    <fragment
+            android:id="@+id/plannedHoliday"
+            android:name="com.kasianov.sergei.omaloma.PlannedHoliday"
+            android:label="fragment_planned_holiday"
+            tools:layout="@layout/fragment_planned_holiday" />
+
+    <fragment
+            android:id="@+id/reportedAbsence"
+            android:name="com.kasianov.sergei.omaloma.ReportedAbsence"
+            android:label="fragment_reported_absence"
+            tools:layout="@layout/fragment_reported_absence" />
+</navigation>
