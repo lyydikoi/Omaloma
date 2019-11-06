@@ -4,19 +4,13 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/nav_graph"
-        app:startDestination="@id/contentMain">
+        app:startDestination="@id/usersFragment">
 
     <fragment
             android:id="@+id/contentMain"
             android:name="com.kasianov.sergei.omaloma.MainContentFragment"
             android:label="fragment_content_main"
             tools:layout="@layout/fragment_content_main" >
-        <action
-                android:id="@+id/action_contentMain_to_profile"
-                app:destination="@id/profile"
-                app:enterAnim="@anim/nav_default_enter_anim"
-                app:exitAnim="@anim/nav_default_exit_anim"
-                app:launchSingleTop="false" />
         <action
                 android:id="@+id/action_contentMain_to_holidaysList"
                 app:destination="@id/holidaysList" />
@@ -26,7 +20,11 @@
             android:id="@+id/profile"
             android:name="com.kasianov.sergei.omaloma.ProfileFragment"
             android:label="fragment_profile"
-            tools:layout="@layout/fragment_profile" />
+            tools:layout="@layout/fragment_profile" >
+        <action
+                android:id="@+id/action_profile_to_companyFragment"
+                app:destination="@id/companyFragment" />
+    </fragment>
 
     <fragment
             android:id="@+id/holidaysList"
@@ -54,4 +52,21 @@
             android:name="com.kasianov.sergei.omaloma.ReportedAbsence"
             android:label="fragment_reported_absence"
             tools:layout="@layout/fragment_reported_absence" />
+    <fragment
+            android:id="@+id/usersFragment"
+            android:name="com.kasianov.sergei.omaloma.mock.UsersFragment"
+            android:label="fragment_users"
+            tools:layout="@layout/fragment_users" >
+        <action
+                android:id="@+id/action_usersFragment_to_contentMain"
+                app:destination="@id/contentMain" />
+        <action
+                android:id="@+id/action_usersFragment_to_profile"
+                app:destination="@id/profile" />
+    </fragment>
+    <fragment
+            android:id="@+id/companyFragment"
+            android:name="com.kasianov.sergei.omaloma.ui.company.CompanyFragment"
+            android:label="fragment_company"
+            tools:layout="@layout/fragment_company" />
 </navigation>

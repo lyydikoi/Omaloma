@@ -1,13 +1,13 @@
 package com.kasianov.sergei.omaloma.data
 
 data class HolidayMonth (
-    var month: Int,
-    var isClosed: Boolean = false,
-    var earnedHolidaysCount: Int = 0,
-    var usedHolidaysCount: Int = 0,
-    var earnedDaysOffCount: Int = 0,
-    var workingDaysCount: Int = 0,
-    var sickLeavesCount: Int = 0,
-    var childSickDaysCount: Int = 0,
-    var parentsLeavesCount: Int = 0
+    val month: Int,
+    val isClosed: Boolean,
+    val earnedHolidaysCount: Int,
+    val usedHolidaysCount: Int,
+    val earnedDaysOffCount: Int,
+    val workingDaysCount: Int,
+    val sickLeavesCount: Int,
+    val childSickDaysCount: Int,
+    val parentsLeavesCount: Int
 )

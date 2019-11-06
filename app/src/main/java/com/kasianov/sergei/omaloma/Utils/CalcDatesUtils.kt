@@ -1,4 +1,4 @@
-package com.kasianov.sergei.omaloma
+package com.kasianov.sergei.omaloma.Utils
 
 import com.kasianov.sergei.omaloma.data.HolidayMonth
 import com.kasianov.sergei.omaloma.data.HolidayYear
@@ -14,7 +14,8 @@ object CalcDatesUtils {
      * return ArrayList<HolidayYear>
      */
     fun getHolidayYears(workingStartDate: LocalDate) : ArrayList<HolidayYear> {
-        val firstHolidayYear = getHolidayYear(workingStartDate, true)
+        val firstHolidayYear =
+            getHolidayYear(workingStartDate, true)
         val currentDate = LocalDate.now()
         val result = ArrayList<HolidayYear>()
         result.add(firstHolidayYear)
@@ -36,15 +37,23 @@ object CalcDatesUtils {
      * return HolidayYear
      */
     fun getHolidayYear(date: LocalDate, isTrial: Boolean = false): HolidayYear {
-        val holidayYearStart = getHolidayYearStart(date)
-        val holidayYearEnd = getHolidayYearEndByStart(holidayYearStart)
+        val holidayYearStart =
+            getHolidayYearStart(date)
+        val holidayYearEnd =
+            getHolidayYearEndByStart(
+                holidayYearStart
+            )
         return  HolidayYear(
                     holidayYearStart.year,
                     holidayYearStart,
                     holidayYearEnd,
                     isTrial = isTrial,
-                    isClosed = isHolidayYearClosed(holidayYearEnd),
-                    holidayMonths = getHolidayMonths(date)
+                    isClosed = isHolidayYearClosed(
+                        holidayYearEnd
+                    ),
+                    holidayMonths = getHolidayMonths(
+                        date
+                    )
                 )
     }
 

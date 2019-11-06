@@ -1,6 +1,6 @@
 package com.kasianov.sergei.omaloma
 
-import com.kasianov.sergei.omaloma.data.HolidayYear
+import com.kasianov.sergei.omaloma.Utils.CalcDatesUtils
 import org.hamcrest.CoreMatchers.*
 import org.junit.Assert.assertThat
 import org.junit.Test

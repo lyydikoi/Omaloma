@@ -33,7 +33,7 @@ class MainContentFragment : Fragment() {
         }
 
         fab_open_profile.setOnClickListener { view ->
-            this.findNavController().navigate(R.id.action_contentMain_to_profile)
+            //this.findNavController().navigate(R.id.action_contentMain_to_profile)
         }
     }
 

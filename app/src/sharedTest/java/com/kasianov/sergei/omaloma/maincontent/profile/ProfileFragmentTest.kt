@@ -12,10 +12,9 @@ import androidx.test.filters.MediumTest
 import com.kasianov.sergei.omaloma.ProfileFragment
 import com.kasianov.sergei.omaloma.R
 import com.kasianov.sergei.omaloma.data.Result
-import com.kasianov.sergei.omaloma.data.source.UserRepository
+import com.kasianov.sergei.omaloma.data.repositories.UserRepository
 import com.kasianov.sergei.omaloma.maincontent.data.source.FakeUserRepository
 import junit.framework.Assert.assertEquals
-import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
