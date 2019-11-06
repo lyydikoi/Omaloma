@@ -3,7 +3,9 @@ package com.kasianov.sergei.omaloma.data
 import org.threeten.bp.LocalDate
 
 data class User(
-    var name: String,
-    var company: String,
-    var startData: LocalDate
+    val id: String,
+    val firstName: String,
+    val lastName: String,
+    val companyId: String,
+    val startDate: String
 )

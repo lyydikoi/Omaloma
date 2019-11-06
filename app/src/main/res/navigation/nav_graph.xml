@@ -8,7 +8,7 @@
 
     <fragment
             android:id="@+id/contentMain"
-            android:name="com.kasianov.sergei.omaloma.ContentMainFragment"
+            android:name="com.kasianov.sergei.omaloma.MainContentFragment"
             android:label="fragment_content_main"
             tools:layout="@layout/fragment_content_main" >
         <action

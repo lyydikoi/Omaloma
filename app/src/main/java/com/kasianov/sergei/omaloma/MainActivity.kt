@@ -14,9 +14,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         //setSupportActionBar(toolbar)
-
-        //val holidayYears = CalcDatesUtils.getHolidayYears(DefaultDataSettings.startDate)
-        //Toast.makeText(this, "Amount of holidays years " + holidayYears.size, Toast.LENGTH_LONG).show()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

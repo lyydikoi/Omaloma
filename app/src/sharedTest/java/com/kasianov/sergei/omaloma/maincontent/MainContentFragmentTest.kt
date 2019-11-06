@@ -1,4 +1,4 @@
-package com.kasianov.sergei.omaloma
+package com.kasianov.sergei.omaloma.maincontent
 
 import android.os.Bundle
 import androidx.fragment.app.testing.launchFragmentInContainer
@@ -9,6 +9,9 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
+import com.kasianov.sergei.omaloma.MainContentFragment
+import com.kasianov.sergei.omaloma.MainContentFragmentDirections
+import com.kasianov.sergei.omaloma.R
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mockito
@@ -24,13 +27,14 @@ import org.robolectric.annotation.TextLayoutMode
 @MediumTest
 @LooperMode(LooperMode.Mode.PAUSED)
 @TextLayoutMode(TextLayoutMode.Mode.REALISTIC)
-class ProfileFragmentTest {
+class MainContentFragmentTest {
 
     @Test
     fun clickOpenProfileButton_navigateProfileFragment() {
         // GIVEN - On the home screen
-        val scenario = launchFragmentInContainer<ContentMainFragment>(Bundle(), R.style.AppTheme)
+        val scenario = launchFragmentInContainer<MainContentFragment>(Bundle(), R.style.AppTheme)
         val navController = mock(NavController::class.java)
+
         scenario.onFragment {
             Navigation.setViewNavController(it.view!!, navController)
         }
@@ -39,7 +43,7 @@ class ProfileFragmentTest {
         onView(withId(R.id.fab_open_profile)).perform(click())
 
         // THEN - Verify that we navigate to the ProfileFragment screen
-        Mockito.verify(navController).navigate(ContentMainFragmentDirections.actionContentMainToProfile().actionId)
+        Mockito.verify(navController).navigate(MainContentFragmentDirections.actionContentMainToProfile().actionId)
     }
 
 }
