@@ -43,7 +43,7 @@ class MainContentFragmentTest {
         onView(withId(R.id.fab_open_profile)).perform(click())
 
         // THEN - Verify that we navigate to the ProfileFragment screen
-        Mockito.verify(navController).navigate(MainContentFragmentDirections.actionContentMainToProfile().actionId)
+        Mockito.verify(navController).navigate(MainContentFragmentDirections.actionContentMainToHolidaysList().actionId)
     }
 
 }
