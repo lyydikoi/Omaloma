@@ -9,7 +9,7 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
-import com.kasianov.sergei.omaloma.MainContentFragment
+import com.kasianov.sergei.omaloma.ui.maincontent.MainContentFragment
 import com.kasianov.sergei.omaloma.MainContentFragmentDirections
 import com.kasianov.sergei.omaloma.R
 import org.junit.Test
@@ -20,7 +20,7 @@ import org.robolectric.annotation.LooperMode
 import org.robolectric.annotation.TextLayoutMode
 
 /**
- * Integration test for the ProfileFragment screen.
+ * Integration test for the UserDetailsFragment screen.
  */
 
 @RunWith(AndroidJUnit4::class)
@@ -42,7 +42,7 @@ class MainContentFragmentTest {
         // WHEN - Click on the "Open profile" button
         onView(withId(R.id.fab_open_profile)).perform(click())
 
-        // THEN - Verify that we navigate to the ProfileFragment screen
+        // THEN - Verify that we navigate to the UserDetailsFragment screen
         Mockito.verify(navController).navigate(MainContentFragmentDirections.actionContentMainToProfile().actionId)
     }
 

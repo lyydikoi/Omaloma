@@ -1,19 +1,25 @@
 package com.kasianov.sergei.omaloma.data.repositories
 
-import com.kasianov.sergei.omaloma.data.Result
+import androidx.lifecycle.LiveData
 import com.kasianov.sergei.omaloma.data.entities.User
+import com.kasianov.sergei.omaloma.db.daos.UserDao
 
-class UserRepositoryImpl : UserRepository {
-    override suspend fun getUser(userId: String): Result<User> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+class UserRepositoryImpl(private val userDao: UserDao) : UserRepository {
+
+    override fun getUser(userId: String): LiveData<User> = userDao.getUser(userId)
+
+    override fun getAllUsers(): LiveData<List<User>> = userDao.getAllUsers()
+
+    override suspend fun insert(user: User) {
+        userDao.insert(user)
     }
 
-    override suspend fun getAllUsers(): Result<List<User>> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override suspend fun update(user: User) {
+        userDao.update(user)
     }
 
-    override suspend fun saveUser(user: User) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override suspend fun delete(user: User) {
+        userDao.delete(user)
     }
 
 }

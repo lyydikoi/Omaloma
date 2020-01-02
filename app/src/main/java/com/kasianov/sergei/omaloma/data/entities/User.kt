@@ -10,5 +10,5 @@ data class User(
     val firstName: String,
     val lastName: String,
     val companyId: String,
-    val startDate: String
+    val startDate: Long
 )

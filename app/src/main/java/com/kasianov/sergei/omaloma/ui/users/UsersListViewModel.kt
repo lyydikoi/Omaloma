@@ -2,6 +2,6 @@ package com.kasianov.sergei.omaloma.ui.users
 
 import androidx.lifecycle.ViewModel
 
-class UsersViewModel : ViewModel() {
+class UsersListViewModel : ViewModel() {
     // TODO: Implement the ViewModel
 }

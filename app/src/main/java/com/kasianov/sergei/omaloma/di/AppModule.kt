@@ -2,13 +2,14 @@ package com.kasianov.sergei.omaloma.di
 
 import androidx.room.Room
 import com.kasianov.sergei.omaloma.Utils.DATA_BASE_NAME
+import com.kasianov.sergei.omaloma.data.repositories.UserRepository
+import com.kasianov.sergei.omaloma.data.repositories.UserRepositoryImpl
 import com.kasianov.sergei.omaloma.db.OmaLomaDb
 import com.kasianov.sergei.omaloma.ui.company.CompanyViewModel
-import com.kasianov.sergei.omaloma.ui.users.UsersViewModel
+import com.kasianov.sergei.omaloma.ui.users.UsersListViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
-import kotlin.math.sin
 
 val appModule = module {
 
@@ -23,8 +24,12 @@ val appModule = module {
         get<OmaLomaDb>().userDao()
     }
 
+    single<UserRepository> {
+        UserRepositoryImpl(get())
+    }
+
     viewModel {
-        UsersViewModel()
+        UsersListViewModel()
     }
 
     viewModel {

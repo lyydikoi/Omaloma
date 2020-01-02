@@ -1,4 +1,4 @@
-package com.kasianov.sergei.omaloma
+package com.kasianov.sergei.omaloma.ui
 
 import android.app.Application
 import com.jakewharton.threetenabp.AndroidThreeTen
