@@ -7,11 +7,27 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
+    <style name="TextProfileMain">
+        <item name="android:textSize">@dimen/text_main_size</item>
+        <item name="android:color">@color/colorTextPrimary</item>
+    </style>
+
+    <style name="TextProfileHeader">
+        <item name="android:textSize">@dimen/text_header_size</item>
+    </style>
+
+    <style name="TextProfileTitle">
+        <item name="android:textSize">@dimen/text_collapsible_appbar_title_size</item>
+        <item name="android:color">@color/colorTextLight</item>
+    </style>
 </resources>

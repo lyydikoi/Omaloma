@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.kasianov.sergei.omaloma.R
 import com.kasianov.sergei.omaloma.databinding.FragmentUserDetailsBinding
 
@@ -21,6 +22,9 @@ class UserDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.tbCollapsing.title = getString(R.string.user_details)
+        binding.ivStartDate.setOnClickListener {
+            this.findNavController().navigate(R.id.action_userFragment_to_datePickerDialogFragment)
+        }
     }
 
 }

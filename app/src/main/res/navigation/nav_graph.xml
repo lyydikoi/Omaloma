@@ -21,7 +21,11 @@
             android:id="@+id/userFragment"
             android:name="com.kasianov.sergei.omaloma.ui.users.UserDetailsFragment"
             android:label="UserFragment"
-            tools:layout="@layout/fragment_user_details" />
+            tools:layout="@layout/fragment_user_details" >
+        <action
+                android:id="@+id/action_userFragment_to_datePickerDialogFragment"
+                app:destination="@id/datePickerDialogFragment" />
+    </fragment>
     <fragment
             android:id="@+id/mainContentFragment"
             android:name="com.kasianov.sergei.omaloma.ui.maincontent.MainContentFragment"
@@ -45,4 +49,8 @@
             android:name="com.kasianov.sergei.omaloma.ui.absences.AbsenceFragment"
             android:label="fragment_absence"
             tools:layout="@layout/fragment_absence" />
+    <fragment
+            android:id="@+id/datePickerDialogFragment"
+            android:name="com.kasianov.sergei.omaloma.ui.common.DatePickerDialogFragment"
+            android:label="DatePickerDialogFragment" />
 </navigation>

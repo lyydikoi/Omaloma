@@ -11,4 +11,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="first_name">First Name</string>
     <string name="user_details">Details</string>
+    <string name="first_and_last_name">First and last name</string>
+    <string name="working_start_date">Working start date</string>
 </resources>
