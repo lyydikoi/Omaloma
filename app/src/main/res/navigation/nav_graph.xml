@@ -8,7 +8,8 @@
     <fragment
             android:id="@+id/usersListFragment"
             android:name="com.kasianov.sergei.omaloma.ui.users.UsersListFragment"
-            android:label="UsersListFragment" >
+            android:label="UsersListFragment"
+            tools:layout="@layout/fragment_users_list" >
         <action
                 android:id="@+id/action_usersListFragment_to_userFragment"
                 app:destination="@id/userFragment" />
@@ -19,7 +20,8 @@
     <fragment
             android:id="@+id/userFragment"
             android:name="com.kasianov.sergei.omaloma.ui.users.UserDetailsFragment"
-            android:label="UserFragment" />
+            android:label="UserFragment"
+            tools:layout="@layout/fragment_user_details" />
     <fragment
             android:id="@+id/mainContentFragment"
             android:name="com.kasianov.sergei.omaloma.ui.maincontent.MainContentFragment"

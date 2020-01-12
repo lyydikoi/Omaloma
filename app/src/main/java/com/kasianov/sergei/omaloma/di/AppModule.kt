@@ -6,6 +6,7 @@ import com.kasianov.sergei.omaloma.data.repositories.UserRepository
 import com.kasianov.sergei.omaloma.data.repositories.UserRepositoryImpl
 import com.kasianov.sergei.omaloma.db.OmaLomaDb
 import com.kasianov.sergei.omaloma.ui.company.CompanyViewModel
+import com.kasianov.sergei.omaloma.ui.users.UserDetailsViewModel
 import com.kasianov.sergei.omaloma.ui.users.UsersListViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -30,6 +31,10 @@ val appModule = module {
 
     viewModel {
         UsersListViewModel()
+    }
+
+    viewModel {
+        UserDetailsViewModel(get(), get())
     }
 
     viewModel {

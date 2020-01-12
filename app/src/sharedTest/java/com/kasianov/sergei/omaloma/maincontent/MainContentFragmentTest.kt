@@ -10,11 +10,9 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
 import com.kasianov.sergei.omaloma.ui.maincontent.MainContentFragment
-import com.kasianov.sergei.omaloma.MainContentFragmentDirections
 import com.kasianov.sergei.omaloma.R
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.Mockito
 import org.mockito.Mockito.mock
 import org.robolectric.annotation.LooperMode
 import org.robolectric.annotation.TextLayoutMode

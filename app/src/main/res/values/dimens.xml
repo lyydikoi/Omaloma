@@ -1,6 +1,9 @@
 <resources>
+    <!-- Common -->
+    <dimen name="tall_app_bar_height">200dp</dimen>
+    <dimen name="shrine_toolbar_image_offset_top">48dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
-    <!-- User item -->
+    <!-- User list item -->
     <dimen name="list_item_height">80dp</dimen>
 </resources>
