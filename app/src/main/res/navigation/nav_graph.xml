@@ -51,6 +51,6 @@
             tools:layout="@layout/fragment_absence" />
     <dialog
             android:id="@+id/datePickerDialogFragment"
-            android:name="com.kasianov.sergei.omaloma.ui.common.DatePickerDialogFragment"
+            android:name="com.kasianov.sergei.omaloma.ui.commonui.DatePickerDialogFragment"
             android:label="DatePickerDialogFragment" />
 </navigation>

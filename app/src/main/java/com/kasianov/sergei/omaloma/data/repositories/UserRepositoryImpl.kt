@@ -2,7 +2,7 @@ package com.kasianov.sergei.omaloma.data.repositories
 
 import androidx.lifecycle.LiveData
 import com.kasianov.sergei.omaloma.data.entities.User
-import com.kasianov.sergei.omaloma.db.daos.UserDao
+import com.kasianov.sergei.omaloma.data.source.local.daos.UserDao
 
 class UserRepositoryImpl(private val userDao: UserDao) : UserRepository {
 

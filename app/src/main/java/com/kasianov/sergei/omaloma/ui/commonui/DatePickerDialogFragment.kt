@@ -1,4 +1,4 @@
-package com.kasianov.sergei.omaloma.ui.common
+package com.kasianov.sergei.omaloma.ui.commonui
 
 import android.app.DatePickerDialog
 import android.app.Dialog

@@ -2,7 +2,7 @@ package com.kasianov.sergei.omaloma.ui.users
 
 import androidx.lifecycle.ViewModel
 import com.kasianov.sergei.omaloma.data.repositories.UserRepository
-import com.kasianov.sergei.omaloma.db.daos.UserDao
+import com.kasianov.sergei.omaloma.data.source.local.daos.UserDao
 
 class UserDetailsViewModel(
     val userRepo: UserRepository,
