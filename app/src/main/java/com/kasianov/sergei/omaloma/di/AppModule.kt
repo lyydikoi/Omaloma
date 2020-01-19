@@ -6,6 +6,7 @@ import com.kasianov.sergei.omaloma.data.repositories.UserRepository
 import com.kasianov.sergei.omaloma.data.repositories.UserRepositoryImpl
 import com.kasianov.sergei.omaloma.data.source.local.OmaLomaDb
 import com.kasianov.sergei.omaloma.ui.company.CompanyViewModel
+import com.kasianov.sergei.omaloma.ui.publicholidays.PubHolViewModel
 import com.kasianov.sergei.omaloma.ui.users.UserDetailsViewModel
 import com.kasianov.sergei.omaloma.ui.users.UsersListViewModel
 import org.koin.android.ext.koin.androidContext
@@ -39,5 +40,9 @@ val appModule = module {
 
     viewModel {
         CompanyViewModel()
+    }
+
+    viewModel {
+        PubHolViewModel()
     }
 }

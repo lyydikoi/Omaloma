@@ -88,6 +88,11 @@ dependencies {
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
+    // Retrofit and GSON
+    implementation "com.squareup.retrofit2:converter-gson:$gsonVersion"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$loggingInterceptorVersion"
+
     //DI
     implementation "org.koin:koin-androidx-viewmodel:$koinVersion"
 

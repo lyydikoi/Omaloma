@@ -22,7 +22,8 @@ class UsersListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.fabAddUser.setOnClickListener {
-            this.findNavController().navigate(R.id.action_usersListFragment_to_userFragment)
+            //this.findNavController().navigate(R.id.action_usersListFragment_to_userFragment)
+            this.findNavController().navigate(R.id.action_usersListFragment_to_publicHolidaysListFragment)
         }
     }
 }

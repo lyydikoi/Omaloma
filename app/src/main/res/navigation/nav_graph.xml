@@ -16,6 +16,9 @@
         <action
                 android:id="@+id/action_usersListFragment_to_mainContentFragment"
                 app:destination="@id/mainContentFragment" />
+        <action
+                android:id="@+id/action_usersListFragment_to_publicHolidaysListFragment"
+                app:destination="@id/publicHolidaysListFragment" />
     </fragment>
     <fragment
             android:id="@+id/userFragment"
@@ -53,4 +56,9 @@
             android:id="@+id/datePickerDialogFragment"
             android:name="com.kasianov.sergei.omaloma.ui.commonui.DatePickerDialogFragment"
             android:label="DatePickerDialogFragment" />
+    <fragment
+            android:id="@+id/publicHolidaysListFragment"
+            android:name="com.kasianov.sergei.omaloma.ui.publicholidays.PublicHolidaysListFragment"
+            android:label="PublicHolidaysListFragment"
+            tools:layout="@layout/fragment_public_holidays_list"/>
 </navigation>

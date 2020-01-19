@@ -14,4 +14,3 @@
 .externalNativeBuild
 app/libs/
 app/src/main/java/com/kasianov/sergei/omaloma/Utils/PlayGround.kt
-app/src/main/java/com/kasianov/sergei/omaloma/data/source/
