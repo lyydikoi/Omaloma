@@ -7,17 +7,26 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.kasianov.sergei.omaloma.R
 import com.kasianov.sergei.omaloma.databinding.FragmentPublicHolidaysListBinding
 import com.kasianov.sergei.omaloma.ui.publicholidays.recyclerview.PublicHolidaysAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class PublicHolidaysListFragment : Fragment() {
+class PubHolidaysListFragment : Fragment() {
     private lateinit var binding: FragmentPublicHolidaysListBinding
     private val viewModel by viewModel<PubHolViewModel>()
-    private val adapter by lazy { PublicHolidaysAdapter() }
-
+    private val adapter by lazy {
+        PublicHolidaysAdapter(object : PublicHolidaysAdapter.Interaction{
+            override fun itemClicked(position: Int) {
+                viewModel.setHolidaySelected(position)
+                findNavController()
+                    .navigate(R.id.action_publicHolidaysListFragment_to_pubHolidayDetailsFragment)
+            }
+        })
+    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

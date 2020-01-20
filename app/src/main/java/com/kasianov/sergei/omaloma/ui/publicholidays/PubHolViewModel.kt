@@ -4,8 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.kasianov.sergei.omaloma.Utils.Event
 import com.kasianov.sergei.omaloma.data.source.remote.NetworkUtils
-import com.kasianov.sergei.omaloma.data.source.remote.responsemodels.PublicHolidayResponse
+import com.kasianov.sergei.omaloma.data.source.remote.dto.PublicHolidayDto
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -13,10 +14,15 @@ import java.lang.Exception
 
 class PubHolViewModel : ViewModel() {
 
-    private val _publicHolidays by lazy { MutableLiveData<List<PublicHolidayResponse>>() }
+    private val _publicHolidays by lazy { MutableLiveData<List<PublicHolidayDto>>() }
 
-    val publicHolidays: LiveData<List<PublicHolidayResponse>>
+    val publicHolidays: LiveData<List<PublicHolidayDto>>
         get() = _publicHolidays
+
+    private val _selectedPubHoliday by lazy { MutableLiveData<Event<PublicHolidayDto>>() }
+
+    val selectedPubHoliday: LiveData<Event<PublicHolidayDto>>
+        get() = _selectedPubHoliday
 
     private val _loadingSpinner = MutableLiveData<Boolean>()
 
@@ -49,6 +55,13 @@ class PubHolViewModel : ViewModel() {
                 _errorMsg.postValue(e.message ?: e.toString())
             }
         }
+    }
+
+    fun setHolidaySelected(position: Int) {
+       _publicHolidays.value?.get(position)?.let {
+           _selectedPubHoliday.value = Event(it)
+       }
+
     }
 
 }

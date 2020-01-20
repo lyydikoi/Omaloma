@@ -17,16 +17,24 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
-    <style name="TextProfileMain">
+    <style name="MainContentText">
         <item name="android:textSize">@dimen/text_main_size</item>
         <item name="android:color">@color/colorTextPrimary</item>
+        <item name="android:layout_margin">@dimen/main_content_offset</item>
+        <item name="android:imeOptions">actionNext</item>
+        <item name="android:inputType">text</item>
+        <item name="android:maxLines">1</item>
     </style>
 
-    <style name="TextProfileHeader">
+    <style name="MainHeaderText">
         <item name="android:textSize">@dimen/text_header_size</item>
+        <item name="android:layout_margin">@dimen/main_content_offset</item>
+        <item name="android:imeOptions">actionNext</item>
+        <item name="android:inputType">text</item>
+        <item name="android:maxLines">1</item>
     </style>
 
-    <style name="TextProfileTitle">
+    <style name="TextExpandedAppbarTitle">
         <item name="android:textSize">@dimen/text_collapsible_appbar_title_size</item>
         <item name="android:color">@color/colorTextLight</item>
     </style>

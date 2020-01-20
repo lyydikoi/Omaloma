@@ -1,6 +1,6 @@
 package com.kasianov.sergei.omaloma.data.source.remote
 
-import com.kasianov.sergei.omaloma.data.source.remote.responsemodels.PublicHolidayResponse
+import com.kasianov.sergei.omaloma.data.source.remote.dto.PublicHolidayDto
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -11,6 +11,6 @@ interface PublicHolidayApi {
     suspend fun getPublicHolidays(
         @Path("year") year: String,
         @Path("country_code") countryCode: String
-    ): Response<List<PublicHolidayResponse>>
+    ): Response<List<PublicHolidayDto>>
 
 }

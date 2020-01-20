@@ -58,7 +58,15 @@
             android:label="DatePickerDialogFragment" />
     <fragment
             android:id="@+id/publicHolidaysListFragment"
-            android:name="com.kasianov.sergei.omaloma.ui.publicholidays.PublicHolidaysListFragment"
+            android:name="com.kasianov.sergei.omaloma.ui.publicholidays.PubHolidaysListFragment"
             android:label="PublicHolidaysListFragment"
-            tools:layout="@layout/fragment_public_holidays_list"/>
+            tools:layout="@layout/fragment_public_holidays_list">
+        <action
+                android:id="@+id/action_publicHolidaysListFragment_to_pubHolidayDetailsFragment"
+                app:destination="@id/pubHolidayDetailsFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/pubHolidayDetailsFragment"
+            android:name="com.kasianov.sergei.omaloma.ui.publicholidays.PubHolidayDetailsFragment"
+            android:label="PubHolidayDetailsFragment" />
 </navigation>

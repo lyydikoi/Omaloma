@@ -21,7 +21,7 @@
 
                 <EditText
                         android:id="@+id/edt_profile_name"
-                        style="@style/TextProfileHeader"
+                        style="@style/MainHeaderText"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/main_content_offset"
@@ -39,7 +39,7 @@
 
                 <EditText
                         android:id="@+id/tv_profile_start_date"
-                        style="@style/TextProfileMain"
+                        style="@style/MainContentText"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/main_content_offset"
@@ -70,7 +70,7 @@
 
         <com.google.android.material.appbar.AppBarLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/tall_app_bar_height">
+                android:layout_height="@dimen/expanded_app_bar_height">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                     android:id="@+id/tbCollapsing"

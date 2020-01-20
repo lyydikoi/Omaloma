@@ -5,11 +5,11 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.kasianov.sergei.omaloma.data.source.remote.responsemodels.PublicHolidayResponse
+import com.kasianov.sergei.omaloma.data.source.remote.dto.PublicHolidayDto
 import com.kasianov.sergei.omaloma.databinding.LayoutPublicHolidayItemBinding
 
 class PublicHolidaysAdapter(private val interaction: Interaction? = null) :
-    ListAdapter<PublicHolidayResponse, PublicHolidaysAdapter.PublicHolidaysViewHolder>(
+    ListAdapter<PublicHolidayDto, PublicHolidaysAdapter.PublicHolidaysViewHolder>(
         PublicHolidaysResponseDC()
     ) {
 
@@ -21,7 +21,7 @@ class PublicHolidaysAdapter(private val interaction: Interaction? = null) :
     override fun onBindViewHolder(holder: PublicHolidaysViewHolder, position: Int) =
         holder.bind(getItem(position))
 
-    fun swapData(data: List<PublicHolidayResponse>) {
+    fun swapData(data: List<PublicHolidayDto>) {
         submitList(data.toMutableList())
     }
 
@@ -37,7 +37,7 @@ class PublicHolidaysAdapter(private val interaction: Interaction? = null) :
             }
         }
 
-        fun bind(item: PublicHolidayResponse) {
+        fun bind(item: PublicHolidayDto) {
             binding.tvDate.text = item.date
             binding.tvTitle.text = item.localName
         }
@@ -47,17 +47,17 @@ class PublicHolidaysAdapter(private val interaction: Interaction? = null) :
         fun itemClicked(position: Int)
     }
 
-    private class PublicHolidaysResponseDC : DiffUtil.ItemCallback<PublicHolidayResponse>() {
+    private class PublicHolidaysResponseDC : DiffUtil.ItemCallback<PublicHolidayDto>() {
         override fun areItemsTheSame(
-            oldItem: PublicHolidayResponse,
-            newItem: PublicHolidayResponse
+            oldItem: PublicHolidayDto,
+            newItem: PublicHolidayDto
         ): Boolean {
             return oldItem == newItem
         }
 
         override fun areContentsTheSame(
-            oldItem: PublicHolidayResponse,
-            newItem: PublicHolidayResponse
+            oldItem: PublicHolidayDto,
+            newItem: PublicHolidayDto
         ): Boolean {
             return oldItem.type == newItem.type
                     && oldItem.name == newItem.name

@@ -1,8 +1,8 @@
-package com.kasianov.sergei.omaloma.data.source.remote.responsemodels
+package com.kasianov.sergei.omaloma.data.source.remote.dto
 
 import com.google.gson.annotations.SerializedName
 
-data class PublicHolidayResponse(
+data class PublicHolidayDto(
     @SerializedName("date")
     val date: String? = null,
     @SerializedName("localName")
