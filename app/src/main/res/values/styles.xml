@@ -21,9 +21,6 @@
         <item name="android:textSize">@dimen/text_main_size</item>
         <item name="android:color">@color/colorTextPrimary</item>
         <item name="android:layout_margin">@dimen/main_content_offset</item>
-        <item name="android:imeOptions">actionNext</item>
-        <item name="android:inputType">text</item>
-        <item name="android:maxLines">1</item>
     </style>
 
     <style name="MainHeaderText">

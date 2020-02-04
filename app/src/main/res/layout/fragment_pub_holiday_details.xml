@@ -7,7 +7,8 @@
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="true">
 
         <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
@@ -19,6 +20,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rwBottomBar"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/swipe_layout_height"
+                        android:layout_margin="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:visibility="gone"/>
+
                 <TextView
                         android:id="@+id/tvTitle"
                         style="@style/MainHeaderText"
@@ -26,8 +37,8 @@
                         android:layout_height="wrap_content"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:text="Joulu"/>
+                        app:layout_constraintTop_toBottomOf="@+id/rwBottomBar"
+                        tools:text="Joulu" />
 
                 <TextView
                         android:id="@+id/tvDate"
@@ -38,6 +49,26 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tvTitle"
                         tools:text="24. Joulukkuta"/>
+
+                <TextView
+                        android:id="@+id/tvContent"
+                        style="@style/MainContentText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvDate"
+                        tools:text="Some Long Long Text Even longer text. Very long text! Some Long Long Text Even longer text. Very long text!" />
+
+                <ProgressBar
+                        android:id="@+id/pbLoading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:visibility="gone"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>

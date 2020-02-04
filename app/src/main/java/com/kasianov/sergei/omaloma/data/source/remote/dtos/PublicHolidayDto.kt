@@ -1,4 +1,4 @@
-package com.kasianov.sergei.omaloma.data.source.remote.dto
+package com.kasianov.sergei.omaloma.data.source.remote.dtos
 
 import com.google.gson.annotations.SerializedName
 

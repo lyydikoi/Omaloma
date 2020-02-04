@@ -5,6 +5,7 @@
     <dimen name="main_icon_size">24dp</dimen>
     <dimen name="text_main_size">14sp</dimen>
     <dimen name="text_header_size">18sp</dimen>
+    <dimen name="default_elevation">4dp</dimen>
 
     <!-- App bar -->
     <dimen name="expanded_app_bar_height">200dp</dimen>
@@ -16,4 +17,10 @@
 
     <!-- User list item -->
     <dimen name="list_item_height">80dp</dimen>
+
+    <!-- Swipe image -->
+    <dimen name="swipe_layout_height">130dp</dimen>
+    <dimen name="swipe_image_width">130dp</dimen>
+    <dimen name="swipe_image_height">90dp</dimen>
+    <dimen name="swipe_image_padding">12dp</dimen>
 </resources>

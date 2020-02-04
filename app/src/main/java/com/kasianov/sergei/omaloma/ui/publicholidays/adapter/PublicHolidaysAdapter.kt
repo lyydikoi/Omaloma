@@ -1,16 +1,16 @@
-package com.kasianov.sergei.omaloma.ui.publicholidays.recyclerview
+package com.kasianov.sergei.omaloma.ui.publicholidays.adapter
 
 import android.view.LayoutInflater
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.kasianov.sergei.omaloma.data.source.remote.dto.PublicHolidayDto
+import com.kasianov.sergei.omaloma.data.source.remote.dtos.PublicHolidayDto
 import com.kasianov.sergei.omaloma.databinding.LayoutPublicHolidayItemBinding
 
 class PublicHolidaysAdapter(private val interaction: Interaction? = null) :
     ListAdapter<PublicHolidayDto, PublicHolidaysAdapter.PublicHolidaysViewHolder>(
-        PublicHolidaysResponseDC()
+        PublicHolidaysDiffUtils()
     ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = PublicHolidaysViewHolder(
@@ -47,7 +47,7 @@ class PublicHolidaysAdapter(private val interaction: Interaction? = null) :
         fun itemClicked(position: Int)
     }
 
-    private class PublicHolidaysResponseDC : DiffUtil.ItemCallback<PublicHolidayDto>() {
+    private class PublicHolidaysDiffUtils : DiffUtil.ItemCallback<PublicHolidayDto>() {
         override fun areItemsTheSame(
             oldItem: PublicHolidayDto,
             newItem: PublicHolidayDto

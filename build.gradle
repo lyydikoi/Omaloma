@@ -53,6 +53,7 @@ ext {
     dexMakerVersion = '2.12.1'
     espressoVersion = '3.3.0-alpha03'
     fragmentVersion = '1.2.0-rc05'
+    glideVersion = '4.9.0'
     guavaVersion = '27.0.1-android'
     gsonVersion = '2.4.0'
     hamcrestVersion = '1.3'
