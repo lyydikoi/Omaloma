@@ -15,13 +15,13 @@ import com.kasianov.sergei.omaloma.Utils.fromHtml
 import com.kasianov.sergei.omaloma.data.source.remote.dtos.ArticleDto
 import com.kasianov.sergei.omaloma.data.source.remote.dtos.PublicHolidayDto
 import com.kasianov.sergei.omaloma.databinding.FragmentPubHolidayDetailsBinding
-import com.kasianov.sergei.omaloma.ui.publicholidays.adapter.ImageSwipeRecyclerViewAdapter
+import com.kasianov.sergei.omaloma.ui.publicholidays.adapter.ImageAdapter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class PubHolidayDetailsFragment : Fragment() {
     private lateinit var binding: FragmentPubHolidayDetailsBinding
     private val viewModel by sharedViewModel<PubHolListViewModel>()
-    private var adapter = ImageSwipeRecyclerViewAdapter()
+    private var adapter = ImageAdapter()
     private val linearSnapHelper = LinearSnapHelper()
     private val linearLayoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
 
@@ -45,6 +45,7 @@ class PubHolidayDetailsFragment : Fragment() {
                 updateUi(it)
             }
         })
+
         viewModel.wikiArticle?.let {
             it.observe(viewLifecycleOwner, Observer { article ->
                 article?.let { data -> showWikiInfo(data) }

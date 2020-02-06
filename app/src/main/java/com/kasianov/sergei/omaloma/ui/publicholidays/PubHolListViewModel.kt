@@ -58,7 +58,9 @@ class PubHolListViewModel : ViewModel() {
         var result = mutableListOf<String>()
         try {
             it.pagesSet?.pages?.forEach { (key, value) ->
-                value.images?.first()?.url?.let { url -> result.add(url) }
+                value.images?.first()?.url?.let { url ->
+                    if (!url.contains(".svg", ignoreCase = true)) result.add(url)
+                }
             }
             result
         } catch (e: Exception) {

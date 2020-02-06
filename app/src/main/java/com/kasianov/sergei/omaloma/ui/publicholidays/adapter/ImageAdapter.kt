@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlin.properties.Delegates
 
 
-class ImageSwipeRecyclerViewAdapter
-    : RecyclerView.Adapter<ImageSwipeRecyclerViewAdapter.ImageSwipeCardViewHolder>() {
+class ImageAdapter
+    : RecyclerView.Adapter<ImageAdapter.ImageSwipeCardViewHolder>() {
 
     var items: List<String> by Delegates.observable(emptyList()) { _, oldList, newList ->
         notifyChanges(oldList, newList)
