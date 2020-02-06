@@ -8,22 +8,30 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.kasianov.sergei.omaloma.R
 import com.kasianov.sergei.omaloma.Utils.fromHtml
 import com.kasianov.sergei.omaloma.data.source.remote.dtos.ArticleDto
 import com.kasianov.sergei.omaloma.data.source.remote.dtos.PublicHolidayDto
 import com.kasianov.sergei.omaloma.databinding.FragmentPubHolidayDetailsBinding
-import com.kasianov.sergei.omaloma.ui.publicholidays.adapter.ImageAdapter
+import com.kasianov.sergei.omaloma.ui.AdapterInteraction
+import com.kasianov.sergei.omaloma.ui.publicholidays.adapter.ImagesListAdapter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class PubHolidayDetailsFragment : Fragment() {
     private lateinit var binding: FragmentPubHolidayDetailsBinding
     private val viewModel by sharedViewModel<PubHolListViewModel>()
-    private var adapter = ImageAdapter()
     private val linearSnapHelper = LinearSnapHelper()
     private val linearLayoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+    private var adapter = ImagesListAdapter(object : AdapterInteraction {
+        override fun itemClicked(position: Int) {
+            viewModel.setSelectedImageUrl(position)
+        }
+    })
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -52,20 +60,34 @@ class PubHolidayDetailsFragment : Fragment() {
             })
         }
 
-        viewModel.wikiImages?.let {
+        viewModel.wikiImageUrlList?.let {
             it.observe(viewLifecycleOwner, Observer { images ->
                 if (!images.isNullOrEmpty()) {
                     binding.rwBottomBar.visibility = VISIBLE
-                    adapter.items = images
+                    adapter.swapData(images)
+                    showAppBarImage(images.first())
                 } else {
                     binding.rwBottomBar.visibility = GONE
                 }
             })
         }
 
+        viewModel.selectedImageUrl.observe(viewLifecycleOwner, Observer { event ->
+            event.getContentIfNotHandled()?.let {
+                if (it.isNotBlank()) showAppBarImage(it)
+            }
+        })
+
         viewModel.loading.observe(viewLifecycleOwner, Observer {
             binding.pbLoading.visibility = if (it) VISIBLE else GONE
         })
+    }
+
+    private fun showAppBarImage(url: String) {
+        Glide.with(binding.ivPubHolidayImage.context)
+            .load(url)
+            .placeholder(R.drawable.ic_image_light_green_48dp)
+            .into(binding.ivPubHolidayImage)
     }
 
     private fun setUpUI() {
@@ -74,9 +96,9 @@ class PubHolidayDetailsFragment : Fragment() {
         linearSnapHelper.attachToRecyclerView(binding.rwBottomBar)
     }
 
-    private fun updateUi(holyday: PublicHolidayDto) {
-        binding.tvTitle.text = holyday.localName
-        binding.tvDate.text = holyday.date
+    private fun updateUi(holiday: PublicHolidayDto) {
+        binding.tvTitle.text = holiday.localName
+        binding.tvDate.text = holiday.date
     }
 
     private fun showWikiInfo(data: ArticleDto) {

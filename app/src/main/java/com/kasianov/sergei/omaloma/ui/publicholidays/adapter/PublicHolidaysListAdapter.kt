@@ -7,16 +7,18 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.kasianov.sergei.omaloma.data.source.remote.dtos.PublicHolidayDto
 import com.kasianov.sergei.omaloma.databinding.LayoutPublicHolidayItemBinding
+import com.kasianov.sergei.omaloma.ui.AdapterInteraction
 
-class PublicHolidaysAdapter(private val interaction: Interaction? = null) :
-    ListAdapter<PublicHolidayDto, PublicHolidaysAdapter.PublicHolidaysViewHolder>(
-        PublicHolidaysDiffUtils()
-    ) {
+class PublicHolidaysListAdapter(
+    private val interaction: AdapterInteraction? = null
+) : ListAdapter<PublicHolidayDto, PublicHolidaysListAdapter.PublicHolidaysViewHolder>(
+    PublicHolidaysDiffUtils()
+) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = PublicHolidaysViewHolder(
-        LayoutPublicHolidayItemBinding.inflate(LayoutInflater.from(parent.context), parent, false),
-        interaction
-    )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+        PublicHolidaysViewHolder(
+            LayoutPublicHolidayItemBinding.inflate(LayoutInflater.from(parent.context), parent, false),
+            interaction)
 
     override fun onBindViewHolder(holder: PublicHolidaysViewHolder, position: Int) =
         holder.bind(getItem(position))
@@ -25,26 +27,19 @@ class PublicHolidaysAdapter(private val interaction: Interaction? = null) :
         submitList(data.toMutableList())
     }
 
-    inner class PublicHolidaysViewHolder(
+    class PublicHolidaysViewHolder(
         private val binding: LayoutPublicHolidayItemBinding,
-        private val interaction: Interaction?
+        private val interaction: AdapterInteraction?
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        init {
+        fun bind(item: PublicHolidayDto) {
             itemView.setOnClickListener {
                 if (adapterPosition == RecyclerView.NO_POSITION) return@setOnClickListener
                 interaction?.itemClicked(adapterPosition)
             }
-        }
-
-        fun bind(item: PublicHolidayDto) {
             binding.tvDate.text = item.date
             binding.tvTitle.text = item.localName
         }
-    }
-
-    interface Interaction {
-        fun itemClicked(position: Int)
     }
 
     private class PublicHolidaysDiffUtils : DiffUtil.ItemCallback<PublicHolidayDto>() {

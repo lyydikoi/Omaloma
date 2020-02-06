@@ -13,8 +13,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kasianov.sergei.omaloma.R
+import com.kasianov.sergei.omaloma.Utils.DEFAULT_YEAR
+import com.kasianov.sergei.omaloma.Utils.DEFAULT_COUNTRY
 import com.kasianov.sergei.omaloma.databinding.FragmentPublicHolidaysListBinding
-import com.kasianov.sergei.omaloma.ui.publicholidays.adapter.PublicHolidaysAdapter
+import com.kasianov.sergei.omaloma.ui.AdapterInteraction
+import com.kasianov.sergei.omaloma.ui.publicholidays.adapter.PublicHolidaysListAdapter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class PubHolidaysListFragment : Fragment() {
@@ -23,7 +26,7 @@ class PubHolidaysListFragment : Fragment() {
     private val viewModel by sharedViewModel<PubHolListViewModel>()
 
     private val adapter by lazy {
-        PublicHolidaysAdapter(object : PublicHolidaysAdapter.Interaction{
+        PublicHolidaysListAdapter(object : AdapterInteraction {
             override fun itemClicked(position: Int) {
                 viewModel.setHolidaySelected(position)
                 findNavController()
@@ -35,7 +38,7 @@ class PubHolidaysListFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        viewModel.loadPubHolidays("2020", "FI")
+        viewModel.loadPubHolidays(DEFAULT_YEAR, DEFAULT_COUNTRY)
 
         viewModel.publicHolidays.observe(viewLifecycleOwner, Observer {
             if (!it.isNullOrEmpty()) adapter.swapData(it)

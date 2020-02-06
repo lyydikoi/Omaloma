@@ -27,6 +27,11 @@ class PubHolListViewModel : ViewModel() {
     val selectedPubHoliday: LiveData<Event<PublicHolidayDto>>
         get() = Transformations.map(_selectedPubHoliday) { Event<PublicHolidayDto>(it) }
 
+    private val _selectedImageUrl by lazy { MutableLiveData<String>() }
+
+    val selectedImageUrl: LiveData<Event<String>>
+        get() = Transformations.map(_selectedImageUrl) { Event<String>(it) }
+
     private val _loading = MutableLiveData<Boolean>()
 
     val loading: LiveData<Boolean>
@@ -54,7 +59,7 @@ class PubHolListViewModel : ViewModel() {
 
     private val _wikiImagesResponse = MutableLiveData<WikiPagesResponseDto>()
 
-    val wikiImages: LiveData<List<String>>? = Transformations.map(_wikiImagesResponse) {
+    val wikiImageUrlList: LiveData<List<String>>? = Transformations.map(_wikiImagesResponse) {
         var result = mutableListOf<String>()
         try {
             it.pagesSet?.pages?.forEach { (key, value) ->
@@ -152,7 +157,9 @@ class PubHolListViewModel : ViewModel() {
             }
             if (response.isSuccessful) {
                 val body = response.body()
-                if (body != null) _wikiImagesResponse.postValue(body)
+                if (body != null) {
+                    _wikiImagesResponse.postValue(body)
+                }
             } else if (response.errorBody() != null) {
                 val errorBody = response.errorBody()
                 _errorMsg.postValue("Error body:  ${errorBody?.string()}")
@@ -162,6 +169,11 @@ class PubHolListViewModel : ViewModel() {
         } catch (e: Exception) {
             _errorMsg.postValue(e.message ?: e.toString())
         }
+    }
+
+    fun setSelectedImageUrl(position: Int) {
+        wikiImageUrlList?.value?.let {
+            if (it.size > position) _selectedImageUrl.postValue(it[position]) }
     }
 
 }

@@ -4,58 +4,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/nav_graph"
-        app:startDestination="@id/usersListFragment">
-    <fragment
-            android:id="@+id/usersListFragment"
-            android:name="com.kasianov.sergei.omaloma.ui.users.UsersListFragment"
-            android:label="UsersListFragment"
-            tools:layout="@layout/fragment_users_list" >
-        <action
-                android:id="@+id/action_usersListFragment_to_userFragment"
-                app:destination="@id/userFragment" />
-        <action
-                android:id="@+id/action_usersListFragment_to_mainContentFragment"
-                app:destination="@id/mainContentFragment" />
-        <action
-                android:id="@+id/action_usersListFragment_to_publicHolidaysListFragment"
-                app:destination="@id/publicHolidaysListFragment" />
-    </fragment>
-    <fragment
-            android:id="@+id/userFragment"
-            android:name="com.kasianov.sergei.omaloma.ui.users.UserDetailsFragment"
-            android:label="UserFragment"
-            tools:layout="@layout/fragment_user_details" >
-        <action
-                android:id="@+id/action_userFragment_to_datePickerDialogFragment"
-                app:destination="@id/datePickerDialogFragment" />
-    </fragment>
-    <fragment
-            android:id="@+id/mainContentFragment"
-            android:name="com.kasianov.sergei.omaloma.ui.maincontent.MainContentFragment"
-            android:label="fragment_content_main"
-            tools:layout="@layout/fragment_content_main" >
-        <action
-                android:id="@+id/action_mainContentFragment_to_absencesListFragment"
-                app:destination="@id/absencesListFragment" />
-    </fragment>
-    <fragment
-            android:id="@+id/absencesListFragment"
-            android:name="com.kasianov.sergei.omaloma.ui.absences.AbsencesListFragment"
-            android:label="fragment_absences_list"
-            tools:layout="@layout/fragment_absences_list" >
-        <action
-                android:id="@+id/action_absencesListFragment_to_plannedHoliday"
-                app:destination="@id/absenceFragment" />
-    </fragment>
-    <fragment
-            android:id="@+id/absenceFragment"
-            android:name="com.kasianov.sergei.omaloma.ui.absences.AbsenceFragment"
-            android:label="fragment_absence"
-            tools:layout="@layout/fragment_absence" />
-    <dialog
-            android:id="@+id/datePickerDialogFragment"
-            android:name="com.kasianov.sergei.omaloma.ui.commonui.DatePickerDialogFragment"
-            android:label="DatePickerDialogFragment" />
+        app:startDestination="@id/publicHolidaysListFragment">
     <fragment
             android:id="@+id/publicHolidaysListFragment"
             android:name="com.kasianov.sergei.omaloma.ui.publicholidays.PubHolidaysListFragment"
