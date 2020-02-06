@@ -2,6 +2,7 @@ package com.kasianov.sergei.omaloma.data.source.remote.dtos
 
 import com.google.gson.annotations.SerializedName
 
+
 data class PublicHolidayDto(
     @SerializedName("date")
     val date: String? = null,

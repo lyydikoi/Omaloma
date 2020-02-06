@@ -1,4 +1,4 @@
-package com.kasianov.sergei.omaloma.Utils
+package com.kasianov.sergei.omaloma.utils
 
 // URL
 const val PUBLIC_HOLIDAYS_BASE_URL = "https://date.nager.at/api/v2/"

@@ -1,8 +1,8 @@
 package com.kasianov.sergei.omaloma.data.source.remote
 
 import com.kasianov.sergei.omaloma.BuildConfig
-import com.kasianov.sergei.omaloma.Utils.PUBLIC_HOLIDAYS_BASE_URL
-import com.kasianov.sergei.omaloma.Utils.WIKI_BASE_URL
+import com.kasianov.sergei.omaloma.utils.PUBLIC_HOLIDAYS_BASE_URL
+import com.kasianov.sergei.omaloma.utils.WIKI_BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -70,4 +70,5 @@ object NetworkUtils {
     }
 
     private fun provideWikiApi(retrofit: Retrofit): WikiApi = retrofit.create(WikiApi::class.java)
+
 }

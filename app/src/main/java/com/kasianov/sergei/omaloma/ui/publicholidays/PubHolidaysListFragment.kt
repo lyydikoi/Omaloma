@@ -13,8 +13,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kasianov.sergei.omaloma.R
-import com.kasianov.sergei.omaloma.Utils.DEFAULT_YEAR
-import com.kasianov.sergei.omaloma.Utils.DEFAULT_COUNTRY
+import com.kasianov.sergei.omaloma.utils.DEFAULT_YEAR
+import com.kasianov.sergei.omaloma.utils.DEFAULT_COUNTRY
 import com.kasianov.sergei.omaloma.databinding.FragmentPublicHolidaysListBinding
 import com.kasianov.sergei.omaloma.ui.AdapterInteraction
 import com.kasianov.sergei.omaloma.ui.publicholidays.adapter.PublicHolidaysListAdapter
@@ -68,4 +68,5 @@ class PubHolidaysListFragment : Fragment() {
 
         binding.rvPubHolList.adapter = adapter
     }
+
 }

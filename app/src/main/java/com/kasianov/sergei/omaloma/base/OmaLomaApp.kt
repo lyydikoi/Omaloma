@@ -18,7 +18,6 @@ class OmaLomaApp: Application() {
             androidContext(this@OmaLomaApp)
             modules(appModule)
         }
-
     }
 
 }

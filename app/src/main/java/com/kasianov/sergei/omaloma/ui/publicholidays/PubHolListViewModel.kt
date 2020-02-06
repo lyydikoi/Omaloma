@@ -1,7 +1,7 @@
 package com.kasianov.sergei.omaloma.ui.publicholidays
 
 import androidx.lifecycle.*
-import com.kasianov.sergei.omaloma.Utils.Event
+import com.kasianov.sergei.omaloma.utils.Event
 import com.kasianov.sergei.omaloma.data.source.remote.NetworkUtils
 import com.kasianov.sergei.omaloma.data.source.remote.dtos.ArticleDto
 import com.kasianov.sergei.omaloma.data.source.remote.dtos.PublicHolidayDto
@@ -10,6 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.lang.Exception
+
 
 class PubHolListViewModel : ViewModel() {
 

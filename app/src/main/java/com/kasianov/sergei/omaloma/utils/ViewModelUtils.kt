@@ -1,4 +1,4 @@
-package com.kasianov.sergei.omaloma.Utils
+package com.kasianov.sergei.omaloma.utils
 
 /**
  * Used as a wrapper for data that is exposed via a LiveData that represents an event.

@@ -8,19 +8,19 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kasianov.sergei.omaloma.R
-import com.kasianov.sergei.omaloma.Utils.fromHtml
+import com.kasianov.sergei.omaloma.utils.fromHtml
 import com.kasianov.sergei.omaloma.data.source.remote.dtos.ArticleDto
 import com.kasianov.sergei.omaloma.data.source.remote.dtos.PublicHolidayDto
 import com.kasianov.sergei.omaloma.databinding.FragmentPubHolidayDetailsBinding
 import com.kasianov.sergei.omaloma.ui.AdapterInteraction
 import com.kasianov.sergei.omaloma.ui.publicholidays.adapter.ImagesListAdapter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+
 
 class PubHolidayDetailsFragment : Fragment() {
     private lateinit var binding: FragmentPubHolidayDetailsBinding

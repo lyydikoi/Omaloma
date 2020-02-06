@@ -1,4 +1,4 @@
-package com.kasianov.sergei.omaloma.Utils
+package com.kasianov.sergei.omaloma.utils
 
 import android.os.Build
 import android.text.Html
