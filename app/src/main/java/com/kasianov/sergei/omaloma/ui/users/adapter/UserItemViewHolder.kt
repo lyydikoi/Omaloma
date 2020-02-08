@@ -20,4 +20,5 @@ class UserItemViewHolder(
         // TODO: Bind the data with View
         binding.tvFirstName.text = user.firstName
     }
+
 }
