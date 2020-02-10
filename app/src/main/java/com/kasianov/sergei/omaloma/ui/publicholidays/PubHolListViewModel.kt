@@ -11,7 +11,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.lang.Exception
 
-
 class PubHolListViewModel : ViewModel() {
 
     // TOOD: use DI

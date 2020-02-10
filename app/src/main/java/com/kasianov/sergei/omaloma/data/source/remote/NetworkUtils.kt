@@ -10,7 +10,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object NetworkUtils {
-
     // Utils for Public Holidays API service
     val pubHolApiService : PublicHolidayApi by lazy {
         return@lazy providePubHolApi(providePubHolRetrofit(providePubHolOkHttpClient()))

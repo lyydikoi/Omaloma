@@ -11,9 +11,7 @@ import com.kasianov.sergei.omaloma.ui.AdapterInteraction
 
 class PublicHolidaysListAdapter(
     private val interaction: AdapterInteraction? = null
-) : ListAdapter<PublicHolidayDto, PublicHolidaysListAdapter.PublicHolidaysViewHolder>(
-    PublicHolidaysDiffUtils()
-) {
+) : ListAdapter<PublicHolidayDto, PublicHolidaysListAdapter.PublicHolidaysViewHolder>(PublicHolidaysDiffUtils()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         PublicHolidaysViewHolder(

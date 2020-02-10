@@ -10,4 +10,5 @@ fun String.fromHtml(): Spanned? {
     } else {
         Html.fromHtml(this)
     }
+
 }

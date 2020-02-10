@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kasianov.sergei.omaloma.databinding.LayoutSwipeImageItemBinding
 import com.kasianov.sergei.omaloma.ui.AdapterInteraction
 
-
 class ImagesListAdapter(
     private val interaction: AdapterInteraction? = null
 ) : ListAdapter<String, ImagesListAdapter.ImageSwipeCardViewHolder>(ImageDiffUtilCallback()) {

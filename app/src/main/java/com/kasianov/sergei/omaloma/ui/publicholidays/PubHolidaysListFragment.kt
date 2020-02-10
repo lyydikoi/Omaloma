@@ -21,6 +21,7 @@ import com.kasianov.sergei.omaloma.ui.publicholidays.adapter.PublicHolidaysListA
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class PubHolidaysListFragment : Fragment() {
+
     private lateinit var binding: FragmentPublicHolidaysListBinding
 
     private val viewModel by sharedViewModel<PubHolListViewModel>()
