@@ -17,7 +17,6 @@ import com.kasianov.sergei.omaloma.utils.fromHtml
 import com.kasianov.sergei.omaloma.data.source.remote.dtos.ArticleDto
 import com.kasianov.sergei.omaloma.data.source.remote.dtos.PublicHolidayDto
 import com.kasianov.sergei.omaloma.databinding.FragmentPubHolidayDetailsBinding
-import com.kasianov.sergei.omaloma.ui.AdapterInteraction
 import com.kasianov.sergei.omaloma.ui.publicholidays.adapter.ImagesListAdapter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
@@ -26,11 +25,8 @@ class PubHolidayDetailsFragment : Fragment() {
     private val viewModel by sharedViewModel<PubHolListViewModel>()
     private val linearSnapHelper = LinearSnapHelper()
     private val linearLayoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-    private var adapter = ImagesListAdapter(object : AdapterInteraction {
-        override fun itemClicked(position: Int) {
-            viewModel.setSelectedImageUrl(position)
-        }
-    })
+    private var adapter = ImagesListAdapter { position: Int -> viewModel.setSelectedImageUrl(position) }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?

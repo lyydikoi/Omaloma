@@ -16,7 +16,6 @@ import com.kasianov.sergei.omaloma.R
 import com.kasianov.sergei.omaloma.utils.DEFAULT_YEAR
 import com.kasianov.sergei.omaloma.utils.DEFAULT_COUNTRY
 import com.kasianov.sergei.omaloma.databinding.FragmentPublicHolidaysListBinding
-import com.kasianov.sergei.omaloma.ui.AdapterInteraction
 import com.kasianov.sergei.omaloma.ui.publicholidays.adapter.PublicHolidaysListAdapter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
@@ -27,13 +26,10 @@ class PubHolidaysListFragment : Fragment() {
     private val viewModel by sharedViewModel<PubHolListViewModel>()
 
     private val adapter by lazy {
-        PublicHolidaysListAdapter(object : AdapterInteraction {
-            override fun itemClicked(position: Int) {
-                viewModel.setHolidaySelected(position)
-                findNavController()
-                    .navigate(R.id.action_publicHolidaysListFragment_to_pubHolidayDetailsFragment)
-            }
-        })
+        PublicHolidaysListAdapter { position: Int ->
+            viewModel.setHolidaySelected(position)
+            findNavController().navigate(R.id.action_publicHolidaysListFragment_to_pubHolidayDetailsFragment)
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

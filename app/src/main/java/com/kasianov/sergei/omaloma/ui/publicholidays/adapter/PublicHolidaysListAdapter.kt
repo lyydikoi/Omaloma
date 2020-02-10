@@ -7,10 +7,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.kasianov.sergei.omaloma.data.source.remote.dtos.PublicHolidayDto
 import com.kasianov.sergei.omaloma.databinding.LayoutPublicHolidayItemBinding
-import com.kasianov.sergei.omaloma.ui.AdapterInteraction
 
 class PublicHolidaysListAdapter(
-    private val interaction: AdapterInteraction? = null
+    private val interaction: (Int) -> Unit
 ) : ListAdapter<PublicHolidayDto, PublicHolidaysListAdapter.PublicHolidaysViewHolder>(PublicHolidaysDiffUtils()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
@@ -27,13 +26,13 @@ class PublicHolidaysListAdapter(
 
     class PublicHolidaysViewHolder(
         private val binding: LayoutPublicHolidayItemBinding,
-        private val interaction: AdapterInteraction?
+        private val interaction: (Int) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: PublicHolidayDto) {
             itemView.setOnClickListener {
                 if (adapterPosition == RecyclerView.NO_POSITION) return@setOnClickListener
-                interaction?.itemClicked(adapterPosition)
+                interaction(adapterPosition)
             }
             binding.tvDate.text = item.date
             binding.tvTitle.text = item.localName
