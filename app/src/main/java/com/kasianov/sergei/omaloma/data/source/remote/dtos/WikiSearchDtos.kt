@@ -9,7 +9,7 @@ data class WikiSearchResponseDto(
 
 data class QueryDto(
     @SerializedName("search")
-    val search: List<SearchInfoDto>?
+    val search: List<SearchInfoDto> = listOf()
 )
 
 data class SearchInfoDto(

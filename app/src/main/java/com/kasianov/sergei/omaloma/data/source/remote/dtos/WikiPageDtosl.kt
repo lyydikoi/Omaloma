@@ -9,7 +9,7 @@ data class WikiPagesResponseDto(
 
 data class PagesSetDto(
     @SerializedName("pages")
-    val pages: HashMap<String, ArticleDto>?
+    val pages: HashMap<String, ArticleDto> = hashMapOf()
 )
 
 data class ArticleDto(
@@ -26,7 +26,7 @@ data class ArticleDto(
     @SerializedName("fullurl")
     val fullurl: String?,
     @SerializedName("imageinfo")
-    val images: List<ImageInfoDto>?,
+    val images: List<ImageInfoDto> = listOf(),
     @SerializedName("extract")
     val extract: String?
 )

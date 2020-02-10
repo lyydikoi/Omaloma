@@ -4,21 +4,21 @@ import com.google.gson.annotations.SerializedName
 
 data class PublicHolidayDto(
     @SerializedName("date")
-    val date: String? = null,
+    val date: String?,
     @SerializedName("localName")
-    val localName: String? = null,
+    val localName: String?,
     @SerializedName("launchYear")
-    val launchYear: Int? = null,
+    val launchYear: Int?,
     @SerializedName("countryCode")
-    val countryCode: String? = null,
+    val countryCode: String?,
     @SerializedName("name")
-    val name: String? = null,
+    val name: String?,
     @SerializedName("fixed")
-    val fixed: Boolean = false,
+    val fixed: Boolean,
     @SerializedName("global")
-    val global: Boolean = false,
+    val global: Boolean,
     @SerializedName("counties")
-    val counties: String? = null,
+    val counties: String?,
     @SerializedName("type")
-    val type: String? = null
+    val type: String?
 )
