@@ -9,9 +9,9 @@ import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
-import com.kasianov.sergei.omaloma.ui.users.UserDetailsFragment
+import com.kasianov.sergei.omaloma.presentation.users.UserDetailsFragment
 import com.kasianov.sergei.omaloma.R
-import com.kasianov.sergei.omaloma.data.repositories.UserRepository
+import com.kasianov.sergei.omaloma.data.user.UserDataContract
 import com.kasianov.sergei.omaloma.maincontent.data.source.FakeUserRepository
 import org.junit.Before
 import org.junit.Test
@@ -29,7 +29,7 @@ import org.robolectric.annotation.TextLayoutMode
 @LooperMode(LooperMode.Mode.PAUSED)
 @TextLayoutMode(TextLayoutMode.Mode.REALISTIC)
 class UserFragmentTest {
-    private lateinit var repository: UserRepository
+    private lateinit var repository: UserDataContract.UserRepository
 
     @Before
     fun initRepository() {
@@ -46,19 +46,19 @@ class UserFragmentTest {
         onView(withId(R.id.tv_profile_start_date)).perform(typeText("2017-12-05"))
 
         // THEN - Verify that we navigate to the UserDetailsFragment screen
-        //val startDateData = (repository.getUser() as Result.Success).data
+        //val startDateData = (repository.getUser() as RequestResult.Success).data
         //assertEquals(startDateData.size, 1)
         //assertEquals(startDateData[0].startDate, "2017-12-05")
     }
 
     private fun launchFragment(navController: NavController?) {
-        val scenario = launchFragmentInContainer<UserDetailsFragment>(
-            Bundle(),
-            R.style.AppTheme
-        )
-        scenario.onFragment {
-            Navigation.setViewNavController(it.view!!, navController)
-        }
+        //val scenario = launchFragmentInContainer<UserDetailsFragment>(
+            //Bundle(),
+            //R.style.AppTheme
+        //)
+        //scenario.onFragment {
+            //Navigation.setViewNavController(it.view!!, navController)
+        //}
     }
 
     @Test

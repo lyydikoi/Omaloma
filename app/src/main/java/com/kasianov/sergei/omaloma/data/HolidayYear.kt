@@ -1,5 +1,6 @@
 package com.kasianov.sergei.omaloma.data
 
+import com.kasianov.sergei.omaloma.data.HolidayMonth
 import org.threeten.bp.LocalDate
 
 data class HolidayYear (

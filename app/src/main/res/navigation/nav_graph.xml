@@ -7,7 +7,7 @@
         app:startDestination="@id/usersListFragment">
     <fragment
             android:id="@+id/usersListFragment"
-            android:name="com.kasianov.sergei.omaloma.ui.users.UsersListFragment"
+            android:name="com.kasianov.sergei.omaloma.presentation.users.UsersListFragment"
             android:label="UsersListFragment"
             tools:layout="@layout/fragment_users_list" >
         <action
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
             android:id="@+id/userFragment"
-            android:name="com.kasianov.sergei.omaloma.ui.users.UserDetailsFragment"
+            android:name="com.kasianov.sergei.omaloma.presentation.users.UserDetailsFragment"
             android:label="UserFragment"
             tools:layout="@layout/fragment_user_details" >
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
             android:id="@+id/mainContentFragment"
-            android:name="com.kasianov.sergei.omaloma.ui.maincontent.MainContentFragment"
+            android:name="com.kasianov.sergei.omaloma.presentation.maincontent.MainContentFragment"
             android:label="fragment_content_main"
             tools:layout="@layout/fragment_content_main" >
         <action
@@ -40,7 +40,7 @@
     </fragment>
     <fragment
             android:id="@+id/absencesListFragment"
-            android:name="com.kasianov.sergei.omaloma.ui.absences.AbsencesListFragment"
+            android:name="com.kasianov.sergei.omaloma.presentation.absences.AbsencesListFragment"
             android:label="fragment_absences_list"
             tools:layout="@layout/fragment_absences_list" >
         <action
@@ -49,16 +49,16 @@
     </fragment>
     <fragment
             android:id="@+id/absenceFragment"
-            android:name="com.kasianov.sergei.omaloma.ui.absences.AbsenceFragment"
+            android:name="com.kasianov.sergei.omaloma.presentation.absences.AbsenceFragment"
             android:label="fragment_absence"
             tools:layout="@layout/fragment_absence" />
     <dialog
             android:id="@+id/datePickerDialogFragment"
-            android:name="com.kasianov.sergei.omaloma.ui.commonui.DatePickerDialogFragment"
+            android:name="com.kasianov.sergei.omaloma.presentation.common.DatePickerDialogFragment"
             android:label="DatePickerDialogFragment" />
     <fragment
             android:id="@+id/publicHolidaysListFragment"
-            android:name="com.kasianov.sergei.omaloma.ui.publicholidays.PubHolidaysListFragment"
+            android:name="com.kasianov.sergei.omaloma.presentation.publicholidays.PubHolidaysListFragment"
             android:label="PublicHolidaysListFragment"
             tools:layout="@layout/fragment_public_holidays_list">
         <action
@@ -67,6 +67,6 @@
     </fragment>
     <fragment
             android:id="@+id/pubHolidayDetailsFragment"
-            android:name="com.kasianov.sergei.omaloma.ui.publicholidays.PubHolidayDetailsFragment"
+            android:name="com.kasianov.sergei.omaloma.presentation.publicholidays.PubHolidayDetailsFragment"
             android:label="PubHolidayDetailsFragment" />
 </navigation>

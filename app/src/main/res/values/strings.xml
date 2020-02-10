@@ -7,10 +7,12 @@
     <string name="absences">Absences</string>
     <string name="main_content">Overview</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="first_name">First Name</string>
     <string name="user_details">Details</string>
     <string name="first_and_last_name">First and last name</string>
     <string name="working_start_date">Working start date</string>
+
+    <string name="example_title">Example title</string>
+    <string name="example_date">Example date 24. Joulukkuta</string>
+    <string name="example_long_text">Example long text: some Long Long Text Even longer text. Very long text! Some Long Long Text Even longer text. Very long text!</string>
 </resources>
