@@ -1,14 +1,13 @@
 package com.kasianov.sergei.omaloma.ui.publicholidays
 
+import android.util.Log
 import androidx.lifecycle.*
 import com.kasianov.sergei.omaloma.utils.Event
 import com.kasianov.sergei.omaloma.data.source.remote.NetworkUtils
 import com.kasianov.sergei.omaloma.data.source.remote.dtos.ArticleDto
 import com.kasianov.sergei.omaloma.data.source.remote.dtos.PublicHolidayDto
 import com.kasianov.sergei.omaloma.data.source.remote.dtos.WikiPagesResponseDto
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import java.lang.Exception
 
 class PubHolListViewModel : ViewModel() {
@@ -75,20 +74,23 @@ class PubHolListViewModel : ViewModel() {
     }
 
     fun loadPubHolidays(year: String, countyCode: String) {
+        Log.v("COROUTINE_TEST", "loadPubHolidays() start, Thread: " + Thread.currentThread().name)
         viewModelScope.launch {
+            Log.v("COROUTINE_TEST", "loadPubHolidays(), launch in viewModelScope, Thread: " + Thread.currentThread().name)
             _loading.value = true
             try {
-                val response = withContext(Dispatchers.IO) {
-                    pubHolApiService.getPublicHolidays(year, countyCode)
-                }
-                if (response.isSuccessful) {
-                    val body = response.body()
-                    if (body != null) _publicHolidays.postValue(body)
-                } else if (response.errorBody() != null) {
-                    val errorBody = response.errorBody()
-                    _errorMsg.postValue("Error body:  ${errorBody?.string()}")
-                } else {
-                    _errorMsg.postValue("${response.code()} ${response.message()}")
+                withContext(Dispatchers.IO) {
+                    Log.v("COROUTINE_TEST", "loadPubHolidays(), withContext(Dispatchers.IO), Thread: " + Thread.currentThread().name)
+                    val response = pubHolApiService.getPublicHolidays(year, countyCode)
+                    if (response.isSuccessful) {
+                        val body = response.body()
+                        if (body != null) _publicHolidays.postValue(body)
+                    } else if (response.errorBody() != null) {
+                        val errorBody = response.errorBody()
+                        _errorMsg.postValue("Error body:  ${errorBody?.string()}")
+                    } else {
+                        _errorMsg.postValue("${response.code()} ${response.message()}")
+                    }
                 }
             } catch (e: Exception) {
                 _errorMsg.postValue(e.message ?: e.toString())
@@ -105,23 +107,25 @@ class PubHolListViewModel : ViewModel() {
     }
 
     fun performWikiSearch(value: String) {
+        Log.v("COROUTINE_TEST", "start performWikiSearch(), Thread: " + Thread.currentThread().name)
         viewModelScope.launch {
             _loading.value = true
             try {
-                val response = withContext(Dispatchers.IO) {
-                    wikiApiService.getWikiSearchResults(value)
-                }
-                if (response.isSuccessful) {
-                    val pageId = response.body()?.query?.search?.first()?.pageId
-                    if (!pageId.isNullOrBlank()) {
-                        getWikiPageInfo(pageId)
-                        getWikiImages(pageId)
+                withContext(Dispatchers.IO) {
+                    Log.v("COROUTINE_TEST", "performWikiSearch(), withContext(Dispatchers.IO), Thread: " + Thread.currentThread().name)
+                    val response = wikiApiService.getWikiSearchResults(value)
+                    if (response.isSuccessful) {
+                        val pageId = response.body()?.query?.search?.first()?.pageId
+                        if (!pageId.isNullOrBlank()) {
+                            getWikiPageInfo(pageId)
+                            getWikiImages(pageId)
+                        }
+                    } else if (response.errorBody() != null) {
+                        val errorBody = response.errorBody()
+                        _errorMsg.postValue("Error body:  ${errorBody?.string()}")
+                    } else {
+                        _errorMsg.postValue("${response.code()} ${response.message()}")
                     }
-                } else if (response.errorBody() != null) {
-                    val errorBody = response.errorBody()
-                    _errorMsg.postValue("Error body:  ${errorBody?.string()}")
-                } else {
-                    _errorMsg.postValue("${response.code()} ${response.message()}")
                 }
             } catch (e: Exception) {
                 _errorMsg.postValue(e.message ?: e.toString())
@@ -133,17 +137,17 @@ class PubHolListViewModel : ViewModel() {
 
     private suspend fun getWikiPageInfo(pageId: String) {
         try {
-            val response = withContext(Dispatchers.IO) {
-                wikiApiService.getWikiPages(pageId)
-            }
-            if (response.isSuccessful) {
-                val body = response.body()
-                if (body != null) _wikiArticleResponse.postValue(body)
-            } else if (response.errorBody() != null) {
-                val errorBody = response.errorBody()
-                _errorMsg.postValue("Error body:  ${errorBody?.string()}")
-            } else {
-                _errorMsg.postValue("${response.code()} ${response.message()}")
+            withContext(Dispatchers.IO) {
+                val response = wikiApiService.getWikiPages(pageId)
+                if (response.isSuccessful) {
+                    val body = response.body()
+                    if (body != null) _wikiArticleResponse.postValue(body)
+                } else if (response.errorBody() != null) {
+                    val errorBody = response.errorBody()
+                    _errorMsg.postValue("Error body:  ${errorBody?.string()}")
+                } else {
+                    _errorMsg.postValue("${response.code()} ${response.message()}")
+                }
             }
         } catch (e: Exception) {
             _errorMsg.postValue(e.message ?: e.toString())
@@ -152,19 +156,19 @@ class PubHolListViewModel : ViewModel() {
 
     private suspend fun getWikiImages(pageId: String) {
         try {
-            val response = withContext(Dispatchers.IO) {
-                wikiApiService.getWikiImages(pageId)
-            }
-            if (response.isSuccessful) {
-                val body = response.body()
-                if (body != null) {
-                    _wikiImagesResponse.postValue(body)
+            withContext(Dispatchers.IO) {
+                val response = wikiApiService.getWikiImages(pageId)
+                if (response.isSuccessful) {
+                    val body = response.body()
+                    if (body != null) {
+                        _wikiImagesResponse.postValue(body)
+                    }
+                } else if (response.errorBody() != null) {
+                    val errorBody = response.errorBody()
+                    _errorMsg.postValue("Error body:  ${errorBody?.string()}")
+                } else {
+                    _errorMsg.postValue("${response.code()} ${response.message()}")
                 }
-            } else if (response.errorBody() != null) {
-                val errorBody = response.errorBody()
-                _errorMsg.postValue("Error body:  ${errorBody?.string()}")
-            } else {
-                _errorMsg.postValue("${response.code()} ${response.message()}")
             }
         } catch (e: Exception) {
             _errorMsg.postValue(e.message ?: e.toString())
@@ -174,6 +178,42 @@ class PubHolListViewModel : ViewModel() {
     fun setSelectedImageUrl(position: Int) {
         wikiImageUrlList?.value?.let {
             if (it.size > position) _selectedImageUrl.postValue(it[position]) }
+    }
+
+    // This is just for coroutines behaviour testing
+    private suspend fun testCoroutine1() {
+        viewModelScope.launch(Dispatchers.IO) {
+            doWork(1, 1)
+            doWork(2, 1)
+        }
+        Log.v("COROUTINE_TEST", "Wow such async, Thread: " + Thread.currentThread().name)
+        delay(2000)
+    }
+
+    private suspend fun testCoroutine2() {
+        val job = viewModelScope.launch(Dispatchers.IO) {
+            repeat(10) {
+                doWork(it, 2)
+            }
+        }
+        Log.v("COROUTINE_TEST", "Wow such async, Thread: " + Thread.currentThread().name)
+        //job.join()
+    }
+
+    private suspend fun testCoroutine3() {
+        repeat(10) {
+            viewModelScope.launch(Dispatchers.IO) {
+                doWork(it, 2)
+            }
+        }
+        Log.v("COROUTINE_TEST", "Wow such async, Thread: " + Thread.currentThread().name)
+        delay(10)
+    }
+
+    suspend fun doWork(numWork: Int, numTest: Int) {
+        Log.v("COROUTINE_TEST", "(TEST $numTest) start intence work $numWork , Thread: " + Thread.currentThread().name)
+        delay(1000)
+        Log.v("COROUTINE_TEST", "(TEST $numTest) end intence work $numWork")
     }
 
 }

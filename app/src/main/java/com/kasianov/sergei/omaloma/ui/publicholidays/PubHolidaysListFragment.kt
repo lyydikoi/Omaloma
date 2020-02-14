@@ -13,11 +13,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kasianov.sergei.omaloma.R
-import com.kasianov.sergei.omaloma.utils.DEFAULT_YEAR
-import com.kasianov.sergei.omaloma.utils.DEFAULT_COUNTRY
 import com.kasianov.sergei.omaloma.databinding.FragmentPublicHolidaysListBinding
 import com.kasianov.sergei.omaloma.ui.publicholidays.adapter.PublicHolidaysListAdapter
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+
+const val DEFAULT_YEAR = "2020"
+const val DEFAULT_COUNTRY = "FI"
 
 class PubHolidaysListFragment : Fragment() {
 
