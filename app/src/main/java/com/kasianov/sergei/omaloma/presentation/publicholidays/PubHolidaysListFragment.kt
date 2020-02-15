@@ -16,9 +16,10 @@ import com.kasianov.sergei.omaloma.R
 import com.kasianov.sergei.omaloma.databinding.FragmentPublicHolidaysListBinding
 import com.kasianov.sergei.omaloma.presentation.common.AdapterInteraction
 import com.kasianov.sergei.omaloma.presentation.publicholidays.adapter.PublicHolidaysListAdapter
-import com.kasianov.sergei.omaloma.core.DEFAULT_COUNTRY
-import com.kasianov.sergei.omaloma.core.DEFAULT_YEAR
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+
+const val DEFAULT_YEAR = "2020"
+const val DEFAULT_COUNTRY = "FI"
 
 class PubHolidaysListFragment : Fragment() {
     private lateinit var binding: FragmentPublicHolidaysListBinding

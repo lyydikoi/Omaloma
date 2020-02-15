@@ -11,6 +11,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
+const val PUBLIC_HOLIDAYS_BASE_URL = "https://date.nager.at/api/v2/"
+const val WIKI_BASE_URL = "https://fi.wikipedia.org/w/"
+
 object NetworkUtils {
 
     // Utils for Public Holidays API service

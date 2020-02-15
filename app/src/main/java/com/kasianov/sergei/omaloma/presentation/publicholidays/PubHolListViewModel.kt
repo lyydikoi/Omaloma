@@ -78,17 +78,17 @@ class PubHolListViewModel : ViewModel() {
         viewModelScope.launch {
             _loading.value = true
             try {
-                val response = withContext(Dispatchers.IO) {
-                    pubHolApiService.getPublicHolidays(year, countyCode)
-                }
-                if (response.isSuccessful) {
-                    val body = response.body()
-                    if (body != null) _publicHolidays.postValue(body)
-                } else if (response.errorBody() != null) {
-                    val errorBody = response.errorBody()
-                    _errorMsg.postValue("Error body:  ${errorBody?.string()}")
-                } else {
-                    _errorMsg.postValue("${response.code()} ${response.message()}")
+                withContext(Dispatchers.IO) {
+                    val response =  pubHolApiService.getPublicHolidays(year, countyCode)
+                    if (response.isSuccessful) {
+                        val body = response.body()
+                        if (body != null) _publicHolidays.postValue(body)
+                    } else if (response.errorBody() != null) {
+                        val errorBody = response.errorBody()
+                        _errorMsg.postValue("Error body:  ${errorBody?.string()}")
+                    } else {
+                        _errorMsg.postValue("${response.code()} ${response.message()}")
+                    }
                 }
             } catch (e: Exception) {
                 _errorMsg.postValue(e.message ?: e.toString())
@@ -108,20 +108,20 @@ class PubHolListViewModel : ViewModel() {
         viewModelScope.launch {
             _loading.value = true
             try {
-                val response = withContext(Dispatchers.IO) {
-                    wikiApiService.getWikiSearchResults(value)
-                }
-                if (response.isSuccessful) {
-                    val pageId = response.body()?.query?.search?.first()?.pageId
-                    if (!pageId.isNullOrBlank()) {
-                        getWikiPageInfo(pageId)
-                        getWikiImages(pageId)
+                withContext(Dispatchers.IO) {
+                    val response =  wikiApiService.getWikiSearchResults(value)
+                    if (response.isSuccessful) {
+                        val pageId = response.body()?.query?.search?.first()?.pageId
+                        if (!pageId.isNullOrBlank()) {
+                            getWikiPageInfo(pageId)
+                            getWikiImages(pageId)
+                        }
+                    } else if (response.errorBody() != null) {
+                        val errorBody = response.errorBody()
+                        _errorMsg.postValue("Error body:  ${errorBody?.string()}")
+                    } else {
+                        _errorMsg.postValue("${response.code()} ${response.message()}")
                     }
-                } else if (response.errorBody() != null) {
-                    val errorBody = response.errorBody()
-                    _errorMsg.postValue("Error body:  ${errorBody?.string()}")
-                } else {
-                    _errorMsg.postValue("${response.code()} ${response.message()}")
                 }
             } catch (e: Exception) {
                 _errorMsg.postValue(e.message ?: e.toString())
@@ -133,17 +133,17 @@ class PubHolListViewModel : ViewModel() {
 
     private suspend fun getWikiPageInfo(pageId: String) {
         try {
-            val response = withContext(Dispatchers.IO) {
-                wikiApiService.getWikiPages(pageId)
-            }
-            if (response.isSuccessful) {
-                val body = response.body()
-                if (body != null) _wikiArticleResponse.postValue(body)
-            } else if (response.errorBody() != null) {
-                val errorBody = response.errorBody()
-                _errorMsg.postValue("Error body:  ${errorBody?.string()}")
-            } else {
-                _errorMsg.postValue("${response.code()} ${response.message()}")
+            withContext(Dispatchers.IO) {
+                val response = wikiApiService.getWikiPages(pageId)
+                if (response.isSuccessful) {
+                    val body = response.body()
+                    if (body != null) _wikiArticleResponse.postValue(body)
+                } else if (response.errorBody() != null) {
+                    val errorBody = response.errorBody()
+                    _errorMsg.postValue("Error body:  ${errorBody?.string()}")
+                } else {
+                    _errorMsg.postValue("${response.code()} ${response.message()}")
+                }
             }
         } catch (e: Exception) {
             _errorMsg.postValue(e.message ?: e.toString())
@@ -152,17 +152,17 @@ class PubHolListViewModel : ViewModel() {
 
     private suspend fun getWikiImages(pageId: String) {
         try {
-            val response = withContext(Dispatchers.IO) {
-                wikiApiService.getWikiImages(pageId)
-            }
-            if (response.isSuccessful) {
-                val body = response.body()
-                if (body != null) _wikiImagesResponse.postValue(body)
-            } else if (response.errorBody() != null) {
-                val errorBody = response.errorBody()
-                _errorMsg.postValue("Error body:  ${errorBody?.string()}")
-            } else {
-                _errorMsg.postValue("${response.code()} ${response.message()}")
+            withContext(Dispatchers.IO) {
+                val response = wikiApiService.getWikiImages(pageId)
+                if (response.isSuccessful) {
+                    val body = response.body()
+                    if (body != null) _wikiImagesResponse.postValue(body)
+                } else if (response.errorBody() != null) {
+                    val errorBody = response.errorBody()
+                    _errorMsg.postValue("Error body:  ${errorBody?.string()}")
+                } else {
+                    _errorMsg.postValue("${response.code()} ${response.message()}")
+                }
             }
         } catch (e: Exception) {
             _errorMsg.postValue(e.message ?: e.toString())
