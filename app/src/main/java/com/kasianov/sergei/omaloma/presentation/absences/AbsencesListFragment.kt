@@ -10,6 +10,8 @@ import com.kasianov.sergei.omaloma.databinding.FragmentAbsencesListBinding
 
 class AbsencesListFragment : Fragment() {
 
+    // TODO: NOT implemented yet.
+
     private lateinit var binding: FragmentAbsencesListBinding
 
     override fun onCreateView(

@@ -10,6 +10,9 @@ import com.kasianov.sergei.omaloma.R
 import com.kasianov.sergei.omaloma.databinding.FragmentUserDetailsBinding
 
 class UserDetailsFragment : Fragment() {
+
+    // TODO: NOT implemented yet.
+
     private lateinit var binding: FragmentUserDetailsBinding
 
     override fun onCreateView(

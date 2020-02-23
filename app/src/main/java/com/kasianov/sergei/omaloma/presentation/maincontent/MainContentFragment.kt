@@ -12,6 +12,8 @@ import com.kasianov.sergei.omaloma.databinding.FragmentContentMainBinding
  */
 class MainContentFragment : Fragment() {
 
+    // TODO: NOT implemented yet.
+
     private lateinit var binding: FragmentContentMainBinding
 
     override fun onCreateView(

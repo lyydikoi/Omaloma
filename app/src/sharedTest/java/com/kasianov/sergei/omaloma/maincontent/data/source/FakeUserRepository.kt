@@ -1,7 +1,7 @@
 package com.kasianov.sergei.omaloma.maincontent.data.source
 
 import androidx.lifecycle.LiveData
-import com.kasianov.sergei.omaloma.data.user.local.DBUser
+import com.kasianov.sergei.omaloma.data.database.dto.DBUser
 import com.kasianov.sergei.omaloma.data.user.UserDataContract
 
 class FakeUserRepository : UserDataContract.UserRepository {

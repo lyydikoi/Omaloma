@@ -1,7 +1,7 @@
 package com.kasianov.sergei.omaloma.presentation.utils
 
-import com.kasianov.sergei.omaloma.data.HolidayMonth
-import com.kasianov.sergei.omaloma.data.HolidayYear
+import com.kasianov.sergei.omaloma.domain.model.HolidayMonth
+import com.kasianov.sergei.omaloma.domain.model.HolidayYear
 import org.threeten.bp.LocalDate
 import kotlin.collections.ArrayList
 
@@ -110,5 +110,10 @@ object CalcDatesUtils {
      * return Int
      */
     fun getHolidayMonthCount(startMonth: Int) = if (startMonth <= 3) 4 - startMonth else 16 - startMonth
+
+    fun getFormattedDate(millisec: String) : String {
+        // TODO: needs implementation
+        return "29 Jan. 2020"
+    }
 
 }

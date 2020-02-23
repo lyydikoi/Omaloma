@@ -58,7 +58,7 @@
             android:label="DatePickerDialogFragment" />
     <fragment
             android:id="@+id/publicHolidaysListFragment"
-            android:name="com.kasianov.sergei.omaloma.presentation.publicholidays.PubHolidaysListFragment"
+            android:name="com.kasianov.sergei.omaloma.presentation.publicholidays.PubHolListFragment"
             android:label="PublicHolidaysListFragment"
             tools:layout="@layout/fragment_public_holidays_list">
         <action
@@ -67,6 +67,7 @@
     </fragment>
     <fragment
             android:id="@+id/pubHolidayDetailsFragment"
-            android:name="com.kasianov.sergei.omaloma.presentation.publicholidays.PubHolidayDetailsFragment"
-            android:label="PubHolidayDetailsFragment" />
+            android:name="com.kasianov.sergei.omaloma.presentation.publicholidays.PubHolDetailsFragment"
+            android:label="PubHolidayDetailsFragment"
+            android:layout="@layout/fragment_pub_holiday_details"/>
 </navigation>

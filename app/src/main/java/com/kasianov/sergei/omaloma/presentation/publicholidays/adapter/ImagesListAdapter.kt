@@ -8,11 +8,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.kasianov.sergei.omaloma.databinding.LayoutSwipeImageItemBinding
-import com.kasianov.sergei.omaloma.presentation.common.AdapterInteraction
 
 
 class ImagesListAdapter(
-    private val interaction: AdapterInteraction? = null
+    private val interaction:(Int) -> Unit
 ) : ListAdapter<String, ImagesListAdapter.ImageSwipeCardViewHolder>(ImageDiffUtilCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : ImageSwipeCardViewHolder =
@@ -29,13 +28,13 @@ class ImagesListAdapter(
 
     class ImageSwipeCardViewHolder(
         private val binding: LayoutSwipeImageItemBinding,
-        private val interaction: AdapterInteraction?
+        private val interaction:(Int) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(url: String) {
             itemView.setOnClickListener {
                 if (adapterPosition == RecyclerView.NO_POSITION) return@setOnClickListener
-                interaction?.itemClicked(adapterPosition)
+                interaction(adapterPosition)
             }
             Glide.with(binding.ivWikiImage.context)
                 .load(url)

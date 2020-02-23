@@ -5,15 +5,12 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.kasianov.sergei.omaloma.data.pubholiday.remote.PublicHolidayDTO
 import com.kasianov.sergei.omaloma.databinding.LayoutPublicHolidayItemBinding
-import com.kasianov.sergei.omaloma.presentation.common.AdapterInteraction
+import com.kasianov.sergei.omaloma.domain.model.PublicHoliday
 
 class PublicHolidaysListAdapter(
-    private val interaction: AdapterInteraction? = null
-) : ListAdapter<PublicHolidayDTO, PublicHolidaysListAdapter.PublicHolidaysViewHolder>(
-    PublicHolidaysDiffUtils()
-) {
+    private val interaction: (Int) -> Unit
+) : ListAdapter<PublicHoliday, PublicHolidaysListAdapter.PublicHolidaysViewHolder>(PublicHolidaysDiffUtils()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         PublicHolidaysViewHolder(LayoutPublicHolidayItemBinding
@@ -24,43 +21,43 @@ class PublicHolidaysListAdapter(
     override fun onBindViewHolder(holder: PublicHolidaysViewHolder, position: Int) =
         holder.bind(getItem(position))
 
-    fun swapData(data: List<PublicHolidayDTO>) {
+    fun swapData(data: List<PublicHoliday>) {
         submitList(data.toMutableList())
     }
 
     class PublicHolidaysViewHolder(
         private val binding: LayoutPublicHolidayItemBinding,
-        private val interaction: AdapterInteraction?
+        private val interaction: (Int) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: PublicHolidayDTO) {
+        fun bind(item: PublicHoliday) {
             itemView.setOnClickListener {
                 if (adapterPosition == RecyclerView.NO_POSITION) return@setOnClickListener
-                interaction?.itemClicked(adapterPosition)
+                interaction(adapterPosition)
             }
 
-            binding.tvDate.text = item.date
+            binding.tvDate.text = item.dateFormatted
             binding.tvTitle.text = item.localName
         }
     }
 
-    private class PublicHolidaysDiffUtils : DiffUtil.ItemCallback<PublicHolidayDTO>() {
+    private class PublicHolidaysDiffUtils : DiffUtil.ItemCallback<PublicHoliday>() {
         override fun areItemsTheSame(
-            oldItem: PublicHolidayDTO,
-            newItem: PublicHolidayDTO
+            oldItem: PublicHoliday,
+            newItem: PublicHoliday
         ): Boolean {
             return oldItem == newItem
         }
 
         override fun areContentsTheSame(
-            oldItem: PublicHolidayDTO,
-            newItem: PublicHolidayDTO
+            oldItem: PublicHoliday,
+            newItem: PublicHoliday
         ): Boolean {
-            return oldItem.type == newItem.type
-                    && oldItem.name == newItem.name
+            return oldItem.name == newItem.name
                     && oldItem.localName == newItem.localName
+                    && oldItem.dateFormatted == newItem.dateFormatted
                     && oldItem.countryCode == newItem.countryCode
-                    && oldItem.launchYear == newItem.launchYear
         }
     }
+
 }

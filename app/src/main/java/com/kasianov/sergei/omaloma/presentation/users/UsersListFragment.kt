@@ -10,6 +10,9 @@ import com.kasianov.sergei.omaloma.R
 import com.kasianov.sergei.omaloma.databinding.FragmentUsersListBinding
 
 class UsersListFragment : Fragment() {
+
+    // TODO: NOT implemented yet.
+
     private lateinit var binding: FragmentUsersListBinding
 
     override fun onCreateView(

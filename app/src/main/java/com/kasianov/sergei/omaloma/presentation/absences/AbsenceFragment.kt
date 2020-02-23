@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.kasianov.sergei.omaloma.databinding.FragmentAbsenceBinding
 
 class AbsenceFragment : Fragment() {
-
+    // TODO: NOT implemented yet.
     private lateinit var binding: FragmentAbsenceBinding
 
     override fun onCreateView(

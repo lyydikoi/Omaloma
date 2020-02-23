@@ -1,19 +1,18 @@
 package com.kasianov.sergei.omaloma.presentation.absences.adapter
 
 import androidx.recyclerview.widget.RecyclerView
-import com.kasianov.sergei.omaloma.data.absence.local.DBAbsence
+import com.kasianov.sergei.omaloma.data.database.dto.DBAbsence
 import com.kasianov.sergei.omaloma.databinding.LayoutAbsenceItemBinding
-import com.kasianov.sergei.omaloma.presentation.users.adapter.AbsencesListAdapter
 
 class AbsenceItemViewHolder(
     private val binding: LayoutAbsenceItemBinding,
-    interaction: AbsencesListAdapter.Interaction?
+    interaction: (Int) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
 
     init {
         itemView.setOnClickListener {
             if (adapterPosition == RecyclerView.NO_POSITION) return@setOnClickListener
-            interaction?.itemClicked(adapterPosition)
+            interaction(adapterPosition)
         }
     }
 
