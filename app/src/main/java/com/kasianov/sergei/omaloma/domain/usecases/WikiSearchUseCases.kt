@@ -3,6 +3,7 @@ package com.kasianov.sergei.omaloma.domain.usecases
 import com.kasianov.sergei.omaloma.core.extentions.RequestResult
 import com.kasianov.sergei.omaloma.domain.model.WikiArticle
 import com.kasianov.sergei.omaloma.domain.repository.WikiInfoRepo
+import javax.inject.Inject
 
 // Interfaces
 interface PerformWikiSearchUseCase {
@@ -18,7 +19,7 @@ interface GetWikiUrlsListUseCase {
 }
 
 // Implementations
-class PerformWikiSearchUseCaseImpl(
+class PerformWikiSearchUseCaseImpl @Inject constructor(
     private val wikiInfoRepo: WikiInfoRepo,
     private val getWikiPageInfoUseCase: GetWikiPageInfoUseCase
 ) : PerformWikiSearchUseCase {
@@ -31,7 +32,7 @@ class PerformWikiSearchUseCaseImpl(
     }
 }
 
-class GetWikiPageInfoUseCaseImpl(
+class GetWikiPageInfoUseCaseImpl  @Inject constructor(
     private val wikiInfoRepo: WikiInfoRepo
 ) : GetWikiPageInfoUseCase {
     override suspend fun invoke(pageId: String): RequestResult<WikiArticle> {
@@ -39,7 +40,7 @@ class GetWikiPageInfoUseCaseImpl(
     }
 }
 
-class GetWikiUrlsListUseCaseImpl(
+class GetWikiUrlsListUseCaseImpl  @Inject constructor(
     private val wikiInfoRepo: WikiInfoRepo
 ) : GetWikiUrlsListUseCase {
     override suspend fun invoke(pageId:String): RequestResult<List<String>> {

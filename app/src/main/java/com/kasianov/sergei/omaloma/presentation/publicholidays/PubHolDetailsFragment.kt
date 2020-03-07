@@ -7,7 +7,9 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -17,11 +19,14 @@ import com.kasianov.sergei.omaloma.databinding.FragmentPubHolidayDetailsBinding
 import com.kasianov.sergei.omaloma.domain.model.PublicHoliday
 import com.kasianov.sergei.omaloma.domain.model.WikiArticle
 import com.kasianov.sergei.omaloma.presentation.publicholidays.adapter.ImagesListAdapter
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import javax.inject.Inject
 
 class PubHolDetailsFragment : Fragment() {
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var binding: FragmentPubHolidayDetailsBinding
-    private val viewModel by viewModel<PubHolDetailsViewModel>()
+    private val viewModel: PubHolDetailsViewModel by viewModels { viewModelFactory }
     private val adapter = ImagesListAdapter { position -> viewModel.setSelectedImage(position) }
     private var publicHolidayName= ""
 

@@ -4,10 +4,11 @@ import androidx.lifecycle.*
 import com.kasianov.sergei.omaloma.core.BaseViewModel
 import com.kasianov.sergei.omaloma.core.extentions.Event
 import com.kasianov.sergei.omaloma.domain.model.PublicHoliday
-import com.kasianov.sergei.omaloma.domain.usecases.GetAllStoredPublicHolidaysUseCase
-import com.kasianov.sergei.omaloma.domain.usecases.LoadPublicHolidaysUseCase
+import com.kasianov.sergei.omaloma.domain.usecases.pubholusecases.GetAllStoredPublicHolidaysUseCase
+import com.kasianov.sergei.omaloma.domain.usecases.pubholusecases.LoadPublicHolidaysUseCase
+import javax.inject.Inject
 
-class PubHolListViewModel(
+class PubHolListViewModel @Inject constructor(
     private val loadPublicHolidaysUseCase: LoadPublicHolidaysUseCase,
     private val getAllStoredPublicHolidaysUseCase: GetAllStoredPublicHolidaysUseCase
 ) : BaseViewModel() {

@@ -12,8 +12,9 @@ import java.util.concurrent.TimeUnit
 const val PUBLIC_HOLIDAYS_BASE_URL = "https://date.nager.at/api/v2/"
 const val WIKI_BASE_URL = "https://fi.wikipedia.org/w/"
 
+// TODO: this was used for Koin. Leave it for now here
 // Utils for Public Holidays API service
-fun providePubHolRetrofit(okHttpClient: OkHttpClient): Retrofit {
+/*fun providePubHolRetrofit(okHttpClient: OkHttpClient): Retrofit {
     return Retrofit.Builder()
         .baseUrl(PUBLIC_HOLIDAYS_BASE_URL)
         .client(okHttpClient)
@@ -62,5 +63,5 @@ fun provideWikiOkHttpClient(): OkHttpClient {
     return httpClient.build()
 }
 
-fun provideWikiApi(retrofit: Retrofit): WikiApi = retrofit.create(
-    WikiApi::class.java)
+fun provideWikiApi(retrofit: Retrofit): WikiApi = retrofit.create(WikiApi::class.java)
+*/

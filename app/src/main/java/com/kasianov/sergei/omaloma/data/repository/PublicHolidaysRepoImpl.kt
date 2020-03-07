@@ -7,16 +7,16 @@ import com.kasianov.sergei.omaloma.data.database.dto.DBPublicHoliday
 import com.kasianov.sergei.omaloma.data.database.PublicHolidayDao
 import com.kasianov.sergei.omaloma.data.network.dto.PublicHolidayDTO
 import com.kasianov.sergei.omaloma.domain.model.PublicHoliday
-import com.kasianov.sergei.omaloma.domain.model.mappers.MapperDBToPublicHoliday
 import com.kasianov.sergei.omaloma.domain.repository.PublicHolidaysRepo
+import javax.inject.Inject
 
-class PublicHolidaysRepoImpl(
+class PublicHolidaysRepoImpl @Inject constructor(
     private val pubHolidayApiService: PublicHolidayApi,
     private val publicHolidayDao: PublicHolidayDao,
     private val listMapperDTOToDBPublicHoliday: ListMapper<PublicHolidayDTO, DBPublicHoliday>,
     private val listMapperDTOToPublicHoliday: ListMapper<PublicHolidayDTO, PublicHoliday>,
     private val listMapperDBToPublicHoliday: ListMapper<DBPublicHoliday, PublicHoliday>,
-    private val mapperDBToPublicHoliday: MapperDBToPublicHoliday
+    private val mapperDBToPublicHoliday: Mapper<DBPublicHoliday, PublicHoliday>
 ) : PublicHolidaysRepo {
 
     override suspend fun fetchRemotePublicHolidays(

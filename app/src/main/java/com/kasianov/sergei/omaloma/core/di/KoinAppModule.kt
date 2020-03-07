@@ -21,13 +21,14 @@ import com.kasianov.sergei.omaloma.presentation.publicholidays.PubHolDetailsView
 import com.kasianov.sergei.omaloma.presentation.publicholidays.PubHolListViewModel
 import com.kasianov.sergei.omaloma.presentation.users.UserDetailsViewModel
 import com.kasianov.sergei.omaloma.presentation.users.UsersListViewModel
-import org.koin.android.ext.koin.androidContext
+/*import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
-import org.koin.dsl.module
+import org.koin.dsl.module*/
 
+// TODO: keep it for now here, just in case
 // Koin DI
-val appModule = module {
+/*val appModule = module {
 
     // Provide DB
     single {
@@ -113,3 +114,4 @@ val appModule = module {
     viewModel { CompanyViewModel() }
 
 }
+*/

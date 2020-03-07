@@ -7,11 +7,12 @@ import com.kasianov.sergei.omaloma.core.BaseViewModel
 import com.kasianov.sergei.omaloma.core.extentions.Event
 import com.kasianov.sergei.omaloma.domain.model.PublicHoliday
 import com.kasianov.sergei.omaloma.domain.model.WikiArticle
-import com.kasianov.sergei.omaloma.domain.usecases.GetStoredPublicHolidayUseCase
+import com.kasianov.sergei.omaloma.domain.usecases.pubholusecases.GetStoredPublicHolidayUseCase
 import com.kasianov.sergei.omaloma.domain.usecases.GetWikiUrlsListUseCase
 import com.kasianov.sergei.omaloma.domain.usecases.PerformWikiSearchUseCase
+import javax.inject.Inject
 
-class PubHolDetailsViewModel(
+class PubHolDetailsViewModel @Inject constructor(
     private val getStoredPublicHolidayUseCase: GetStoredPublicHolidayUseCase,
     private val performWikiSearchUseCase: PerformWikiSearchUseCase,
     private val getWikiUrlsListUseCase: GetWikiUrlsListUseCase

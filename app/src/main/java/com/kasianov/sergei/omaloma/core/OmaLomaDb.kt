@@ -12,14 +12,19 @@ import com.kasianov.sergei.omaloma.data.database.dto.DBPublicHoliday
 const val DATA_BASE_VERSION = 1
 const val DATA_BASE_NAME = "omaloma.db"
 
-@Database(entities = [
-    DBUser::class, 
-    DBAbsence::class,
-    DBPublicHoliday::class
-], version = DATA_BASE_VERSION, exportSchema = false)
+@Database(
+    entities = [
+        DBUser::class,
+        DBAbsence::class,
+        DBPublicHoliday::class
+    ],
+    version = DATA_BASE_VERSION,
+    exportSchema = false
+)
 abstract class OmaLomaDb : RoomDatabase() {
 
     abstract fun userDao(): UserDao
     abstract fun publicHolidayDao(): PublicHolidayDao
     abstract fun absenceDao(): AbsenceDao
+
 }
