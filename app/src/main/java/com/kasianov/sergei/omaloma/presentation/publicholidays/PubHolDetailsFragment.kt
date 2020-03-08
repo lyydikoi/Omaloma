@@ -1,5 +1,6 @@
 package com.kasianov.sergei.omaloma.presentation.publicholidays
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kasianov.sergei.omaloma.R
+import com.kasianov.sergei.omaloma.core.OmaLomaApp
+import com.kasianov.sergei.omaloma.core.extentions.EventObserver
 import com.kasianov.sergei.omaloma.presentation.utils.fromHtml
 import com.kasianov.sergei.omaloma.databinding.FragmentPubHolidayDetailsBinding
 import com.kasianov.sergei.omaloma.domain.model.PublicHoliday
@@ -29,6 +32,11 @@ class PubHolDetailsFragment : Fragment() {
     private val viewModel: PubHolDetailsViewModel by viewModels { viewModelFactory }
     private val adapter = ImagesListAdapter { position -> viewModel.setSelectedImage(position) }
     private var publicHolidayName= ""
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (activity?.application as OmaLomaApp).appComponent.inject(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -68,8 +76,8 @@ class PubHolDetailsFragment : Fragment() {
             adapter.swapData(images)
         })
 
-        viewModel.selectedImageUrl.observe(viewLifecycleOwner, Observer { event ->
-            event.getContentIfNotHandled()?.let { if (it.isNotBlank()) showAppBarImage(it) }
+        viewModel.selectedImageUrl.observe(viewLifecycleOwner, EventObserver { selectedImageUrl ->
+            if (selectedImageUrl.isNotBlank()) showAppBarImage(selectedImageUrl)
         })
 
         viewModel.loading.observe(viewLifecycleOwner, Observer {

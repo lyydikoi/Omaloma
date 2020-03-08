@@ -32,6 +32,10 @@ android {
                 java.srcDir sharedTestDir
             }
         }
+
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
     }
 
     buildTypes {

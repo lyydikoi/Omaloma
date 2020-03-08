@@ -1,7 +1,11 @@
 package com.kasianov.sergei.omaloma.data.repository
 
 import androidx.lifecycle.Transformations
-import com.kasianov.sergei.omaloma.core.extentions.*
+import com.kasianov.sergei.omaloma.core.di.dagger.PUB_HOL_RETROFIT_SERVICE
+import com.kasianov.sergei.omaloma.core.extentions.ListMapper
+import com.kasianov.sergei.omaloma.core.extentions.Mapper
+import com.kasianov.sergei.omaloma.core.extentions.RequestResult
+import com.kasianov.sergei.omaloma.core.extentions.getRequestResult
 import com.kasianov.sergei.omaloma.data.network.PublicHolidayApi
 import com.kasianov.sergei.omaloma.data.database.dto.DBPublicHoliday
 import com.kasianov.sergei.omaloma.data.database.PublicHolidayDao
@@ -9,9 +13,10 @@ import com.kasianov.sergei.omaloma.data.network.dto.PublicHolidayDTO
 import com.kasianov.sergei.omaloma.domain.model.PublicHoliday
 import com.kasianov.sergei.omaloma.domain.repository.PublicHolidaysRepo
 import javax.inject.Inject
+import javax.inject.Named
 
 class PublicHolidaysRepoImpl @Inject constructor(
-    private val pubHolidayApiService: PublicHolidayApi,
+    @Named(PUB_HOL_RETROFIT_SERVICE) private val pubHolidayApiService: PublicHolidayApi,
     private val publicHolidayDao: PublicHolidayDao,
     private val listMapperDTOToDBPublicHoliday: ListMapper<PublicHolidayDTO, DBPublicHoliday>,
     private val listMapperDTOToPublicHoliday: ListMapper<PublicHolidayDTO, PublicHoliday>,

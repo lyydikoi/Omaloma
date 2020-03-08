@@ -23,20 +23,25 @@ const val WIKI_RETROFIT_SERVICE = "wiki_retrofit_service"
 @Module
 class NetworkModule {
 
+    // Wiki Retrofit service
+    @Provides
+    @Named(WIKI_RETROFIT)
+    fun provideWikiRetrofit(okHttpClient: OkHttpClient): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(WIKI_BASE_URL)
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
     @Singleton
     @Provides
     @Named(WIKI_RETROFIT_SERVICE)
-    fun provideWikiRetrofitService (
-        @Named(WIKI_RETROFIT) retrofit: Retrofit
-    ): WikiApi = retrofit.create(WikiApi::class.java)
+    fun provideWikiRetrofitService (@Named(WIKI_RETROFIT) retrofit: Retrofit): WikiApi {
+        return retrofit.create(WikiApi::class.java)
+    }
 
-    @Singleton
-    @Provides
-    @Named(PUB_HOL_RETROFIT_SERVICE)
-    fun providePublicHolidaysRetrofitService(
-        @Named(PUB_HOL_RETROFIT) retrofit: Retrofit
-    ): PublicHolidayApi = retrofit.create(PublicHolidayApi::class.java)
-
+    // Public holidays Retrofit service
     @Provides
     @Named(PUB_HOL_RETROFIT)
     fun providePubHolRetrofit(okHttpClient: OkHttpClient): Retrofit {
@@ -47,15 +52,14 @@ class NetworkModule {
             .build()
     }
 
+    @Singleton
     @Provides
-    fun provideWikiRetrofit(okHttpClient: OkHttpClient): Retrofit {
-        return Retrofit.Builder()
-            .baseUrl(WIKI_BASE_URL)
-            .client(okHttpClient)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+    @Named(PUB_HOL_RETROFIT_SERVICE)
+    fun providePubHolRetrofitService(@Named(PUB_HOL_RETROFIT) retrofit: Retrofit): PublicHolidayApi {
+        return retrofit.create(PublicHolidayApi::class.java)
     }
 
+    // OkHttpclient
     @Provides
     fun provideOkHttpClient(): OkHttpClient {
         val httpClient =  OkHttpClient().newBuilder()

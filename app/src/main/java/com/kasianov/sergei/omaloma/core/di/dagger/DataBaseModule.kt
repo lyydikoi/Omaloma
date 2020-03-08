@@ -3,7 +3,6 @@ package com.kasianov.sergei.omaloma.core.di.dagger
 import android.content.Context
 import androidx.room.Room
 import com.kasianov.sergei.omaloma.core.DATA_BASE_NAME
-import com.kasianov.sergei.omaloma.core.OmaLomaApp
 import com.kasianov.sergei.omaloma.core.OmaLomaDb
 import com.kasianov.sergei.omaloma.data.database.AbsenceDao
 import com.kasianov.sergei.omaloma.data.database.PublicHolidayDao

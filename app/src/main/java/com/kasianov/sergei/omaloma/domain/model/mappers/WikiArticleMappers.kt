@@ -7,7 +7,7 @@ import com.kasianov.sergei.omaloma.data.network.dto.WikiImageInfoDTO
 import com.kasianov.sergei.omaloma.domain.model.WikiArticle
 import javax.inject.Inject
 
-class MapperDTOToWikiArticle : Mapper<WikiArticleDTO, WikiArticle> {
+class MapperDTOToWikiArticle @Inject constructor() : Mapper<WikiArticleDTO, WikiArticle> {
     override fun mapDto(input: WikiArticleDTO): WikiArticle {
         return WikiArticle(
             input.pageId?.let { it } ?: -1,
@@ -19,7 +19,7 @@ class MapperDTOToWikiArticle : Mapper<WikiArticleDTO, WikiArticle> {
     }
 }
 
-class MapperDTOToWikiImagesUrlsList : Mapper<WikiImageInfoDTO, String> {
+class MapperDTOToWikiImagesUrlsList @Inject constructor() : Mapper<WikiImageInfoDTO, String> {
     override fun mapDto(input: WikiImageInfoDTO): String {
         return input.url?.let { it } ?: ""
     }

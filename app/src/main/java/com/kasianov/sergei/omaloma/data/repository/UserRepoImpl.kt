@@ -4,8 +4,9 @@ import androidx.lifecycle.LiveData
 import com.kasianov.sergei.omaloma.data.database.dto.DBUser
 import com.kasianov.sergei.omaloma.data.database.UserDao
 import com.kasianov.sergei.omaloma.domain.repository.UserRepo
+import javax.inject.Inject
 
-class UserRepoImpl(private val userDao: UserDao) : UserRepo {
+class UserRepoImpl @Inject constructor(private val userDao: UserDao) : UserRepo {
 
     // TODO: use mapper to return Domain models instead of DTOs
     override fun getUser(userId: String): LiveData<DBUser> = userDao.getUser(userId)

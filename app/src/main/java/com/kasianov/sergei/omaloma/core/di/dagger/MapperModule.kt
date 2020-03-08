@@ -1,7 +1,6 @@
 package com.kasianov.sergei.omaloma.core.di.dagger
 
 import com.kasianov.sergei.omaloma.core.extentions.ListMapper
-import com.kasianov.sergei.omaloma.core.extentions.ListMapperImpl
 import com.kasianov.sergei.omaloma.core.extentions.Mapper
 import com.kasianov.sergei.omaloma.data.database.dto.DBPublicHoliday
 import com.kasianov.sergei.omaloma.data.network.dto.PublicHolidayDTO
@@ -22,47 +21,45 @@ abstract class MapperModule {
         mapper: MapperDTOToPublicHoliday
     ): Mapper<PublicHolidayDTO, PublicHoliday>
 
-    // TODO: list mappers are not needed, they are already in Dagger graph?
-    /*@Binds
-    abstract fun provideListMapperDTOToPublicHoliday(
+    @Binds
+    abstract fun bindListMapperDTOToPublicHoliday(
         listMapper: ListMapperDTOToPublicHoliday
-    ): ListMapper<PublicHolidayDTO, PublicHoliday>*/
+    ): ListMapper<PublicHolidayDTO, PublicHoliday>
 
     @Binds
     abstract fun bindMapperDBToPublicHoliday(
         mapper: MapperDBToPublicHoliday
     ): Mapper<DBPublicHoliday, PublicHoliday>
 
-    /*@Binds
-    abstract fun provideListMapperDBToPublicHoliday(
+    @Binds
+    abstract fun bindListMapperDBToPublicHoliday(
         listMapper: ListMapperDBToPublicHoliday
-    ): ListMapper<DBPublicHoliday, PublicHoliday>*/
+    ): ListMapper<DBPublicHoliday, PublicHoliday>
 
     @Binds
     abstract fun bindMapperDTOToDBPublicHoliday(
         mapper: MapperDTOToDBPublicHoliday
     ): Mapper<PublicHolidayDTO, DBPublicHoliday>
 
-    /*@Binds
-    abstract fun provideListMapperDTOToDBPublicHoliday(
+    @Binds
+    abstract fun bindListMapperDTOToDBPublicHoliday(
         listMapper: ListMapperDTOToDBPublicHoliday
-    ): ListMapper<PublicHolidayDTO, DBPublicHoliday>*/
+    ): ListMapper<PublicHolidayDTO, DBPublicHoliday>
 
     // WikiArticle mappers
     @Binds
-    abstract fun bindeMapperDTOToWikiArticle(
+    abstract fun bindMapperDTOToWikiArticle(
         mapper: MapperDTOToWikiArticle
     ): Mapper<WikiArticleDTO, WikiArticle>
 
     @Binds
-    abstract fun bindeMapperDTOToWikiImagesUrlsList(
+    abstract fun bindMapperDTOToWikiImagesUrlsList(
         napper: MapperDTOToWikiImagesUrlsList
     ): Mapper<WikiImageInfoDTO, String>
 
-    /*
     @Binds
-    abstract fun provideListMapperDTOToWikiImagesUrlsList(
+    abstract fun bindListMapperDTOToWikiImagesUrlsList(
         listMapper: ListMapperDTOToWikiImagesUrlsList
-    ): ListMapper<WikiImageInfoDTO, String>*/
+    ): ListMapper<WikiImageInfoDTO, String>
 
 }

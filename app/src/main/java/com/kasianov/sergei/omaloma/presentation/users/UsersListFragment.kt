@@ -1,5 +1,6 @@
 package com.kasianov.sergei.omaloma.presentation.users
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.kasianov.sergei.omaloma.R
+import com.kasianov.sergei.omaloma.core.OmaLomaApp
 import com.kasianov.sergei.omaloma.databinding.FragmentUsersListBinding
 import javax.inject.Inject
 
@@ -20,6 +22,11 @@ class UsersListFragment : Fragment() {
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var binding: FragmentUsersListBinding
     private val viewModel: UsersListViewModel by viewModels { viewModelFactory }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (activity?.application as OmaLomaApp).appComponent.inject(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -35,4 +42,5 @@ class UsersListFragment : Fragment() {
             this.findNavController().navigate(R.id.action_usersListFragment_to_publicHolidaysListFragment)
         }
     }
+
 }

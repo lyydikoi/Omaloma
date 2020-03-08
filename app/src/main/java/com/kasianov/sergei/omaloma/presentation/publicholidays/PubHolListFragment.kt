@@ -1,5 +1,6 @@
 package com.kasianov.sergei.omaloma.presentation.publicholidays
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,12 +16,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kasianov.sergei.omaloma.R
+import com.kasianov.sergei.omaloma.core.OmaLomaApp
+import com.kasianov.sergei.omaloma.core.extentions.EventObserver
 import com.kasianov.sergei.omaloma.databinding.FragmentPublicHolidaysListBinding
 import com.kasianov.sergei.omaloma.presentation.publicholidays.adapter.PublicHolidaysListAdapter
 import javax.inject.Inject
 
-const val DEFAULT_YEAR = "2020"
-const val DEFAULT_COUNTRY = "FI"
 const val KEY_PUBLIC_HOLIDAY_NAME = "public_holiday_name"
 
 class PubHolListFragment : Fragment() {
@@ -33,24 +34,22 @@ class PubHolListFragment : Fragment() {
         PublicHolidaysListAdapter { position: Int -> viewModel.setHolidaySelected(position) }
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (activity?.application as OmaLomaApp).appComponent.inject(this)
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-        // If public holidays not loaded before, do it here.
-        if (viewModel.publicHolidays.value.isNullOrEmpty()) {
-            viewModel.loadPublicHolidays(DEFAULT_YEAR, DEFAULT_COUNTRY)
-        }
 
         viewModel.publicHolidays.observe(viewLifecycleOwner, Observer {
             if (!it.isNullOrEmpty()) adapter.swapData(it)
         })
 
-        viewModel.selectedPubHoliday.observe(viewLifecycleOwner, Observer { event ->
-            event.getContentIfNotHandled()?.let {
-                findNavController().navigate(
-                    R.id.action_publicHolidaysListFragment_to_pubHolidayDetailsFragment,
-                    bundleOf(KEY_PUBLIC_HOLIDAY_NAME to it.localName))
-            }
+        viewModel.selectedPubHoliday.observe(viewLifecycleOwner, EventObserver { selectedPubHol ->
+            findNavController().navigate(
+                R.id.action_publicHolidaysListFragment_to_pubHolidayDetailsFragment,
+                bundleOf(KEY_PUBLIC_HOLIDAY_NAME to selectedPubHol.localName))
         })
 
         viewModel.loading.observe(viewLifecycleOwner, Observer {
