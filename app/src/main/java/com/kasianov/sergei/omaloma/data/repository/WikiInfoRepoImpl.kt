@@ -8,7 +8,7 @@ import com.kasianov.sergei.omaloma.data.network.WikiApi
 import com.kasianov.sergei.omaloma.data.network.dto.WikiArticleDTO
 import com.kasianov.sergei.omaloma.data.network.dto.WikiImageInfoDTO
 import com.kasianov.sergei.omaloma.domain.model.WikiArticle
-import com.kasianov.sergei.omaloma.domain.model.mappers.MapperDTOToWikiArticle
+import com.kasianov.sergei.omaloma.domain.model.wikimappers.MapperDTOToWikiArticle
 import com.kasianov.sergei.omaloma.domain.repository.WikiInfoRepo
 import java.lang.Exception
 import javax.inject.Inject

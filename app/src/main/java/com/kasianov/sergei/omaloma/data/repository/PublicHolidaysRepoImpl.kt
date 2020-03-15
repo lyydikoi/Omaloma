@@ -24,6 +24,14 @@ class PublicHolidaysRepoImpl @Inject constructor(
     private val mapperDBToPublicHoliday: Mapper<DBPublicHoliday, PublicHoliday>
 ) : PublicHolidaysRepo {
 
+    suspend fun getPublicHolidays(
+        year: String,
+        country: String,
+        refresh: Boolean = false
+    ) {
+
+    }
+
     override suspend fun fetchRemotePublicHolidays(
         year: String,
         country: String

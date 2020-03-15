@@ -20,10 +20,13 @@ const val PUB_HOL_RETROFIT_SERVICE = "pub_hol_retrofit_service"
 const val WIKI_RETROFIT = "wiki_retrofit"
 const val WIKI_RETROFIT_SERVICE = "wiki_retrofit_service"
 
+const val TIMEOUT = 25L
+
 @Module
 class NetworkModule {
 
     // Wiki Retrofit service
+    @Singleton
     @Provides
     @Named(WIKI_RETROFIT)
     fun provideWikiRetrofit(okHttpClient: OkHttpClient): Retrofit {
@@ -42,6 +45,7 @@ class NetworkModule {
     }
 
     // Public holidays Retrofit service
+    @Singleton
     @Provides
     @Named(PUB_HOL_RETROFIT)
     fun providePubHolRetrofit(okHttpClient: OkHttpClient): Retrofit {
@@ -60,11 +64,12 @@ class NetworkModule {
     }
 
     // OkHttpclient
+    @Singleton
     @Provides
     fun provideOkHttpClient(): OkHttpClient {
         val httpClient =  OkHttpClient().newBuilder()
-            .readTimeout(25, TimeUnit.SECONDS)
-            .connectTimeout(25, TimeUnit.SECONDS)
+            .readTimeout(TIMEOUT, TimeUnit.SECONDS)
+            .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
 
         if (BuildConfig.DEBUG) {
             httpClient.addInterceptor(

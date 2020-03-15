@@ -8,7 +8,10 @@ import com.kasianov.sergei.omaloma.data.network.dto.WikiArticleDTO
 import com.kasianov.sergei.omaloma.data.network.dto.WikiImageInfoDTO
 import com.kasianov.sergei.omaloma.domain.model.PublicHoliday
 import com.kasianov.sergei.omaloma.domain.model.WikiArticle
-import com.kasianov.sergei.omaloma.domain.model.mappers.*
+import com.kasianov.sergei.omaloma.domain.model.publicholidmappers.*
+import com.kasianov.sergei.omaloma.domain.model.wikimappers.ListMapperDTOToWikiImagesUrlsList
+import com.kasianov.sergei.omaloma.domain.model.wikimappers.MapperDTOToWikiArticle
+import com.kasianov.sergei.omaloma.domain.model.wikimappers.MapperDTOToWikiImagesUrlsList
 import dagger.Binds
 import dagger.Module
 

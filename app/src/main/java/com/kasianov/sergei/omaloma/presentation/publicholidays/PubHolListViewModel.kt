@@ -6,8 +6,8 @@ import androidx.lifecycle.Transformations
 import com.kasianov.sergei.omaloma.core.BaseViewModel
 import com.kasianov.sergei.omaloma.core.extentions.Event
 import com.kasianov.sergei.omaloma.domain.model.PublicHoliday
-import com.kasianov.sergei.omaloma.domain.usecases.GetAllStoredPublicHolidaysUseCase
-import com.kasianov.sergei.omaloma.domain.usecases.LoadPublicHolidaysUseCase
+import com.kasianov.sergei.omaloma.domain.usecases.publicholusecases.GetAllStoredPublicHolidaysUseCase
+import com.kasianov.sergei.omaloma.domain.usecases.publicholusecases.LoadPublicHolidaysUseCase
 import javax.inject.Inject
 
 const val DEFAULT_YEAR = "2020"
