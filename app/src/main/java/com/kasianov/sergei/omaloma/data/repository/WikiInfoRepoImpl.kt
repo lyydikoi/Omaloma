@@ -8,7 +8,7 @@ import com.kasianov.sergei.omaloma.data.network.WikiApi
 import com.kasianov.sergei.omaloma.data.network.dto.WikiArticleDTO
 import com.kasianov.sergei.omaloma.data.network.dto.WikiImageInfoDTO
 import com.kasianov.sergei.omaloma.domain.model.WikiArticle
-import com.kasianov.sergei.omaloma.domain.model.wikimappers.MapperDTOToWikiArticle
+import com.kasianov.sergei.omaloma.domain.model.wikimappers.MapperToWikiArticle
 import com.kasianov.sergei.omaloma.domain.repository.WikiInfoRepo
 import java.lang.Exception
 import javax.inject.Inject
@@ -20,7 +20,7 @@ const val EMPTY_WIKI_SEARCH_INFO = "empty_wiki_search_info"
 
 class WikiInfoRepoImpl @Inject constructor(
     @Named(WIKI_RETROFIT_SERVICE) private val wikiApiService: WikiApi,
-    private val mapperDTOToWikiArticle: MapperDTOToWikiArticle,
+    private val mapperDTOToWikiArticle: MapperToWikiArticle,
     private val listMapperDTOToWikiImagesUlsList: ListMapper<WikiImageInfoDTO, String>
 ) : WikiInfoRepo {
     override suspend fun performWikiSearch(searchValue: String): RequestResult<String> {

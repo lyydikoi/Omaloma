@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName
 data class PublicHolidayDTO(
     @PrimaryKey
     @SerializedName("date")
-    val date: String?,
+    val date: String = "ND",
     @SerializedName("name")
     val name: String?,
     @SerializedName("localName")

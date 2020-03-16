@@ -8,9 +8,9 @@ import com.kasianov.sergei.omaloma.data.network.dto.WikiImageInfoDTO
 import com.kasianov.sergei.omaloma.domain.model.PublicHoliday
 import com.kasianov.sergei.omaloma.domain.model.WikiArticle
 import com.kasianov.sergei.omaloma.domain.model.publicholidmappers.*
-import com.kasianov.sergei.omaloma.domain.model.wikimappers.ListMapperDTOToWikiImagesUrlsList
-import com.kasianov.sergei.omaloma.domain.model.wikimappers.MapperDTOToWikiArticle
-import com.kasianov.sergei.omaloma.domain.model.wikimappers.MapperDTOToWikiImagesUrlsList
+import com.kasianov.sergei.omaloma.domain.model.wikimappers.ListMapperToWikiImagesUrlsList
+import com.kasianov.sergei.omaloma.domain.model.wikimappers.MapperToWikiArticle
+import com.kasianov.sergei.omaloma.domain.model.wikimappers.MapperToWikiImagesUrlsList
 import dagger.Binds
 import dagger.Module
 
@@ -19,29 +19,29 @@ abstract class MapperModule {
 
     // PublicHolidays mappers
     @Binds
-    abstract fun bindMapperDTOToPublicHoliday(
-        mapper: MapperDTOToPublicHoliday
+    abstract fun bindMapperToPublicHoliday(
+        mapper: MapperToPublicHoliday
     ): Mapper<PublicHolidayDTO, PublicHoliday>
 
     @Binds
-    abstract fun bindListMapperDTOToPublicHoliday(
-        listMapper: ListMapperDTOToPublicHoliday
+    abstract fun bindListMapperToPublicHoliday(
+        listMapper: ListMapperToPublicHoliday
     ): ListMapper<PublicHolidayDTO, PublicHoliday>
 
     // WikiArticle mappers
     @Binds
-    abstract fun bindMapperDTOToWikiArticle(
-        mapper: MapperDTOToWikiArticle
+    abstract fun bindMapperToWikiArticle(
+        mapper: MapperToWikiArticle
     ): Mapper<WikiArticleDTO, WikiArticle>
 
     @Binds
-    abstract fun bindMapperDTOToWikiImagesUrlsList(
-        napper: MapperDTOToWikiImagesUrlsList
+    abstract fun bindMapperToWikiImagesUrlsList(
+        napper: MapperToWikiImagesUrlsList
     ): Mapper<WikiImageInfoDTO, String>
 
     @Binds
-    abstract fun bindListMapperDTOToWikiImagesUrlsList(
-        listMapper: ListMapperDTOToWikiImagesUrlsList
+    abstract fun bindListMapperToWikiImagesUrlsList(
+        listMapper: ListMapperToWikiImagesUrlsList
     ): ListMapper<WikiImageInfoDTO, String>
 
 }

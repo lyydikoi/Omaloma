@@ -38,7 +38,7 @@ class DataBaseModule {
 
     @Provides
     @Reusable
-    fun provideAbsenceyDao(omaLomaDb: OmaLomaDb): AbsenceDao {
+    fun provideAbsenceDao(omaLomaDb: OmaLomaDb): AbsenceDao {
         return omaLomaDb.absenceDao()
     }
 

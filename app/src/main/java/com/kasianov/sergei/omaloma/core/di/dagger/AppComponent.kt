@@ -9,6 +9,7 @@ import com.kasianov.sergei.omaloma.presentation.publicholidays.PubHolDetailsFrag
 import com.kasianov.sergei.omaloma.presentation.publicholidays.PubHolListFragment
 import com.kasianov.sergei.omaloma.presentation.users.UserDetailsFragment
 import com.kasianov.sergei.omaloma.presentation.users.UsersListFragment
+import com.kasianov.sergei.omaloma.presentation.utils.CalcDateUtils
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -20,7 +21,8 @@ import javax.inject.Singleton
     DataBaseModule::class,
     ViewModelModule::class,
     UseCaseModule::class,
-    RepositoryModule::class
+    RepositoryModule::class,
+    UtilsModule::class
 ])
 interface  AppComponent {
 
@@ -30,12 +32,7 @@ interface  AppComponent {
     }
 
     fun inject(activity: MainActivity)
-    fun inject(fragment: AbsenceFragment)
-    fun inject(fragment: CompanyFragment)
-    fun inject(fragment: MainContentFragment)
     fun inject(fragment: PubHolDetailsFragment)
     fun inject(fragment: PubHolListFragment)
-    fun inject(fragment: UserDetailsFragment)
-    fun inject(fragment: UsersListFragment)
 
 }

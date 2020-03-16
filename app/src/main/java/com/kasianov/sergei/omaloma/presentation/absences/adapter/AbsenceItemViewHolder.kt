@@ -1,7 +1,7 @@
 package com.kasianov.sergei.omaloma.presentation.absences.adapter
 
 import androidx.recyclerview.widget.RecyclerView
-import com.kasianov.sergei.omaloma.data.database.dto.DBAbsence
+import com.kasianov.sergei.omaloma.data.model.AbsenceDTO
 import com.kasianov.sergei.omaloma.databinding.LayoutAbsenceItemBinding
 
 class AbsenceItemViewHolder(
@@ -16,7 +16,7 @@ class AbsenceItemViewHolder(
         }
     }
 
-    fun bind(absence: DBAbsence) {
+    fun bind(absence: AbsenceDTO) {
         // TODO: Bind the data with View
         binding.tvAbsenceTitle.text = absence.title
     }

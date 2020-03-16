@@ -21,7 +21,7 @@ class CompanyFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        (activity?.application as OmaLomaApp).appComponent.inject(this)
+        //(activity?.application as OmaLomaApp).appComponent.inject(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,31 +1,31 @@
 package com.kasianov.sergei.omaloma.maincontent.data.source
 
 import androidx.lifecycle.LiveData
-import com.kasianov.sergei.omaloma.data.database.dto.DBUser
+import com.kasianov.sergei.omaloma.data.model.UserDTO
 import com.kasianov.sergei.omaloma.data.user.UserDataContract
 
 class FakeUserRepository : UserDataContract.UserRepository {
-    override fun getUser(userId: String): LiveData<DBUser> {
+    override fun getUser(userId: String): LiveData<UserDTO> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun getAllUsers(): LiveData<List<DBUser>> {
+    override fun getAllUsers(): LiveData<List<UserDTO>> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override suspend fun insert(user: DBUser) {
+    override suspend fun insert(user: UserDTO) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override suspend fun update(user: DBUser) {
+    override suspend fun update(user: UserDTO) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override suspend fun delete(user: DBUser) {
+    override suspend fun delete(user: UserDTO) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    private val userServiceData by lazy { LinkedHashMap<String, DBUser>() }
+    private val userServiceData by lazy { LinkedHashMap<String, UserDTO>() }
     private var shouldReturnError = false
 
     fun setReturnError(value: Boolean) { shouldReturnError = value }
