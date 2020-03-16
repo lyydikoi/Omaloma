@@ -7,13 +7,13 @@ import com.kasianov.sergei.omaloma.core.BaseViewModel
 import com.kasianov.sergei.omaloma.core.extentions.Event
 import com.kasianov.sergei.omaloma.domain.model.PublicHoliday
 import com.kasianov.sergei.omaloma.domain.model.WikiArticle
-import com.kasianov.sergei.omaloma.domain.usecases.publicholusecases.GetStoredPublicHolidayUseCase
+import com.kasianov.sergei.omaloma.domain.usecases.publicholusecases.GetPublicHolidayUseCase
 import com.kasianov.sergei.omaloma.domain.usecases.wikiusecases.GetWikiUrlsListUseCase
 import com.kasianov.sergei.omaloma.domain.usecases.wikiusecases.PerformWikiSearchUseCase
 import javax.inject.Inject
 
 class PubHolDetailsViewModel @Inject constructor(
-    private val getStoredPublicHolidayUseCase: GetStoredPublicHolidayUseCase,
+    private val getPublicHolidayUseCase: GetPublicHolidayUseCase,
     private val performWikiSearchUseCase: PerformWikiSearchUseCase,
     private val getWikiUrlsListUseCase: GetWikiUrlsListUseCase
 ) : BaseViewModel() {
@@ -36,7 +36,7 @@ class PubHolDetailsViewModel @Inject constructor(
 
     fun getPublicHoliday(name: String) {
         launchDataLoad {
-            getStoredPublicHolidayUseCase(name).let {
+            getPublicHolidayUseCase(name, DEFAULT_YEAR, DEFAULT_COUNTRY).let {
                 _selectedPubHoliday.postValue(it)
             }
         }

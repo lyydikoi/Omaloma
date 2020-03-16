@@ -2,8 +2,7 @@ package com.kasianov.sergei.omaloma.core.di.dagger
 
 import com.kasianov.sergei.omaloma.core.extentions.ListMapper
 import com.kasianov.sergei.omaloma.core.extentions.Mapper
-import com.kasianov.sergei.omaloma.data.database.dto.DBPublicHoliday
-import com.kasianov.sergei.omaloma.data.network.dto.PublicHolidayDTO
+import com.kasianov.sergei.omaloma.data.model.PublicHolidayDTO
 import com.kasianov.sergei.omaloma.data.network.dto.WikiArticleDTO
 import com.kasianov.sergei.omaloma.data.network.dto.WikiImageInfoDTO
 import com.kasianov.sergei.omaloma.domain.model.PublicHoliday
@@ -28,26 +27,6 @@ abstract class MapperModule {
     abstract fun bindListMapperDTOToPublicHoliday(
         listMapper: ListMapperDTOToPublicHoliday
     ): ListMapper<PublicHolidayDTO, PublicHoliday>
-
-    @Binds
-    abstract fun bindMapperDBToPublicHoliday(
-        mapper: MapperDBToPublicHoliday
-    ): Mapper<DBPublicHoliday, PublicHoliday>
-
-    @Binds
-    abstract fun bindListMapperDBToPublicHoliday(
-        listMapper: ListMapperDBToPublicHoliday
-    ): ListMapper<DBPublicHoliday, PublicHoliday>
-
-    @Binds
-    abstract fun bindMapperDTOToDBPublicHoliday(
-        mapper: MapperDTOToDBPublicHoliday
-    ): Mapper<PublicHolidayDTO, DBPublicHoliday>
-
-    @Binds
-    abstract fun bindListMapperDTOToDBPublicHoliday(
-        listMapper: ListMapperDTOToDBPublicHoliday
-    ): ListMapper<PublicHolidayDTO, DBPublicHoliday>
 
     // WikiArticle mappers
     @Binds

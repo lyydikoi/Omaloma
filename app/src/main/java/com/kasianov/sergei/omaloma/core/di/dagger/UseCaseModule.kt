@@ -1,10 +1,8 @@
 package com.kasianov.sergei.omaloma.core.di.dagger
-import com.kasianov.sergei.omaloma.domain.usecases.publicholusecases.GetAllStoredPublicHolidaysUseCase
-import com.kasianov.sergei.omaloma.domain.usecases.publicholusecases.GetAllStoredPublicHolidaysUseCaseImpl
-import com.kasianov.sergei.omaloma.domain.usecases.publicholusecases.LoadPublicHolidaysUseCase
-import com.kasianov.sergei.omaloma.domain.usecases.publicholusecases.LoadPublicHolidaysUseCaseImpl
-import com.kasianov.sergei.omaloma.domain.usecases.publicholusecases.GetStoredPublicHolidayUseCase
-import com.kasianov.sergei.omaloma.domain.usecases.publicholusecases.GetStoredPublicHolidayUseCaseImpl
+import com.kasianov.sergei.omaloma.domain.usecases.publicholusecases.GetAllPublicHolidaysUseCase
+import com.kasianov.sergei.omaloma.domain.usecases.publicholusecases.GetAllPublicHolidaysUseCaseImpl
+import com.kasianov.sergei.omaloma.domain.usecases.publicholusecases.GetPublicHolidayUseCase
+import com.kasianov.sergei.omaloma.domain.usecases.publicholusecases.GetPublicHolidayUseCaseImpl
 import com.kasianov.sergei.omaloma.domain.usecases.wikiusecases.PerformWikiSearchUseCaseImpl
 import com.kasianov.sergei.omaloma.domain.usecases.wikiusecases.PerformWikiSearchUseCase
 import com.kasianov.sergei.omaloma.domain.usecases.wikiusecases.GetWikiPageInfoUseCaseImpl
@@ -19,19 +17,15 @@ abstract class UseCaseModule {
 
     // Public holidays use cases
     @Binds
-    abstract fun bindLoadPublicHolidaysUseCase(
-        useCase: LoadPublicHolidaysUseCaseImpl
-    ): LoadPublicHolidaysUseCase
+    abstract fun bindGetAllPublicHolidaysUseCase(
+        useCase: GetAllPublicHolidaysUseCaseImpl
+    ): GetAllPublicHolidaysUseCase
+
 
     @Binds
-    abstract fun bindGetAllStoredPublicHolidaysUseCase(
-        useCase: GetAllStoredPublicHolidaysUseCaseImpl
-    ): GetAllStoredPublicHolidaysUseCase
-
-    @Binds
-    abstract fun bindGetStoredPublicHolidayUseCase(
-        useCase: GetStoredPublicHolidayUseCaseImpl
-    ): GetStoredPublicHolidayUseCase
+    abstract fun bindGetStoPublicHolidayUseCase(
+        useCase: GetPublicHolidayUseCaseImpl
+    ): GetPublicHolidayUseCase
 
 
     // Wikipedia use cases

@@ -7,7 +7,6 @@ import com.kasianov.sergei.omaloma.data.database.PublicHolidayDao
 import com.kasianov.sergei.omaloma.data.database.dto.DBAbsence
 import com.kasianov.sergei.omaloma.data.database.dto.DBUser
 import com.kasianov.sergei.omaloma.data.database.UserDao
-import com.kasianov.sergei.omaloma.data.database.dto.DBPublicHoliday
 
 const val DATA_BASE_VERSION = 1
 const val DATA_BASE_NAME = "omaloma.db"

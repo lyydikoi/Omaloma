@@ -5,12 +5,12 @@ import com.kasianov.sergei.omaloma.domain.model.PublicHoliday
 import com.kasianov.sergei.omaloma.domain.repository.PublicHolidaysRepo
 import javax.inject.Inject
 
-class LoadPublicHolidaysUseCaseImpl @Inject constructor(
+class GetAllPublicHolidaysUseCaseImpl @Inject constructor(
     private val publicHolidayRepo: PublicHolidaysRepo
-) : LoadPublicHolidaysUseCase {
+) : GetAllPublicHolidaysUseCase {
 
     override suspend fun invoke(year: String, country: String): RequestResult<List<PublicHoliday>> {
-        return publicHolidayRepo.fetchRemotePublicHolidays(year, country)
+        return publicHolidayRepo.getCachedOrRemotePublicHolidays(year, country)
     }
 
 }

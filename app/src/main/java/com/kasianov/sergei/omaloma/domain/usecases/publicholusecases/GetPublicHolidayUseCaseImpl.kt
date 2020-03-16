@@ -4,12 +4,12 @@ import com.kasianov.sergei.omaloma.domain.model.PublicHoliday
 import com.kasianov.sergei.omaloma.domain.repository.PublicHolidaysRepo
 import javax.inject.Inject
 
-class GetStoredPublicHolidayUseCaseImpl  @Inject constructor(
+class GetPublicHolidayUseCaseImpl  @Inject constructor(
     private val publicHolidayRepo: PublicHolidaysRepo
-) : GetStoredPublicHolidayUseCase {
+) : GetPublicHolidayUseCase {
 
-    override suspend fun invoke (name: String): PublicHoliday {
-        return publicHolidayRepo.getPublicHoliday(name)
+    override suspend fun invoke (name: String, year: String, country: String): PublicHoliday {
+        return publicHolidayRepo.getStoredPublicHoliday(name, year, country)
     }
 
 }
