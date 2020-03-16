@@ -49,7 +49,7 @@ class PubHolListFragment : Fragment() {
         viewModel.selectedPubHoliday.observe(viewLifecycleOwner, EventObserver { selectedPubHol ->
             findNavController().navigate(
                 R.id.action_publicHolidaysListFragment_to_pubHolidayDetailsFragment,
-                bundleOf(KEY_PUBLIC_HOLIDAY_NAME to selectedPubHol.localName))
+                bundleOf(KEY_PUBLIC_HOLIDAY_NAME to selectedPubHol.name))
         })
 
         viewModel.loading.observe(viewLifecycleOwner, Observer {

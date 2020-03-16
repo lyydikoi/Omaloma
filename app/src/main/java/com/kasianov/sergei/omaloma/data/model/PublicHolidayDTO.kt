@@ -1,22 +1,21 @@
 package com.kasianov.sergei.omaloma.data.model
 
 import androidx.room.Entity
-import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
-@Entity(tableName = "public_holiday_table")
+@Entity(tableName = "public_holiday_table", primaryKeys = ["year", "countryCode", "name"])
 data class PublicHolidayDTO(
-    @PrimaryKey
-    @SerializedName("date")
-    val date: String = "ND",
+    var year: String,
+    @SerializedName("countryCode")
+    val countryCode: String,
     @SerializedName("name")
-    val name: String?,
+    val name: String,
+    @SerializedName("date")
+    val date: String?,
     @SerializedName("localName")
     val localName: String?,
     @SerializedName("launchYear")
     val launchYear: Int?,
-    @SerializedName("countryCode")
-    val countryCode: String?,
     @SerializedName("fixed")
     val fixed: Boolean,
     @SerializedName("global")

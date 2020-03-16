@@ -8,10 +8,10 @@ import com.kasianov.sergei.omaloma.data.model.PublicHolidayDTO
 
 @Dao
 interface PublicHolidayDao {
-    @Query("SELECT * FROM public_holiday_table WHERE launchYear = :year AND countryCode = :country")
+    @Query("SELECT * FROM public_holiday_table WHERE year = :year AND countryCode = :country")
     fun getAllPublicHolidays(year: String, country: String): List<PublicHolidayDTO>
 
-    @Query("SELECT * FROM public_holiday_table WHERE localName = :name AND launchYear = :year " +
+    @Query("SELECT * FROM public_holiday_table WHERE name = :name AND year = :year " +
             "AND countryCode = :country")
     fun getPublicHoliday(name: String, year: String, country: String): PublicHolidayDTO
 
