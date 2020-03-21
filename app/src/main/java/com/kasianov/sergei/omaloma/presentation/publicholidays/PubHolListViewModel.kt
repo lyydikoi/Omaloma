@@ -1,27 +1,37 @@
 package com.kasianov.sergei.omaloma.presentation.publicholidays
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import com.kasianov.sergei.omaloma.core.BaseViewModel
+import com.kasianov.sergei.omaloma.core.di.FragmentScope
 import com.kasianov.sergei.omaloma.core.extentions.Event
 import com.kasianov.sergei.omaloma.domain.model.PublicHoliday
-import com.kasianov.sergei.omaloma.domain.usecases.GetAllStoredPublicHolidaysUseCase
-import com.kasianov.sergei.omaloma.domain.usecases.LoadPublicHolidaysUseCase
+import com.kasianov.sergei.omaloma.domain.usecases.publicholusecases.GetAllPublicHolidaysUseCase
+import javax.inject.Inject
 
-class PubHolListViewModel(
-    private val loadPublicHolidaysUseCase: LoadPublicHolidaysUseCase,
-    private val getAllStoredPublicHolidaysUseCase: GetAllStoredPublicHolidaysUseCase
+const val DEFAULT_YEAR = "2020"
+const val DEFAULT_COUNTRY = "FI"
+
+class PubHolListViewModel @Inject constructor(
+    private val getAllPublicHolidaysUseCase: GetAllPublicHolidaysUseCase
 ) : BaseViewModel() {
 
+    init {
+        fetchPublicHolidays(DEFAULT_YEAR, DEFAULT_COUNTRY)
+    }
+
+    private val _publicHolidays by lazy { MutableLiveData<List<PublicHoliday>>() }
     val publicHolidays: LiveData<List<PublicHoliday>>
-        get() = getAllStoredPublicHolidaysUseCase()
+        get() = _publicHolidays
 
     private val _selectedPubHoliday by lazy { MutableLiveData<PublicHoliday>() }
     val selectedPubHoliday: LiveData<Event<PublicHoliday>>
             = Transformations.map(_selectedPubHoliday) { Event<PublicHoliday>(it) }
 
-    fun loadPublicHolidays(year: String, countyCode: String) =
+    private fun fetchPublicHolidays(year: String, countyCode: String) =
         launchDataLoad {
-            handleResponse(loadPublicHolidaysUseCase(year, countyCode))
+            handleResponse(getAllPublicHolidaysUseCase(year, countyCode), _publicHolidays)
         }
 
     fun setHolidaySelected(position: Int) {

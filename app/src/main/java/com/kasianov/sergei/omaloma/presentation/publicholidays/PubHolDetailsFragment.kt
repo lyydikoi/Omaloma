@@ -1,5 +1,6 @@
 package com.kasianov.sergei.omaloma.presentation.publicholidays
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,23 +8,37 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kasianov.sergei.omaloma.R
-import com.kasianov.sergei.omaloma.presentation.utils.fromHtml
+import com.kasianov.sergei.omaloma.core.OmaLomaApp
+import com.kasianov.sergei.omaloma.core.di.publicholidays.DaggerPublicHolidaysComponent
+import com.kasianov.sergei.omaloma.core.extentions.EventObserver
 import com.kasianov.sergei.omaloma.databinding.FragmentPubHolidayDetailsBinding
+import com.kasianov.sergei.omaloma.presentation.utils.fromHtml
 import com.kasianov.sergei.omaloma.domain.model.PublicHoliday
 import com.kasianov.sergei.omaloma.domain.model.WikiArticle
 import com.kasianov.sergei.omaloma.presentation.publicholidays.adapter.ImagesListAdapter
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import javax.inject.Inject
 
 class PubHolDetailsFragment : Fragment() {
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var binding: FragmentPubHolidayDetailsBinding
-    private val viewModel by viewModel<PubHolDetailsViewModel>()
+    private val viewModel: PubHolDetailsViewModel by viewModels { viewModelFactory }
     private val adapter = ImagesListAdapter { position -> viewModel.setSelectedImage(position) }
     private var publicHolidayName= ""
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        val appComponent =  (activity?.application as OmaLomaApp).appComponent
+        DaggerPublicHolidaysComponent.factory().create(appComponent).inject(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -63,8 +78,8 @@ class PubHolDetailsFragment : Fragment() {
             adapter.swapData(images)
         })
 
-        viewModel.selectedImageUrl.observe(viewLifecycleOwner, Observer { event ->
-            event.getContentIfNotHandled()?.let { if (it.isNotBlank()) showAppBarImage(it) }
+        viewModel.selectedImageUrl.observe(viewLifecycleOwner, EventObserver { selectedImageUrl ->
+            if (selectedImageUrl.isNotBlank()) showAppBarImage(selectedImageUrl)
         })
 
         viewModel.loading.observe(viewLifecycleOwner, Observer {

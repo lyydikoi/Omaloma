@@ -1,21 +1,18 @@
 package com.kasianov.sergei.omaloma.domain.repository
 
-import androidx.lifecycle.LiveData
 import com.kasianov.sergei.omaloma.core.extentions.RequestResult
-import com.kasianov.sergei.omaloma.data.database.dto.DBPublicHoliday
+import com.kasianov.sergei.omaloma.data.model.PublicHolidayDTO
 import com.kasianov.sergei.omaloma.domain.model.PublicHoliday
 
 interface PublicHolidaysRepo {
 
-    suspend fun fetchRemotePublicHolidays(
+    suspend fun getStoredOrRemotePublicHolidays(
         year: String,
         country: String
     ): RequestResult<List<PublicHoliday>>
 
-    val allPublicHolidays: LiveData<List<PublicHoliday>>
+    suspend fun getStoredPublicHoliday(name: String, year: String, country: String): PublicHoliday
 
-    suspend fun getPublicHoliday(name: String): PublicHoliday
-
-    suspend fun saveAllPublicHolidays(holidaysList: List<DBPublicHoliday>)
+    suspend fun saveAllPublicHolidays(holidaysList: List<PublicHolidayDTO>)
 
 }
