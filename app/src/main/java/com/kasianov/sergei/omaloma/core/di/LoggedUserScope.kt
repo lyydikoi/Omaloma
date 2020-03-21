@@ -1,8 +1,8 @@
-package com.kasianov.sergei.omaloma.core.di.dagger
+package com.kasianov.sergei.omaloma.core.di
 
 import javax.inject.Scope
 
 @Scope
 @MustBeDocumented
 @Retention(value = AnnotationRetention.RUNTIME)
-annotation class FragmentScope
+annotation class LoggedUserScope

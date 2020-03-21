@@ -6,7 +6,7 @@ import com.kasianov.sergei.omaloma.domain.model.PublicHoliday
 
 interface PublicHolidaysRepo {
 
-    suspend fun getCachedOrRemotePublicHolidays(
+    suspend fun getStoredOrRemotePublicHolidays(
         year: String,
         country: String
     ): RequestResult<List<PublicHoliday>>

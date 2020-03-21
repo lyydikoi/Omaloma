@@ -1,4 +1,4 @@
-package com.kasianov.sergei.omaloma.core.di.dagger
+package com.kasianov.sergei.omaloma.core.di
 import com.kasianov.sergei.omaloma.domain.usecases.publicholusecases.GetAllPublicHolidaysUseCase
 import com.kasianov.sergei.omaloma.domain.usecases.publicholusecases.GetAllPublicHolidaysUseCaseImpl
 import com.kasianov.sergei.omaloma.domain.usecases.publicholusecases.GetPublicHolidayUseCase

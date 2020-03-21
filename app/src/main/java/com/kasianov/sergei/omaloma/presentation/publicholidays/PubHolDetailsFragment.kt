@@ -16,9 +16,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kasianov.sergei.omaloma.R
 import com.kasianov.sergei.omaloma.core.OmaLomaApp
+import com.kasianov.sergei.omaloma.core.di.publicholidays.DaggerPublicHolidaysComponent
 import com.kasianov.sergei.omaloma.core.extentions.EventObserver
-import com.kasianov.sergei.omaloma.presentation.utils.fromHtml
 import com.kasianov.sergei.omaloma.databinding.FragmentPubHolidayDetailsBinding
+import com.kasianov.sergei.omaloma.presentation.utils.fromHtml
 import com.kasianov.sergei.omaloma.domain.model.PublicHoliday
 import com.kasianov.sergei.omaloma.domain.model.WikiArticle
 import com.kasianov.sergei.omaloma.presentation.publicholidays.adapter.ImagesListAdapter
@@ -35,7 +36,8 @@ class PubHolDetailsFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        (activity?.application as OmaLomaApp).appComponent.inject(this)
+        val appComponent =  (activity?.application as OmaLomaApp).appComponent
+        DaggerPublicHolidaysComponent.factory().create(appComponent).inject(this)
     }
 
     override fun onCreateView(

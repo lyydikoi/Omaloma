@@ -14,7 +14,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         (application as OmaLomaApp).appComponent.inject(this)
+
         super.onCreate(savedInstanceState)
         binding.lifecycleOwner = this
     }

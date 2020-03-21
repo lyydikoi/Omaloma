@@ -17,6 +17,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kasianov.sergei.omaloma.R
 import com.kasianov.sergei.omaloma.core.OmaLomaApp
+import com.kasianov.sergei.omaloma.core.di.publicholidays.DaggerPublicHolidaysComponent
 import com.kasianov.sergei.omaloma.core.extentions.EventObserver
 import com.kasianov.sergei.omaloma.databinding.FragmentPublicHolidaysListBinding
 import com.kasianov.sergei.omaloma.presentation.publicholidays.adapter.PublicHolidaysListAdapter
@@ -36,7 +37,8 @@ class PubHolListFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        (activity?.application as OmaLomaApp).appComponent.inject(this)
+        val appComponent =  (activity?.application as OmaLomaApp).appComponent
+        DaggerPublicHolidaysComponent.factory().create(appComponent).inject(this)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

@@ -1,6 +1,6 @@
 package com.kasianov.sergei.omaloma.data.repository
 
-import com.kasianov.sergei.omaloma.core.di.dagger.PUB_HOL_RETROFIT_SERVICE
+import com.kasianov.sergei.omaloma.core.di.PUB_HOL_RETROFIT_SERVICE
 import com.kasianov.sergei.omaloma.core.extentions.ListMapper
 import com.kasianov.sergei.omaloma.core.extentions.Mapper
 import com.kasianov.sergei.omaloma.core.extentions.RequestResult
@@ -12,9 +12,7 @@ import com.kasianov.sergei.omaloma.domain.model.PublicHoliday
 import com.kasianov.sergei.omaloma.domain.repository.PublicHolidaysRepo
 import javax.inject.Inject
 import javax.inject.Named
-import javax.inject.Singleton
 
-@Singleton
 class PublicHolidaysRepoImpl @Inject constructor(
     @Named(PUB_HOL_RETROFIT_SERVICE) private val pubHolidayApiService: PublicHolidayApi,
     private val publicHolidayDao: PublicHolidayDao,
@@ -22,7 +20,7 @@ class PublicHolidaysRepoImpl @Inject constructor(
     private val listMapperToPublicHoliday: ListMapper<PublicHolidayDTO, PublicHoliday>
 ) : PublicHolidaysRepo {
 
-    override suspend fun getCachedOrRemotePublicHolidays(
+    override suspend fun getStoredOrRemotePublicHolidays(
         year: String,
         country: String
     ): RequestResult<List<PublicHoliday>> {
@@ -36,7 +34,7 @@ class PublicHolidaysRepoImpl @Inject constructor(
 
             when (publicHolidaysResult) {
                 is RequestResult.Success -> {
-                    saveHolisaysWithYear(year, publicHolidaysResult.data)
+                    saveHolidaysWithYear(year, publicHolidaysResult.data)
                     RequestResult.Success(listMapperToPublicHoliday.mapDto(publicHolidaysResult.data))
                 }
                 is RequestResult.Error -> publicHolidaysResult
@@ -44,7 +42,7 @@ class PublicHolidaysRepoImpl @Inject constructor(
         }
     }
 
-    private suspend fun saveHolisaysWithYear(year: String, holidaysList: List<PublicHolidayDTO>) {
+    private suspend fun saveHolidaysWithYear(year: String, holidaysList: List<PublicHolidayDTO>) {
         holidaysList.map { holiday: PublicHolidayDTO -> holiday.year = year }
         saveAllPublicHolidays(holidaysList)
     }

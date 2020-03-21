@@ -1,22 +1,27 @@
-package com.kasianov.sergei.omaloma.core.di.dagger
+package com.kasianov.sergei.omaloma.core.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.kasianov.sergei.omaloma.core.di.ViewModelFactoryProvider
+import com.kasianov.sergei.omaloma.core.di.ViewModelKey
 import com.kasianov.sergei.omaloma.presentation.company.CompanyViewModel
 import com.kasianov.sergei.omaloma.presentation.publicholidays.PubHolDetailsViewModel
 import com.kasianov.sergei.omaloma.presentation.publicholidays.PubHolListViewModel
 import com.kasianov.sergei.omaloma.presentation.users.UserDetailsViewModel
 import com.kasianov.sergei.omaloma.presentation.users.UsersListViewModel
-import com.kasianov.sergei.omaloma.presentation.utils.OmaLomaViewModelFactory
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
+import javax.inject.Singleton
 
 @Module
 abstract class ViewModelModule {
 
+    @Singleton
     @Binds
-    abstract fun bindViewModelFactory(factory: OmaLomaViewModelFactory): ViewModelProvider.Factory
+    abstract fun bindViewModelFactory(
+        factory:  ViewModelFactoryProvider
+    ): ViewModelProvider.Factory
 
     @Binds
     @IntoMap

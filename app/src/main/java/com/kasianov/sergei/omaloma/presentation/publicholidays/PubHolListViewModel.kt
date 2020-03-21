@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.kasianov.sergei.omaloma.core.BaseViewModel
+import com.kasianov.sergei.omaloma.core.di.FragmentScope
 import com.kasianov.sergei.omaloma.core.extentions.Event
 import com.kasianov.sergei.omaloma.domain.model.PublicHoliday
 import com.kasianov.sergei.omaloma.domain.usecases.publicholusecases.GetAllPublicHolidaysUseCase

@@ -10,7 +10,7 @@ class GetAllPublicHolidaysUseCaseImpl @Inject constructor(
 ) : GetAllPublicHolidaysUseCase {
 
     override suspend fun invoke(year: String, country: String): RequestResult<List<PublicHoliday>> {
-        return publicHolidayRepo.getCachedOrRemotePublicHolidays(year, country)
+        return publicHolidayRepo.getStoredOrRemotePublicHolidays(year, country)
     }
 
 }

@@ -1,4 +1,4 @@
-package com.kasianov.sergei.omaloma.core.di.dagger
+package com.kasianov.sergei.omaloma.core.di
 
 import com.kasianov.sergei.omaloma.core.extentions.ListMapper
 import com.kasianov.sergei.omaloma.core.extentions.Mapper

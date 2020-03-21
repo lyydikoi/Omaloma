@@ -1,4 +1,4 @@
-package com.kasianov.sergei.omaloma.core.di.dagger
+package com.kasianov.sergei.omaloma.core.di
 
 import com.kasianov.sergei.omaloma.presentation.utils.CalcDateUtils
 import com.kasianov.sergei.omaloma.presentation.utils.CalcDatesUtilsImpl
