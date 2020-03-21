@@ -1,10 +1,10 @@
-package com.kasianov.sergei.omaloma.data.database.dto
+package com.kasianov.sergei.omaloma.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "user_table")
-data class DBUser(
+data class UserDTO(
     @PrimaryKey
     val id: String,
     val firstName: String,

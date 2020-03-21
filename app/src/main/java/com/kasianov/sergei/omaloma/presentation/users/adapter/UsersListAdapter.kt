@@ -4,12 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.kasianov.sergei.omaloma.data.database.dto.DBUser
+import com.kasianov.sergei.omaloma.data.model.UserDTO
 import com.kasianov.sergei.omaloma.databinding.LayoutUserItemBinding
 
 class UsersListAdapter(
     private val interaction: (Int) -> Unit
-) : ListAdapter<DBUser, UserItemViewHolder>(UserDC()) {
+) : ListAdapter<UserDTO, UserItemViewHolder>(UserDC()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
        UserItemViewHolder(
@@ -20,17 +20,17 @@ class UsersListAdapter(
     override fun onBindViewHolder(holder: UserItemViewHolder, position: Int) =
         holder.bind(getItem(position))
 
-    private class UserDC : DiffUtil.ItemCallback<DBUser>() {
+    private class UserDC : DiffUtil.ItemCallback<UserDTO>() {
         override fun areItemsTheSame(
-            oldItem: DBUser,
-            newItem: DBUser
+            oldItem: UserDTO,
+            newItem: UserDTO
         ): Boolean {
             return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(
-            oldItem: DBUser,
-            newItem: DBUser
+            oldItem: UserDTO,
+            newItem: UserDTO
         ): Boolean {
             return oldItem == newItem
         }
