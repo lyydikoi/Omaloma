@@ -1,11 +1,16 @@
 *.iml
 .gradle
 /local.properties
+
 /.idea/caches
 /.idea/libraries
 /.idea/modules.xml
 /.idea/workspace.xml
 /.idea/navEditor.xml
+/.idea/codeStyles/Project.xml
+/.idea/gradle.xml
+/.idea/misc.xml
+
 /.Utils.PlayGround
 /.idea/assetWizardSettings.xml
 .DS_Store
@@ -14,4 +19,5 @@
 .externalNativeBuild
 app/libs/
 app/src/main/java/com/kasianov/sergei/omaloma/Utils/PlayGround.kt
-app/src/main/java/com/kasianov/sergei/omaloma/data/source/
+
+

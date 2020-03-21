@@ -1,11 +1,11 @@
 package com.kasianov.sergei.omaloma
 
-import com.kasianov.sergei.omaloma.Utils.CalcDatesUtils
+import com.kasianov.sergei.omaloma.presentation.utils.CalcDatesUtils
 import org.hamcrest.CoreMatchers.*
 import org.junit.Assert.assertThat
 import org.junit.Test
 import org.threeten.bp.LocalDate
-import com.kasianov.sergei.omaloma.data.HolidayMonth as HolidayMonth
+import com.kasianov.sergei.omaloma.domain.model.HolidayMonth as HolidayMonth
 
 /**
  * These tests are run locally on development machine's JVM and do not require running on either
