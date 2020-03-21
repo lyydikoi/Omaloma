@@ -11,16 +11,30 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Named
+import javax.inject.Qualifier
 import javax.inject.Singleton
 
 const val PUBLIC_HOLIDAYS_BASE_URL = "https://date.nager.at/api/v2/"
 const val WIKI_BASE_URL = "https://fi.wikipedia.org/w/"
-const val PUB_HOL_RETROFIT = "pub_hol_retrofit"
-const val PUB_HOL_RETROFIT_SERVICE = "pub_hol_retrofit_service"
-const val WIKI_RETROFIT = "wiki_retrofit"
 const val WIKI_RETROFIT_SERVICE = "wiki_retrofit_service"
 
 const val TIMEOUT = 25L
+
+@Retention(AnnotationRetention.BINARY)
+@Qualifier
+annotation class WikiRetrofit
+
+@Retention(AnnotationRetention.BINARY)
+@Qualifier
+annotation class WikiRetrofitService
+
+@Retention(AnnotationRetention.BINARY)
+@Qualifier
+annotation class PubHolRetrofit
+
+@Retention(AnnotationRetention.BINARY)
+@Qualifier
+annotation class PubHolRetrofitService
 
 @Module
 class NetworkModule {
@@ -28,7 +42,7 @@ class NetworkModule {
     // Wiki Retrofit service
     @Singleton
     @Provides
-    @Named(WIKI_RETROFIT)
+    @WikiRetrofit
     fun provideWikiRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .baseUrl(WIKI_BASE_URL)
@@ -39,15 +53,15 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    @Named(WIKI_RETROFIT_SERVICE)
-    fun provideWikiRetrofitService (@Named(WIKI_RETROFIT) retrofit: Retrofit): WikiApi {
+    @WikiRetrofitService
+    fun provideWikiRetrofitService (@WikiRetrofit retrofit: Retrofit): WikiApi {
         return retrofit.create(WikiApi::class.java)
     }
 
     // Public holidays Retrofit service
     @Singleton
     @Provides
-    @Named(PUB_HOL_RETROFIT)
+    @PubHolRetrofit
     fun providePubHolRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .baseUrl(PUBLIC_HOLIDAYS_BASE_URL)
@@ -58,8 +72,8 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    @Named(PUB_HOL_RETROFIT_SERVICE)
-    fun providePubHolRetrofitService(@Named(PUB_HOL_RETROFIT) retrofit: Retrofit): PublicHolidayApi {
+    @PubHolRetrofitService
+    fun providePubHolRetrofitService(@PubHolRetrofit retrofit: Retrofit): PublicHolidayApi {
         return retrofit.create(PublicHolidayApi::class.java)
     }
 

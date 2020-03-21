@@ -1,6 +1,6 @@
 package com.kasianov.sergei.omaloma.data.repository
 
-import com.kasianov.sergei.omaloma.core.di.PUB_HOL_RETROFIT_SERVICE
+import com.kasianov.sergei.omaloma.core.di.PubHolRetrofitService
 import com.kasianov.sergei.omaloma.core.extentions.ListMapper
 import com.kasianov.sergei.omaloma.core.extentions.Mapper
 import com.kasianov.sergei.omaloma.core.extentions.RequestResult
@@ -11,10 +11,9 @@ import com.kasianov.sergei.omaloma.data.model.PublicHolidayDTO
 import com.kasianov.sergei.omaloma.domain.model.PublicHoliday
 import com.kasianov.sergei.omaloma.domain.repository.PublicHolidaysRepo
 import javax.inject.Inject
-import javax.inject.Named
 
 class PublicHolidaysRepoImpl @Inject constructor(
-    @Named(PUB_HOL_RETROFIT_SERVICE) private val pubHolidayApiService: PublicHolidayApi,
+    @PubHolRetrofitService private val pubHolidayApiService: PublicHolidayApi,
     private val publicHolidayDao: PublicHolidayDao,
     private val mapperToPublicHoliday: Mapper<PublicHolidayDTO, PublicHoliday>,
     private val listMapperToPublicHoliday: ListMapper<PublicHolidayDTO, PublicHoliday>

@@ -1,6 +1,6 @@
 package com.kasianov.sergei.omaloma.data.repository
 
-import com.kasianov.sergei.omaloma.core.di.WIKI_RETROFIT_SERVICE
+import com.kasianov.sergei.omaloma.core.di.WikiRetrofitService
 import com.kasianov.sergei.omaloma.core.extentions.ListMapper
 import com.kasianov.sergei.omaloma.core.extentions.RequestResult
 import com.kasianov.sergei.omaloma.core.extentions.getRequestResult
@@ -14,15 +14,13 @@ import com.kasianov.sergei.omaloma.domain.model.wikimappers.MapperToWikiArticle
 import com.kasianov.sergei.omaloma.domain.repository.WikiInfoRepo
 import java.lang.Exception
 import javax.inject.Inject
-import javax.inject.Named
 
 const val EMPTY_WIKI_PAGE_CONTENT = "empty_wiki_page_content"
 const val EMPTY_WIKI_URLS_LIST = "empty_wiki_urls_list"
 const val EMPTY_WIKI_SEARCH_INFO = "empty_wiki_search_info"
 
 class WikiInfoRepoImpl @Inject constructor(
-    @Named(WIKI_RETROFIT_SERVICE)
-    private val wikiApiService: WikiApi,
+    @WikiRetrofitService private val wikiApiService: WikiApi,
     private val mapperToWikiArticle: MapperToWikiArticle,
     private val listMapperToWikiImagesUlsList: ListMapper<WikiImageInfoDTO, String>,
     private val wikiMemoryCache: WikiMemoryCache
