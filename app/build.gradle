@@ -32,6 +32,10 @@ android {
                 java.srcDir sharedTestDir
             }
         }
+
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
     }
 
     buildTypes {
@@ -94,7 +98,11 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$loggingInterceptorVersion"
 
     //DI
-    implementation "org.koin:koin-androidx-viewmodel:$koinVersion"
+    // Koin
+    //implementation "org.koin:koin-androidx-viewmodel:$koinVersion"
+    //Dagger
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
 
     // DB
     implementation "androidx.room:room-runtime:$roomVersion"

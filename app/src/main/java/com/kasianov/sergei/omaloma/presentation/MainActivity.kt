@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil
 import com.kasianov.sergei.omaloma.R
+import com.kasianov.sergei.omaloma.core.OmaLomaApp
 import com.kasianov.sergei.omaloma.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -13,6 +14,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        (application as OmaLomaApp).appComponent.inject(this)
+
         super.onCreate(savedInstanceState)
         binding.lifecycleOwner = this
     }

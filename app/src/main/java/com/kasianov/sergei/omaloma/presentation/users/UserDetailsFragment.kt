@@ -1,19 +1,32 @@
 package com.kasianov.sergei.omaloma.presentation.users
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.kasianov.sergei.omaloma.R
+import com.kasianov.sergei.omaloma.core.OmaLomaApp
 import com.kasianov.sergei.omaloma.databinding.FragmentUserDetailsBinding
+import javax.inject.Inject
 
 class UserDetailsFragment : Fragment() {
 
     // TODO: NOT implemented yet.
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var binding: FragmentUserDetailsBinding
+    private val viewModel: UserDetailsViewModel by viewModels { viewModelFactory }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        //(activity?.application as OmaLomaApp).appComponent.inject(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?

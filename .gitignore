@@ -10,7 +10,6 @@
 /.idea/codeStyles/Project.xml
 /.idea/gradle.xml
 /.idea/misc.xml
-
 /.Utils.PlayGround
 /.idea/assetWizardSettings.xml
 .DS_Store
@@ -21,3 +20,4 @@ app/libs/
 app/src/main/java/com/kasianov/sergei/omaloma/Utils/PlayGround.kt
 
 
+app/sampledata/
