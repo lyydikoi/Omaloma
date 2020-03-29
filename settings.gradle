@@ -1,1 +1,8 @@
 include ':app'
+include ':sources:core'
+include ':sources:core_api'
+include ':sources:core_impl'
+include ':sources:public_holidays'
+include ':sources:user'
+include ':sources:absence'
+include ':sources:main'

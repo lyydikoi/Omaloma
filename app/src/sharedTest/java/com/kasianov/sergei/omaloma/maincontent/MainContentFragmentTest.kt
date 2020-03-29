@@ -9,7 +9,7 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
-import com.kasianov.sergei.omaloma.presentation.maincontent.MainContentFragment
+import com.kasianov.sergei.main.maincontent.MainContentFragment
 import com.kasianov.sergei.omaloma.R
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -30,7 +30,7 @@ class MainContentFragmentTest {
     @Test
     fun clickOpenProfileButton_navigateProfileFragment() {
         // GIVEN - On the home screen
-        val scenario = launchFragmentInContainer<MainContentFragment>(Bundle(), R.style.AppTheme)
+        val scenario = launchFragmentInContainer<com.kasianov.sergei.main.maincontent.MainContentFragment>(Bundle(), R.style.AppTheme)
         val navController = mock(NavController::class.java)
 
         scenario.onFragment {

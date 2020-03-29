@@ -2,8 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: "androidx.navigation.safeargs.kotlin"
-
 
 repositories {
     maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
@@ -12,12 +10,14 @@ repositories {
 android {
 
     compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion "29.0.2"
+
     defaultConfig {
         applicationId "com.kasianov.sergei.omaloma"
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode rootProject.versionCode
+        versionName rootProject.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -72,48 +72,46 @@ android {
     }
 }
 
+apply from: "$project.rootDir/scripts/deps_versions.gradle"
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "androidx.appcompat:appcompat:$appCompatVersion"
-    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
-    implementation "com.google.android.material:material:$materialVersion"
-    implementation "com.jakewharton.threetenabp:threetenabp:$threetenVersion"
-    implementation "androidx.legacy:legacy-support-v4:$legacySupportVersion"
-    implementation "androidx.lifecycle:lifecycle-extensions:$lifeCycleExtentionsVersion"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModelCtxVersion"
-    testImplementation "junit:junit:$junitVersion"
-    androidTestImplementation "androidx.test:runner:$testRunnerVeriosn"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+    implementation appCompat
+    implementation constraintLayout
+    implementation material
+    implementation legacySupport
+    implementation lifeCycleExtentions
+    implementation lifeCycleViewModelCtx
+    implementation navigation
+    implementation navigationUiKtx
+    implementation kotlinStdlib
+    implementation "androidx.fragment:fragment:$fragmentVersion"
 
-    // Architectural components
-    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
-    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
-
-    // Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
-    // Retrofit and GSON
-    implementation "com.squareup.retrofit2:converter-gson:$gsonVersion"
-    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    implementation "com.squareup.okhttp3:logging-interceptor:$loggingInterceptorVersion"
+    // Network
+    implementation converterGson
+    implementation retrofit
+    implementation loggingInterceptor
 
     //DI
-    // Koin
-    //implementation "org.koin:koin-androidx-viewmodel:$koinVersion"
-    //Dagger
-    implementation "com.google.dagger:dagger:$daggerVersion"
-    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+    implementation dagger
+    kapt daggerCompiler
 
     // DB
-    implementation "androidx.room:room-runtime:$roomVersion"
-    implementation "androidx.room:room-ktx:$roomVersion"
-    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
+    implementation room
+    implementation roomKtx
+    kapt roomCompiler
 
     //Glide
-    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    implementation glide
 
-    // Tests
+    // Modules
+    implementation project(':sources:core')
+    implementation project(':sources:main')
+    implementation project(':sources:public_holidays')
+    implementation project(':sources:user')
+
     // Dependencies for local unit tests
+    androidTestImplementation "androidx.test:runner:$testRunnerVeriosn"
     testImplementation "junit:junit:$junitVersion"
     testImplementation "org.mockito:mockito-core:$mockitoVersion"
     testImplementation "org.hamcrest:hamcrest-all:$hamcrestVersion"
@@ -137,9 +135,8 @@ dependencies {
     testImplementation "androidx.test.ext:junit-ktx:$androidXTestExtKotlinRunnerVersion"
     testImplementation "androidx.test:rules:$androidXTestRulesVersion"
     // Once https://issuetracker.google.com/127986458 is fixed this can be testImplementation
-    implementation "androidx.fragment:fragment-testing:$fragmentVersion"
+    //implementation "androidx.fragment:fragment-testing:$fragmentVersion"
     implementation "androidx.test:core:$androidXTestCoreVersion"
-    implementation "androidx.fragment:fragment:$fragmentVersion"
 
     // AndroidX Test - Instrumented testing
     androidTestImplementation "androidx.test:core-ktx:$androidXTestCoreVersion"
