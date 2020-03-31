@@ -1,6 +1,5 @@
 package com.kasianov.sergei.core_impl.di
 
-import com.kasianov.sergei.core_api.di_utils.DepComponentScope
 import com.kasianov.sergei.core_api.memory.WikiMemoryCache
 import com.kasianov.sergei.core_api.repository.UserRepo
 import com.kasianov.sergei.core_api.repository.WikiInfoRepo
@@ -15,15 +14,15 @@ import javax.inject.Singleton
 abstract class RepositoryModule {
 
     @Binds
-    @DepComponentScope
+    @Singleton
     abstract fun bindsWikiCache(memoryCache: WikiMemoryCacheImpl): WikiMemoryCache
 
     @Binds
-    @DepComponentScope
+    @Singleton
     abstract fun bindUserRepo(repo: UserRepoImpl): UserRepo
 
     @Binds
-    @DepComponentScope
+    @Singleton
     abstract fun bindWikiInfoRepo(repo: WikiInfoRepoImpl): WikiInfoRepo
 
 }

@@ -24,12 +24,7 @@ class PublicHolidaysRepoImpl @Inject constructor(
             RequestResult.Success(dbData)
         } else {
             when (val publicHolidaysResult
-                    = getRequestResult {
-                    pubHolidayApiService.getPublicHolidays(
-                        year,
-                        country
-                    )
-                }) {
+                    = getRequestResult { pubHolidayApiService.getPublicHolidays(year, country) }) {
                 is RequestResult.Success -> {
                     saveHolidaysWithYear(year, publicHolidaysResult.data)
                     RequestResult.Success(publicHolidaysResult.data)
@@ -38,7 +33,6 @@ class PublicHolidaysRepoImpl @Inject constructor(
                     publicHolidaysResult
             }
         }
-        return RequestResult.Error(Exception("UUh"))
     }
 
     private suspend fun saveHolidaysWithYear(year: String, holidaysList: List<PublicHolidayDTO>) {

@@ -1,4 +1,4 @@
-package com.kasianov.sergei.public_holidays
+package com.kasianov.sergei.public_holidays.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

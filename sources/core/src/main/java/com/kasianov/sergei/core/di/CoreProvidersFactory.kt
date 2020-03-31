@@ -1,4 +1,4 @@
-package com.kasianov.sergei.core
+package com.kasianov.sergei.core.di
 
 import com.kasianov.sergei.core_api.AppProvider
 import com.kasianov.sergei.core_api.database.DataBaseProvider
@@ -6,13 +6,12 @@ import com.kasianov.sergei.core_api.memory.MemoryCacheProvider
 import com.kasianov.sergei.core_api.network.NetworkProvider
 import com.kasianov.sergei.core_api.repository.RepositoryProvider
 import com.kasianov.sergei.core_api.utils.UtilsProvider
-import com.kasianov.sergei.core_api.viewmodel.ViewModelsProvider
 import com.kasianov.sergei.core_impl.di.*
 
 object CoreProvidersFactory {
 
     fun createDataBaseProvider(appProvider: AppProvider) : DataBaseProvider {
-        return DaggerDataBaseComponent.builder().appProvider(appProvider).build()
+        return DataBaseComponent.create(appProvider)
     }
 
     fun createMemoryCacheProvider() : MemoryCacheProvider {
@@ -20,11 +19,7 @@ object CoreProvidersFactory {
     }
 
     fun createNetworkServiceProvider() : NetworkProvider {
-        return DaggerNetworkComponent.create()
-    }
-
-    fun createViewModelProvider() : ViewModelsProvider {
-        return DaggerViewModelComponent.create()
+        return NetworkComponent.create()
     }
 
     fun createRepositoryProvider(

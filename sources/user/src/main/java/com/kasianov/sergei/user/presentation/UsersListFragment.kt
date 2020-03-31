@@ -14,8 +14,8 @@ class UsersListFragment : Fragment() {
 
     // TODO: NOT implemented yet.
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+    //@Inject
+    //lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var binding: FragmentUsersListBinding
     //private val viewModel: UsersListViewModel by viewModels { viewModelFactory }
 

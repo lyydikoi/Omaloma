@@ -2,7 +2,6 @@ package com.kasianov.sergei.public_holidays.data
 
 import com.kasianov.sergei.core_api.model.dto.PublicHolidayDTO
 import com.kasianov.sergei.core_api.extentions.RequestResult
-import com.kasianov.sergei.core_api.model.PublicHoliday
 
 interface PublicHolidaysRepo {
 

@@ -39,10 +39,6 @@ ext {
     viewModelCtxVersion = '2.2.0'
 
     // App dependencies
-    coroutinesDependencies = [
-            'coroutines_core'   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion",
-            'coroutines_android': "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
-    ]
     appCompat = "androidx.appcompat:appcompat:$appCompatVersion"
     constraintLayout = "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
     material = "com.google.android.material:material:$materialVersion"

@@ -1,4 +1,4 @@
-package com.kasianov.sergei.core
+package com.kasianov.sergei.core.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -1,7 +1,7 @@
 package com.kasianov.sergei.omaloma.di
 
 import android.app.Application
-import com.kasianov.sergei.core.CoreProvidersFactory
+import com.kasianov.sergei.core.di.CoreProvidersFactory
 import com.kasianov.sergei.core_api.AppProvider
 import com.kasianov.sergei.core_api.ProvidersFacade
 import com.kasianov.sergei.core_api.database.DataBaseProvider
@@ -18,7 +18,6 @@ import dagger.Component
         DataBaseProvider::class,
         NetworkProvider::class,
         MemoryCacheProvider::class,
-        //ViewModelsProvider::class,
         RepositoryProvider::class,
         UtilsProvider::class
     ]
@@ -32,8 +31,8 @@ interface FacadeComponent : ProvidersFacade {
                 .dataBaseProvider(CoreProvidersFactory.createDataBaseProvider(AppComponent.create(application)))
                 .networkProvider(CoreProvidersFactory.createNetworkServiceProvider())
                 .memoryCacheProvider(CoreProvidersFactory.createMemoryCacheProvider())
-                //.viewModelProvider(CoreProvidersFactory.createViewModelProvider())
-                .repositoryProvider(CoreProvidersFactory.createRepositoryProvider(
+                .repositoryProvider(
+                    CoreProvidersFactory.createRepositoryProvider(
                     CoreProvidersFactory.createDataBaseProvider(AppComponent.create(application)),
                     CoreProvidersFactory.createNetworkServiceProvider()
                 ))

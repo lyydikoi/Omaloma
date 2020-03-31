@@ -4,6 +4,6 @@ import android.content.Context
 
 interface AppProvider {
 
-    fun provaideContext() : Context
+    fun provideContext() : Context
 
 }

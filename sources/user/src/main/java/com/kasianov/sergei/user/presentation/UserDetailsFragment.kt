@@ -6,16 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
 import com.kasianov.sergei.user.databinding.FragmentUserDetailsBinding
-import javax.inject.Inject
 
 class UserDetailsFragment : Fragment() {
 
     // TODO: NOT implemented yet.
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+    //Inject
+    //lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var binding: FragmentUserDetailsBinding
     //private val viewModel: UserDetailsViewModel by viewModels { viewModelFactory }
     private lateinit var viewModel: UserDetailsViewModel

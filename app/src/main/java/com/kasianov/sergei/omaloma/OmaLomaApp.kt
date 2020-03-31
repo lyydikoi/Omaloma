@@ -16,23 +16,7 @@ class OmaLomaApp: Application(), AppWithFacade {
         return facadeComponent ?: FacadeComponent.init(this).also {
             facadeComponent = it
         }
-
-        /*facadeComponent ?: DaggerFacadeComponent.factory().create(
-
-            AppComponent.create(this),
-            CoreProvidersFactory.createDataBaseProvider(AppComponent.create(this)),
-            CoreProvidersFactory.createNetworkServiceProvider(),
-            CoreProvidersFactory.createMemoryCacheProvider(),
-            //CoreProvidersFactory.createViewModelProvider(),
-            CoreProvidersFactory.createRepositoryProvider(),
-            CoreProvidersFactory.createUtilsProvider()
-        ).also {
-            facadeComponent = it
-        }
-
-        return facadeComponent!!*/
     }
-
 
     override fun onCreate() {
         super.onCreate()

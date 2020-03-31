@@ -20,7 +20,6 @@ import com.kasianov.sergei.core_api.extentions.EventObserver
 import com.kasianov.sergei.public_holidays.R
 import com.kasianov.sergei.public_holidays.databinding.FragmentPublicHolidaysListBinding
 import com.kasianov.sergei.public_holidays.di.PublicHolidaysComponent
-import com.kasianov.sergei.public_holidays.di.PublicHolidaysModule
 import com.kasianov.sergei.public_holidays.presentation.adapter.PublicHolidaysListAdapter
 import javax.inject.Inject
 
@@ -30,9 +29,7 @@ class PubHolListFragment : Fragment() {
 
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
     private val viewModel: PubHolListViewModel by viewModels { viewModelFactory }
-
     private lateinit var binding: FragmentPublicHolidaysListBinding
-
     private val adapter by lazy {
         PublicHolidaysListAdapter { position: Int -> viewModel.setHolidaySelected(position) }
     }
