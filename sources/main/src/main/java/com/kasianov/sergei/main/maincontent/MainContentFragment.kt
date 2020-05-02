@@ -1,6 +1,7 @@
 package com.kasianov.sergei.main.maincontent
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -27,14 +28,12 @@ class MainContentFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        /*binding.fabEditHolidays.setOnClickListener {
-            //this.findNavController().navigate(R.id.action_contentMain_to_holidaysList)
-            /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()*/
-        }
+        // TODO: this is for testing only
+        binding.chartView.setValues(100f, 30f, 10f)
+        binding.chartView.setChartSelectedInteraction { name: String ->
 
-        binding.fabOpenProfile.setOnClickListener {
-            //this.findNavController().navigate(R.id.action_contentMain_to_profile)
-        }*/
+            binding.customViewLabel.text = name
+            Log.v("ChartViewTag", "chart: $name")
+        }
     }
 }

@@ -3,8 +3,8 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="main_content_offset">24dp</dimen>
     <dimen name="main_icon_size">24dp</dimen>
-    <dimen name="text_main_size">14sp</dimen>
-    <dimen name="text_header_size">18sp</dimen>
+    <dimen name="main_text_size">14sp</dimen>
+    <dimen name="main_header_size">18sp</dimen>
     <dimen name="default_elevation">4dp</dimen>
 
     <!-- App bar -->
@@ -12,15 +12,18 @@
     <dimen name="appbar_image_offset_top">48dp</dimen>
     <dimen name="text_collapsible_appbar_title_size">20sp</dimen>
 
-    <!-- DBUser profile -->
+    <!-- User profile -->
     <dimen name="avatar_size_profile">90dp</dimen>
 
-    <!-- DBUser list item -->
+    <!-- User list item -->
     <dimen name="list_item_height">80dp</dimen>
 
-    <!-- Swipe image -->
+    <!-- Details gallery image -->
     <dimen name="swipe_layout_height">130dp</dimen>
     <dimen name="swipe_image_width">130dp</dimen>
     <dimen name="swipe_image_height">90dp</dimen>
     <dimen name="swipe_image_padding">12dp</dimen>
+
+    <!--Chart-->
+    <dimen name="chart_view_zise">200dp</dimen>
 </resources>

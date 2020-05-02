@@ -1,5 +1,7 @@
 package com.kasianov.sergei.core_impl.di
 
+import com.google.gson.FieldNamingPolicy
+import com.google.gson.GsonBuilder
 import com.kasianov.sergei.core_api.di_utils.PubHolRetrofitService
 import com.kasianov.sergei.core_api.di_utils.WikiRetrofitService
 import com.kasianov.sergei.core_api.network.PublicHolidayApi
@@ -28,15 +30,20 @@ annotation class PubHolRetrofit
 @Module
 class NetworkModule {
 
+    /*@Singleton
+    @Provides
+    fun gsonBuilder(): GsonBuilder = GsonBuilder()
+        .setFieldNamingPolicy(FieldNamingPolicy.IDENTITY)*/
+
     // Wiki Retrofit service
     @Singleton
     @Provides
     @WikiRetrofit
-    fun provideWikiRetrofit(okHttpClient: OkHttpClient): Retrofit {
+    fun provideWikiRetrofit(okHttpClient: OkHttpClient, gsonBuilder: GsonBuilder): Retrofit {
         return Retrofit.Builder()
             .baseUrl(WIKI_BASE_URL)
             .client(okHttpClient)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(/*gsonBuilder.create()*/))
             .build()
     }
 
