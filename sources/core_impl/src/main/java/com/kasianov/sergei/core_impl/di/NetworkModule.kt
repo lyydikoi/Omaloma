@@ -30,10 +30,10 @@ annotation class PubHolRetrofit
 @Module
 class NetworkModule {
 
-    /*@Singleton
+    @Singleton
     @Provides
     fun gsonBuilder(): GsonBuilder = GsonBuilder()
-        .setFieldNamingPolicy(FieldNamingPolicy.IDENTITY)*/
+        .setFieldNamingPolicy(FieldNamingPolicy.IDENTITY)
 
     // Wiki Retrofit service
     @Singleton
