@@ -12,6 +12,14 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/sources" />
+            <option value="$PROJECT_DIR$/sources/absence" />
+            <option value="$PROJECT_DIR$/sources/core" />
+            <option value="$PROJECT_DIR$/sources/core_api" />
+            <option value="$PROJECT_DIR$/sources/core_impl" />
+            <option value="$PROJECT_DIR$/sources/main" />
+            <option value="$PROJECT_DIR$/sources/public_holidays" />
+            <option value="$PROJECT_DIR$/sources/user" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

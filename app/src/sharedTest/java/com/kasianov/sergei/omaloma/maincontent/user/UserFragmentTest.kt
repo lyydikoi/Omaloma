@@ -9,7 +9,7 @@ import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
-import com.kasianov.sergei.omaloma.presentation.users.UserDetailsFragment
+import com.kasianov.sergei.user.presentation.users.UserDetailsFragment
 import com.kasianov.sergei.omaloma.R
 import com.kasianov.sergei.omaloma.data.user.UserDataContract
 import com.kasianov.sergei.omaloma.maincontent.data.source.FakeUserRepository

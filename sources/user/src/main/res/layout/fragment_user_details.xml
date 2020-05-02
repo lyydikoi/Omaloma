@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".com.kasianov.sergei.public_holidays.presentation.users.UserDetailsFragment">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutUserDetailsContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <EditText
+                        android:id="@+id/edt_profile_name"
+                        style="@style/MainHeaderText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/main_content_offset"
+                        android:layout_marginLeft="@dimen/main_content_offset"
+                        android:layout_marginTop="@dimen/main_content_offset"
+                        android:layout_marginEnd="@dimen/main_content_offset"
+                        android:layout_marginRight="@dimen/main_content_offset"
+                        android:hint="@string/first_and_last_name"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                        android:id="@+id/tv_profile_start_date"
+                        style="@style/MainContentText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/main_content_offset"
+                        android:layout_marginLeft="@dimen/main_content_offset"
+                        android:layout_marginTop="@dimen/main_content_offset"
+                        android:hint="@string/working_start_date"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/iv_start_date"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/edt_profile_name" />
+
+                <ImageView
+                        android:id="@+id/iv_start_date"
+                        android:layout_width="@dimen/main_icon_size"
+                        android:layout_height="@dimen/main_icon_size"
+                        android:layout_margin="@dimen/main_content_offset"
+                        android:layout_marginEnd="@dimen/main_content_offset"
+                        android:layout_marginRight="@dimen/main_content_offset"
+                        app:srcCompat="@drawable/ic_insert_date_green_24dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_profile_start_date"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/tv_profile_start_date"
+                        app:layout_constraintTop_toTopOf="@+id/tv_profile_start_date" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/expanded_app_bar_height">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:id="@+id/tbCollapsing"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:contentScrim="?attr/colorPrimary"
+                    app:expandedTitleGravity="top"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+                <ImageView
+                        android:layout_width="@dimen/avatar_size_profile"
+                        android:layout_height="@dimen/avatar_size_profile"
+                        android:layout_gravity="center"
+                        android:background="@drawable/shape_circle"
+                        android:scaleType="center"
+                        app:layout_collapseMode="parallax"
+                        app:layout_collapseParallaxMultiplier="0.5"
+                        app:srcCompat="@drawable/ic_person_outline_green_48dp" />
+
+                    <androidx.appcompat.widget.Toolbar
+                            android:id="@+id/tbStatic"
+                            android:layout_width="match_parent"
+                            android:layout_height="?attr/actionBarSize"
+                            app:layout_collapseMode="pin" />
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
