@@ -10,39 +10,26 @@
             tools:context=".com.kasianov.sergei.public_holidays.presentation.maincontent.MainContentFragment">
 
         <TextView
-                android:id="@+id/textView"
+                android:id="@+id/customViewLabel"
+                style="@style/MainHeaderText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/main_content"
+                android:text="@string/label_earned_days"
+                app:layout_constraintBottom_toTopOf="@+id/chartView"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+
+        <com.kasianov.sergei.main.maincontent.ChartView
+                android:id="@+id/chartView"
+                android:layout_width="@dimen/chart_view_zise"
+                android:layout_height="@dimen/chart_view_zise"
+                android:layout_margin="@dimen/main_content_offset"
+                app:chartColor1="@color/chart_color_1"
+                app:chartColor2="@color/chart_color_2"
+                app:chartColor3="@color/chart_color_3"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fab_edit_holidays"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:srcCompat="@drawable/ic_edit_white_24dp"
-                tools:ignore="VectorDrawableCompat" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fab_open_profile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/ic_person_white_24dp"
-                tools:ignore="VectorDrawableCompat" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

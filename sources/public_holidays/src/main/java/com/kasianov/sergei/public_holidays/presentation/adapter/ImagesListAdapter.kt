@@ -1,17 +1,17 @@
 package com.kasianov.sergei.public_holidays.presentation.adapter
 
-import com.bumptech.glide.Glide
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.kasianov.sergei.public_holidays.R
 import com.kasianov.sergei.public_holidays.databinding.LayoutSwipeImageItemBinding
 
 
 class ImagesListAdapter(
-    private val interaction:(Int) -> Unit
+    private val interaction: (Int) -> Unit
 ) : ListAdapter<String, ImagesListAdapter.ImageSwipeCardViewHolder>(ImageDiffUtilCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : ImageSwipeCardViewHolder =

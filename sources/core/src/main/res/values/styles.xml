@@ -2,7 +2,6 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.Design.Light.NoActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -18,13 +17,13 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
     <style name="MainContentText">
-        <item name="android:textSize">@dimen/text_main_size</item>
+        <item name="android:textSize">@dimen/main_text_size</item>
         <item name="android:color">@color/colorTextPrimary</item>
         <item name="android:layout_margin">@dimen/main_content_offset</item>
     </style>
 
     <style name="MainHeaderText">
-        <item name="android:textSize">@dimen/text_header_size</item>
+        <item name="android:textSize">@dimen/main_header_size</item>
         <item name="android:layout_margin">@dimen/main_content_offset</item>
         <item name="android:imeOptions">actionNext</item>
         <item name="android:inputType">text</item>

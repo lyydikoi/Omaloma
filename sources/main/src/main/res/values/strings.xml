@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="fan_control">Fan Control</string>
+    <string name="label_overview">Overview</string>
+    <string name="label_earned_days">Earned days</string>
+    <string name="label_spent_days">Spent days</string>
+    <string name="label_remaining_days">Remaining days</string>
+</resources>

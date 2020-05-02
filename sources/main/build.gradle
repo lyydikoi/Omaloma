@@ -64,14 +64,17 @@ apply from: "$project.rootDir/scripts/deps_versions.gradle"
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation kotlinStdlib
     implementation appCompat
-    implementation androidXCoreKtx
     implementation constraintLayout
     implementation material
     implementation legacySupport
     implementation lifeCycleExtentions
     implementation lifeCycleViewModelCtx
+    implementation navigation
+    implementation navigationUiKtx
+    implementation androidXCoreKtx
+    implementation kotlinStdlib
+    implementation "androidx.fragment:fragment:$fragmentVersion"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

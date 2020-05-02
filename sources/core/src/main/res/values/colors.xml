@@ -7,4 +7,9 @@
     <color name="colorTextSecondary">#757575</color>
     <color name="colorTextLight">#FFFFFF</color>
     <color name="colorGrey">#E6E6E6</color>
+
+    <!--Chart colors-->
+    <color name="chart_color_1">#FFEB3B</color>
+    <color name="chart_color_2">#CDDC39</color>
+    <color name="chart_color_3">#009688</color>
 </resources>
