@@ -30,8 +30,7 @@ class MainContentFragment : Fragment() {
 
         // TODO: this is for testing only
         binding.chartView.setValues(100f, 30f, 10f)
-        binding.chartView.setChartSelectedInteraction { name: String ->
-
+        binding.chartView.chartSelectedInteraction = { name: String ->
             binding.customViewLabel.text = name
             Log.v("ChartViewTag", "chart: $name")
         }

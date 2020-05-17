@@ -12,10 +12,10 @@ import kotlin.math.min
 import kotlin.math.sin
 
 
-private enum class ChartLabels(val label: Int) {
-    EARNED(R.string.label_earned_days),
-    SPENT(R.string.label_spent_days),
-    REMAINING(R.string.label_remaining_days);
+private enum class ChartType {
+    EARNED,
+    SPENT,
+    REMAINING;
 
     fun next() = when (this) {
         EARNED -> SPENT
@@ -37,14 +37,14 @@ class ChartView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
 
-    private lateinit var chartSelectedInteraction: (String) -> Unit
+    var chartSelectedInteraction: (String) -> Unit = {}
 
     private var chartFillRadius = 0.0f
     private val labelPointPosition = PointF(0.0f, 0.0f)
     private var chartArcPlaceholder = RectF(CHART_STROKE_WIDTH , CHART_STROKE_WIDTH , 0.0f, 0.0f)
     private var anglePerValue = 360.0f / 100
 
-    private var currentChart = ChartLabels.EARNED
+    private var currentChart = ChartType.EARNED
     private var currentChartValue = 0.0f
 
     private var earnedDaysColor = 0
@@ -84,7 +84,7 @@ class ChartView @JvmOverloads constructor(
         if (super.performClick()) return true
 
         currentChart = currentChart.next()
-        val nextChartTitle = resources.getString(currentChart.label)
+        val nextChartTitle = resources.getString(currentChart.mapToStringRes())
         contentDescription = nextChartTitle
         chartSelectedInteraction(nextChartTitle)
 
@@ -119,30 +119,25 @@ class ChartView @JvmOverloads constructor(
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
+        currentChartValue =currentChart.mapToValue()
 
-        currentChartValue = when (currentChart) {
-            ChartLabels.EARNED -> earnedDaysCount
-            ChartLabels.SPENT -> spentDaysCount
-            ChartLabels.REMAINING -> remainingDaysCount
-        }
-
-        // Draw closing chart
+        // Draw closing chart.
         arcPaint.color = Color.LTGRAY
         canvas.drawArc(
             chartArcPlaceholder.computeDimensForArc(height),
-            currentChartValue * anglePerValue - 90,
-            360.0f - currentChartValue * anglePerValue,
+            (currentChartValue * anglePerValue) + CHART_START_ANGLE,
+            360.0f - (currentChartValue * anglePerValue),
             false,
             arcPaint
         )
 
         arcPaint.color = when (currentChart) {
-            ChartLabels.EARNED -> earnedDaysColor
-            ChartLabels.SPENT -> spentDaysColor
-            ChartLabels.REMAINING -> remainingDaysColor
+            ChartType.EARNED -> earnedDaysColor
+            ChartType.SPENT -> spentDaysColor
+            ChartType.REMAINING -> remainingDaysColor
         } as Int
 
-        // Draw value chart
+        // Draw value chart.
         canvas.drawArc(
             chartArcPlaceholder.computeDimensForArc(height),
             CHART_START_ANGLE,
@@ -151,25 +146,24 @@ class ChartView @JvmOverloads constructor(
             arcPaint
         )
 
-        // Draw the value text
+        // Draw value text.
         textPaint.textSize = CHART_TEXT_SIZE
         textPaint.color = Color.GRAY
         val valueText = "$currentChartValue%"
         val xPos = (width / 2).toFloat()
         val yPos = (height / 2 - (textPaint.descent() + textPaint.ascent()) / 2)
         canvas.drawText(valueText, xPos, yPos, textPaint)
-        textPaint.textSize = CHART_LABEL_SIZE
 
-        // Draw the indicator circle.
+        // Draw indicator circle.
         val markerRadius = chartFillRadius + RADIUS_OFFSET_INDICATOR
-        for (i in ChartLabels.values()) {
+        for (i in ChartType.values()) {
             labelPointPosition.computeXYForMarkers(i, markerRadius)
             textPaint.color = if (i == currentChart) arcPaint.color else Color.LTGRAY
             canvas.drawCircle(labelPointPosition.x, labelPointPosition.y, chartFillRadius/12, textPaint)
         }
     }
 
-    private fun PointF.computeXYForMarkers(pos: ChartLabels, radius: Float) {
+    private fun PointF.computeXYForMarkers(pos: ChartType, radius: Float) {
         // Angles are in radians.
         val startAngle = Math.PI * (9 / 8.0)
         val angle = startAngle + pos.ordinal * (Math.PI / 6)
@@ -185,6 +179,14 @@ class ChartView @JvmOverloads constructor(
         return this
     }
 
+    private fun ChartType.mapToValue(): Float {
+        return when (this) {
+            ChartType.EARNED -> earnedDaysCount
+            ChartType.SPENT -> spentDaysCount
+            ChartType.REMAINING -> remainingDaysCount
+        }
+    }
+
     fun setValues(
         earnedPercent: Float = 0f,
         spentPercent: Float = 0f,
@@ -197,8 +199,12 @@ class ChartView @JvmOverloads constructor(
         requestLayout()
         invalidate()
     }
+}
 
-    fun setChartSelectedInteraction(interaction: (String) -> Unit) {
-        chartSelectedInteraction = interaction
+private fun ChartType.mapToStringRes(): Int{
+    return when (this) {
+        ChartType.EARNED -> R.string.label_earned_days
+        ChartType.SPENT -> R.string.label_spent_days
+        ChartType.REMAINING -> R.string.label_remaining_days
     }
 }
