@@ -6,9 +6,11 @@ import com.kasianov.sergei.core_api.di_utils.PubHolRetrofitService
 import com.kasianov.sergei.core_api.di_utils.WikiRetrofitService
 import com.kasianov.sergei.core_api.network.PublicHolidayApi
 import com.kasianov.sergei.core_api.network.WikiApi
+import com.kasianov.sergei.core_impl.BuildConfig
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
@@ -81,13 +83,13 @@ class NetworkModule {
             .readTimeout(TIMEOUT, TimeUnit.SECONDS)
             .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
 
-        /*if (BuildConfig.DEBUG) {
+        if (BuildConfig.DEBUG) {
             httpClient.addInterceptor(
                 HttpLoggingInterceptor().apply {
                     this.level = HttpLoggingInterceptor.Level.BODY
                 }
             )
-        }*/
+        }
 
         return httpClient.build()
     }

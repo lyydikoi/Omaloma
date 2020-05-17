@@ -30,7 +30,11 @@ class MainContentFragment : Fragment() {
 
         // TODO: this is for testing only
         binding.chartView.setValues(100f, 30f, 10f)
+<<<<<<< HEAD
         binding.chartView.setChartSelectedInteraction { name: String ->
+=======
+        binding.chartView.chartSelectedInteraction = { name: String ->
+>>>>>>> otus-hw-custom-view
             binding.customViewLabel.text = name
             Log.v("ChartViewTag", "chart: $name")
         }
