@@ -1,4 +1,4 @@
-package com.kasianov.sergei.absence.presentation.absences
+package com.kasianov.sergei.absence.presentation.absences.presentation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -32,5 +32,6 @@ sealed class AbsenceType {
 
 sealed class AbsenceStatus {
     object Planned: AbsenceStatus()
-    object Hold: AbsenceStatus()
+    object DateReached: AbsenceStatus()
+    object ConfirmedUsage: AbsenceStatus()
 }

@@ -72,6 +72,8 @@ dependencies {
     implementation legacySupport
     implementation lifeCycleExtentions
     implementation lifeCycleViewModelCtx
+    implementation "androidx.fragment:fragment:$fragmentVersion"
+    implementation "androidx.fragment:fragment-ktx:$fragmentVersion"
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
     testImplementation 'junit:junit:4.13'

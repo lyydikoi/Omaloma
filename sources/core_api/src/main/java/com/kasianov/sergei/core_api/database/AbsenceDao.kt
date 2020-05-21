@@ -12,8 +12,11 @@ import com.kasianov.sergei.core_api.model.dto.AbsenceDTO
 @Dao
 interface AbsenceDao {
 
+    @Query("SELECT * FROM absence_table")
+    fun getAllAbsences(): LiveData<AbsenceDTO>
+
     @Query("SELECT * FROM absence_table WHERE created_at = :createdAt")
-    fun getAbsene(createdAt: String): LiveData<AbsenceDTO>
+    fun getAbsence(createdAt: String): LiveData<AbsenceDTO>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAbsence(absence: AbsenceDTO)

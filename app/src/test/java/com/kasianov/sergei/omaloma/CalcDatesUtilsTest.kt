@@ -1,10 +1,8 @@
 package com.kasianov.sergei.omaloma
 
-import com.kasianov.sergei.core_impl.utils.CalcDatesUtilsImpl
 import org.hamcrest.CoreMatchers.*
 import org.junit.Assert.assertThat
 import org.junit.Test
-import org.threeten.bp.LocalDate
 import com.kasianov.sergei.core_api.model.HolidayMonth as HolidayMonth
 
 /**

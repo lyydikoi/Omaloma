@@ -5,7 +5,7 @@ import com.kasianov.sergei.core_api.model.dto.WikiImageInfoDTO
 
 interface WikiMemoryCache {
 
-    fun saveArticle(pageId: String, articles: WikiArticleDTO)
+    fun saveArticle(pageId: String, article: WikiArticleDTO)
 
     fun getArticle(pageId: String): WikiArticleDTO?
 

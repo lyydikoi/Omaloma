@@ -40,6 +40,4 @@ class PubHolListViewModel @Inject constructor(
     fun setHolidaySelected(position: Int) {
        publicHolidays.value?.get(position)?.let { _selectedPubHoliday.value = it }
     }
-
 }
-

@@ -21,9 +21,7 @@ abstract class PublicHolidaysModule {
 
     @Singleton
     @Binds
-    abstract fun bindViewModelFactory(
-        factory: ViewModelFactoryProvider
-    ): ViewModelProvider.Factory
+    abstract fun bindViewModelFactory(factory: ViewModelFactoryProvider): ViewModelProvider.Factory
 
     @Binds
     @IntoMap

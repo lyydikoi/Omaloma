@@ -75,5 +75,4 @@ class PubHolListFragment : Fragment() {
         binding.rvPubHolList.layoutManager= LinearLayoutManager(context)
         binding.rvPubHolList.adapter = adapter
     }
-
 }

@@ -24,5 +24,4 @@ interface PublicHolidaysComponent {
 
     fun inject(fragment: PubHolDetailsFragment)
     fun inject(fragment: PubHolListFragment)
-
 }
