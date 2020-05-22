@@ -1,6 +1,10 @@
 package com.kasianov.sergei.core_impl.utils
 
+import android.annotation.SuppressLint
 import com.kasianov.sergei.core_api.utils.CalcDateUtils
+import java.time.DayOfWeek
+import java.time.temporal.WeekFields
+import java.util.*
 import javax.inject.Inject
 
 class CalcDatesUtilsImpl @Inject constructor() :
@@ -113,6 +117,19 @@ class CalcDatesUtilsImpl @Inject constructor() :
     override fun getFormattedDate(millisec: String) : String {
         // TODO: needs implementation
         return "29 Jan. 2020"
+    }
+
+    @SuppressLint("NewApi")
+    override fun daysOfWeekFromLocale(): Array<DayOfWeek> {
+        val firstDayOfWeek = WeekFields.of(Locale.getDefault()).firstDayOfWeek
+        var daysOfWeek = DayOfWeek.values()
+        // Order `daysOfWeek` array so that firstDayOfWeek is at index 0.
+        if (firstDayOfWeek != DayOfWeek.MONDAY) {
+            val rhs = daysOfWeek.sliceArray(firstDayOfWeek.ordinal..daysOfWeek.indices.last)
+            val lhs = daysOfWeek.sliceArray(0 until firstDayOfWeek.ordinal)
+            daysOfWeek = rhs + lhs
+        }
+        return daysOfWeek
     }
 
 }

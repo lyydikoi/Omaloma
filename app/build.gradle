@@ -22,20 +22,26 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
 
-    android {
-        sourceSets {
-            String sharedTestDir = 'src/sharedTest/java'
-            test {
-                java.srcDir sharedTestDir
-            }
-            androidTest {
-                java.srcDir sharedTestDir
-            }
+    sourceSets {
+        String sharedTestDir = 'src/sharedTest/java'
+        test {
+            java.srcDir sharedTestDir
         }
+        androidTest {
+            java.srcDir sharedTestDir
+        }
+    }
 
-        kotlinOptions {
-            jvmTarget = "1.8"
-        }
+    compileOptions {
+        // Flag to enable support for the new language APIs
+        coreLibraryDesugaringEnabled true
+        // Sets Java compatibility to Java 8
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 
     buildTypes {
@@ -109,6 +115,9 @@ dependencies {
     implementation project(':sources:main')
     implementation project(':sources:public_holidays')
     implementation project(':sources:user')
+
+    //To enable support for Java 0 APIs
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.0.5'
 
     // Dependencies for local unit tests
     androidTestImplementation "androidx.test:runner:$testRunnerVeriosn"

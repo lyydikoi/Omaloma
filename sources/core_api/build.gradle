@@ -19,6 +19,14 @@ android {
     }
 
     android {
+        compileOptions {
+            // Flag to enable support for the new language APIs
+            coreLibraryDesugaringEnabled true
+            // Sets Java compatibility to Java 8
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+
         kotlinOptions {
             jvmTarget = "1.8"
         }
@@ -63,4 +71,7 @@ dependencies {
 
     implementation dagger
     kapt daggerCompiler
+
+    //To enable support for Java 0 APIs
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.0.5'
 }
