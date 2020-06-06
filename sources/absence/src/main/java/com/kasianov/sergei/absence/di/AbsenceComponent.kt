@@ -1,7 +1,7 @@
-package com.kasianov.sergei.absence.presentation.absences.di
+package com.kasianov.sergei.absence.di
 
-import com.kasianov.sergei.absence.presentation.absences.presentation.AbsenceDetailsFragment
-import com.kasianov.sergei.absence.presentation.absences.presentation.AbsencesListFragment
+import com.kasianov.sergei.absence.presentation.AbsenceDetailsFragment
+import com.kasianov.sergei.absence.presentation.AbsencesListFragment
 import com.kasianov.sergei.core_api.ProvidersFacade
 import dagger.Component
 import javax.inject.Singleton

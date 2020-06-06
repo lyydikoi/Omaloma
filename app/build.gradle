@@ -32,14 +32,6 @@ android {
         }
     }
 
-    compileOptions {
-        // Flag to enable support for the new language APIs
-        coreLibraryDesugaringEnabled true
-        // Sets Java compatibility to Java 8
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -110,14 +102,15 @@ dependencies {
     //Glide
     implementation glide
 
+    // An adaptation of the JSR-310 backport for Android.
+    implementation 'com.jakewharton.threetenabp:threetenabp:1.2.4'
+
     // Modules
     implementation project(':sources:core')
     implementation project(':sources:main')
     implementation project(':sources:public_holidays')
+    implementation project(':sources:absence')
     implementation project(':sources:user')
-
-    //To enable support for Java 0 APIs
-    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.0.5'
 
     // Dependencies for local unit tests
     androidTestImplementation "androidx.test:runner:$testRunnerVeriosn"

@@ -24,11 +24,13 @@ object CoreProvidersFactory {
 
     fun createRepositoryProvider(
         dataBaseProvider: DataBaseProvider,
-        networkProvider: NetworkProvider
+        networkProvider: NetworkProvider,
+        memoryCacheProvider: MemoryCacheProvider
     ) : RepositoryProvider {
         return DaggerRepositoryComponent.builder()
             .dataBaseProvider(dataBaseProvider)
             .networkProvider(networkProvider)
+            .memoryCacheProvider(memoryCacheProvider)
             .build()
     }
 

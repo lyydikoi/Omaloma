@@ -25,5 +25,8 @@
     <dimen name="swipe_image_padding">12dp</dimen>
 
     <!--Chart-->
-    <dimen name="chart_view_zise">200dp</dimen>
+    <dimen name="chart_view_size">200dp</dimen>
+
+    <!--Chart-->
+    <dimen name="calendar_legend_text_size">4sp</dimen>
 </resources>

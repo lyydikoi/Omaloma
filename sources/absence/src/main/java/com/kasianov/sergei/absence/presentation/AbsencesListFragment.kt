@@ -1,4 +1,4 @@
-package com.kasianov.sergei.absence.presentation.absences.presentation
+package com.kasianov.sergei.absence.presentation
 
 import android.content.Context
 import android.os.Bundle
@@ -8,9 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.kasianov.sergei.absence.R
 import com.kasianov.sergei.absence.databinding.FragmentAbsencesListBinding
-import com.kasianov.sergei.absence.presentation.absences.di.AbsenceComponent
-import com.kasianov.sergei.absence.presentation.absences.presentation.adapter.AbsencesListAdapter
+import com.kasianov.sergei.absence.di.AbsenceComponent
+import com.kasianov.sergei.absence.presentation.adapter.AbsencesListAdapter
 import com.kasianov.sergei.core_api.AppWithFacade
 import javax.inject.Inject
 
@@ -56,6 +58,12 @@ class AbsencesListFragment : Fragment() {
     }
 
     private fun setUpUI() {
+
+        binding.fabNavigateToAbsence.setOnClickListener {
+            if (findNavController().currentDestination?.id == R.id.absencesListFragment) {
+                findNavController().navigate(R.id.absenceDetailsFragment)
+            }
+        }
         /*binding.rwBottomBar.layoutManager =
             LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
 

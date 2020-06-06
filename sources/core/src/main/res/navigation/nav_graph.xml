@@ -57,25 +57,21 @@
             android:id="@+id/datePickerDialogFragment"
             android:name="com.kasianov.sergei.omaloma.com.kasianov.sergei.public_holidays.presentation.common.DatePickerDialogFragment"
             android:label="DatePickerDialogFragment" />
-    <fragment
-            android:id="@+id/publicHolidaysListFragment"
-            android:name="com.kasianov.sergei.omaloma.com.kasianov.sergei.public_holidays.presentation.PubHolListFragment"
-            android:label="PublicHolidaysListFragment"
-            tools:layout="@layout/fragment_public_holidays_list">
-        <action
-                android:id="@+id/action_publicHolidaysListFragment_to_pubHolidayDetailsFragment"
-                app:destination="@id/pubHolidayDetailsFragment" />
-    </fragment>
-    <fragment
-            android:id="@+id/pubHolidayDetailsFragment"
-            android:name="com.kasianov.sergei.omaloma.com.kasianov.sergei.public_holidays.presentation.PubHolDetailsFragment"
-            android:label="PubHolidayDetailsFragment"
-            android:layout="@layout/fragment_pub_holiday_details"/>-->
+
+    -->
     <fragment
             android:id="@+id/mainContentFragment"
             android:name="com.kasianov.sergei.main.maincontent.MainContentFragment"
             android:label="MainContentFragment"
-            android:layout="@layout/fragment_content_main"/>
+            android:layout="@layout/fragment_content_main">
+        <action
+                android:id="@+id/action_mainContentFragment_to_pubHolListFragment"
+                app:destination="@id/pubHolListFragment" />
+        <action
+                android:id="@+id/action_mainContentFragment_to_absencesListFragment"
+                app:destination="@id/absencesListFragment" />
+    </fragment>
+
     <fragment
             android:id="@+id/pubHolListFragment"
             android:name="com.kasianov.sergei.public_holidays.presentation.PubHolListFragment"
@@ -84,9 +80,27 @@
                 android:id="@+id/action_publicHolidaysListFragment_to_pubHolidayDetailsFragment"
                 app:destination="@id/pubHolidayDetailsFragment" />
     </fragment>
+
     <fragment
             android:id="@+id/pubHolidayDetailsFragment"
             android:name="com.kasianov.sergei.public_holidays.presentation.PubHolDetailsFragment"
             android:label="PubHolidayDetailsFragment"
             android:layout="@layout/fragment_pub_holiday_details"/>
+
+    <fragment
+            android:id="@+id/absencesListFragment"
+            android:name="com.kasianov.sergei.absence.presentation.AbsencesListFragment"
+            android:label="AbsencesListFragment"
+            tools:layout="@layout/fragment_absences_list">
+        <action
+                android:id="@+id/action_absencesListFragment_to_absenceDetailsFragment2"
+                app:destination="@id/absenceDetailsFragment" />
+    </fragment>
+
+    <fragment
+            android:id="@+id/absenceDetailsFragment"
+            android:name="com.kasianov.sergei.absence.presentation.AbsenceDetailsFragment"
+            android:label="AbsenceDetailsFragment"
+            tools:layout="@layout/fragment_absence_details"/>
+
 </navigation>

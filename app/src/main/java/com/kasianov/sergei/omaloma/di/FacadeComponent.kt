@@ -8,6 +8,7 @@ import com.kasianov.sergei.core_api.database.DataBaseProvider
 import com.kasianov.sergei.core_api.memory.MemoryCacheProvider
 import com.kasianov.sergei.core_api.network.NetworkProvider
 import com.kasianov.sergei.core_api.repository.RepositoryProvider
+import com.kasianov.sergei.core_api.utils.CalcDateUtils
 import com.kasianov.sergei.core_api.utils.UtilsProvider
 import com.kasianov.sergei.omaloma.OmaLomaApp
 import dagger.Component
@@ -33,8 +34,9 @@ interface FacadeComponent : ProvidersFacade {
                 .memoryCacheProvider(CoreProvidersFactory.createMemoryCacheProvider())
                 .repositoryProvider(
                     CoreProvidersFactory.createRepositoryProvider(
-                    CoreProvidersFactory.createDataBaseProvider(AppComponent.create(application)),
-                    CoreProvidersFactory.createNetworkServiceProvider()
+                        CoreProvidersFactory.createDataBaseProvider(AppComponent.create(application)),
+                        CoreProvidersFactory.createNetworkServiceProvider(),
+                        CoreProvidersFactory.createMemoryCacheProvider()
                 ))
                 .utilsProvider(CoreProvidersFactory.createUtilsProvider())
                 .build()

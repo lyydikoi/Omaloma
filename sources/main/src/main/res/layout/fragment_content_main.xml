@@ -21,8 +21,8 @@
 
         <com.kasianov.sergei.main.maincontent.ChartView
                 android:id="@+id/chartView"
-                android:layout_width="@dimen/chart_view_zise"
-                android:layout_height="@dimen/chart_view_zise"
+                android:layout_width="@dimen/chart_view_size"
+                android:layout_height="@dimen/chart_view_size"
                 android:layout_margin="@dimen/main_content_offset"
                 app:chartColor1="@color/chart_color_1"
                 app:chartColor2="@color/chart_color_2"
@@ -31,5 +31,17 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabNavigateToAbsences"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:contentDescription="@string/navigate_to_absences_view" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

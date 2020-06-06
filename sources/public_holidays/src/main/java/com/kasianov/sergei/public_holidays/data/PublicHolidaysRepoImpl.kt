@@ -6,7 +6,6 @@ import com.kasianov.sergei.core_api.model.dto.PublicHolidayDTO
 import com.kasianov.sergei.core_api.extentions.RequestResult
 import com.kasianov.sergei.core_api.extentions.getRequestResult
 import com.kasianov.sergei.core_api.network.PublicHolidayApi
-import java.lang.Exception
 import javax.inject.Inject
 
 class PublicHolidaysRepoImpl @Inject constructor(

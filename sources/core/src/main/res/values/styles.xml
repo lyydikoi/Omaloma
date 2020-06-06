@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.Design.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -34,4 +34,10 @@
         <item name="android:textSize">@dimen/text_collapsible_appbar_title_size</item>
         <item name="android:color">@color/colorTextLight</item>
     </style>
+
+    <style name="CalendarLegendText">
+        <item name="android:textSize">@dimen/main_text_size</item>
+        <item name="android:color">@color/colorTextPrimary</item>
+    </style>
+
 </resources>

@@ -1,4 +1,4 @@
-package com.kasianov.sergei.absence.presentation.absences.data
+package com.kasianov.sergei.absence.data
 
 import androidx.lifecycle.LiveData
 import com.kasianov.sergei.core_api.database.AbsenceDao

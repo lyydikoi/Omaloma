@@ -12,4 +12,11 @@
     <color name="chart_color_1">#FFEB3B</color>
     <color name="chart_color_2">#CDDC39</color>
     <color name="chart_color_3">#009688</color>
+
+    <!--Calendar colors-->
+    <color name="calendarDayPastColor">#E6E6E6</color>
+    <color name="calendarDayColor">#212121</color>
+    <color name="calendarDayTodayColor">#D81B60</color>
+    <color name="calendarDayDarkGreyColor">#474747</color>
+
 </resources>

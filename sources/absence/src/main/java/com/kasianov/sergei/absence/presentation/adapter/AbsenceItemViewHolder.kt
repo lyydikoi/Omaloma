@@ -1,4 +1,4 @@
-package com.kasianov.sergei.absence.presentation.absences.presentation.adapter
+package com.kasianov.sergei.absence.presentation.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import com.kasianov.sergei.absence.databinding.LayoutAbsenceItemBinding

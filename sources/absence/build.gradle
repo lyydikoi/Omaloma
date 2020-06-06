@@ -19,10 +19,8 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
 
-    android {
-        kotlinOptions {
-            jvmTarget = "1.8"
-        }
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 
     buildTypes {
@@ -75,6 +73,13 @@ dependencies {
     implementation "androidx.fragment:fragment:$fragmentVersion"
     implementation "androidx.fragment:fragment-ktx:$fragmentVersion"
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation navigation
+
+    // An adaptation of the JSR-310 backport for Android.
+    implementation 'com.jakewharton.threetenabp:threetenabp:1.2.4'
+
+    // Calendar
+    implementation 'com.github.kizitonwose:CalendarView:0.3.4'
 
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

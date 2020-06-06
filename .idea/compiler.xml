@@ -3,10 +3,10 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
       <module name="absence" target="1.7" />
-      <module name="app" target="1.8" />
+      <module name="app" target="1.7" />
       <module name="core" target="1.7" />
       <module name="core_api" target="1.8" />
-      <module name="core_impl" target="1.8" />
+      <module name="core_impl" target="1.7" />
       <module name="main" target="1.7" />
       <module name="public_holidays" target="1.7" />
       <module name="user" target="1.7" />

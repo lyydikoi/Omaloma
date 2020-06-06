@@ -1,11 +1,11 @@
-package com.kasianov.sergei.absence.presentation.absences.di
+package com.kasianov.sergei.absence.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.kasianov.sergei.absence.presentation.absences.data.AbsenceRepo
-import com.kasianov.sergei.absence.presentation.absences.data.AbsenceRepoImpl
-import com.kasianov.sergei.absence.presentation.absences.presentation.AbsenceDetailsViewModel
-import com.kasianov.sergei.absence.presentation.absences.presentation.AbsencesListViewModel
+import com.kasianov.sergei.absence.data.AbsenceRepo
+import com.kasianov.sergei.absence.data.AbsenceRepoImpl
+import com.kasianov.sergei.absence.presentation.AbsenceDetailsViewModel
+import com.kasianov.sergei.absence.presentation.AbsencesListViewModel
 import com.kasianov.sergei.core_api.viewmodel.ViewModelKey
 import dagger.Binds
 import dagger.Module

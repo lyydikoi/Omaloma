@@ -1,6 +1,6 @@
 package com.kasianov.sergei.core_api.utils
 
-import java.time.DayOfWeek
+import org.threeten.bp.DayOfWeek
 
 interface CalcDateUtils {
 

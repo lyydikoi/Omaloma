@@ -1,4 +1,4 @@
-package com.kasianov.sergei.absence.presentation.absences.presentation.adapter
+package com.kasianov.sergei.absence.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

@@ -6,6 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.navigation.fragment.findNavController
+import com.kasianov.sergei.main.R
 import com.kasianov.sergei.main.databinding.FragmentContentMainBinding
 
 /**
@@ -33,6 +36,13 @@ class MainContentFragment : Fragment() {
         binding.chartView.chartSelectedInteraction = { name: String ->
             binding.customViewLabel.text = name
             Log.v("ChartViewTag", "chart: $name")
+        }
+
+        binding.fabNavigateToAbsences.setOnClickListener {
+            if (findNavController().currentDestination?.id == R.id.mainContentFragment) {
+                findNavController().navigate(R.id.absencesListFragment)
+                //findNavController().navigate(R.id.pubHolListFragment)
+            }
         }
     }
 }

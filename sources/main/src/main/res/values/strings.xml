@@ -5,4 +5,5 @@
     <string name="label_earned_days">Earned days</string>
     <string name="label_spent_days">Spent days</string>
     <string name="label_remaining_days">Remaining days</string>
+    <string name="navigate_to_absences_view">Navigate to absences view.</string>
 </resources>

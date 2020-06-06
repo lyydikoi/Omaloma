@@ -1,4 +1,4 @@
-package com.kasianov.sergei.absence.presentation.absences.di
+package com.kasianov.sergei.absence.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
