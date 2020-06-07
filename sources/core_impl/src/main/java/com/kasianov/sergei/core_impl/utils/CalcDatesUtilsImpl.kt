@@ -6,6 +6,9 @@ import org.threeten.bp.temporal.WeekFields
 import java.util.*
 import javax.inject.Inject
 
+const val DEFAULT_YEAR = "2020"
+const val DEFAULT_COUNTRY = "FI"
+
 class CalcDatesUtilsImpl @Inject constructor() : CalcDateUtils {
 
     /**
@@ -127,6 +130,10 @@ class CalcDatesUtilsImpl @Inject constructor() : CalcDateUtils {
             daysOfWeek = rhs + lhs
         }
         return daysOfWeek
+    }
+
+    override fun getDefaultYear(): String {
+        return DEFAULT_YEAR
     }
 
 }

@@ -16,7 +16,7 @@ interface AbsenceDao {
     fun getAllAbsences(): LiveData<AbsenceDTO>
 
     @Query("SELECT * FROM absence_table WHERE created_at = :createdAt")
-    fun getAbsence(createdAt: String): LiveData<AbsenceDTO>
+    fun getAbsence(createdAt: Long): LiveData<AbsenceDTO>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAbsence(absence: AbsenceDTO)

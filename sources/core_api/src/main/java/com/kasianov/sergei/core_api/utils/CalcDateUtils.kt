@@ -8,4 +8,6 @@ interface CalcDateUtils {
 
     fun daysOfWeekFromLocale(): Array<DayOfWeek>
 
+    fun getDefaultYear(): String
+
 }

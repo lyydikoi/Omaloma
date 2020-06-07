@@ -9,8 +9,8 @@ class AbsenceRepoImpl @Inject constructor(
     private val absenceDao: AbsenceDao
 ) : AbsenceRepo {
 
-    override suspend fun getAbsence(absenceId: String): LiveData<AbsenceDTO> =
-        absenceDao.getAbsence(absenceId)
+    override suspend fun getAbsence(createdAt: Long): LiveData<AbsenceDTO> =
+        absenceDao.getAbsence(createdAt)
 
     override suspend fun saveAbsence(absence: AbsenceDTO) = absenceDao.insertAbsence(absence)
 
