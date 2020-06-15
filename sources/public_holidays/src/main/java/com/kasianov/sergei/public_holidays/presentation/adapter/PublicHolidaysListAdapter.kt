@@ -22,7 +22,7 @@ class PublicHolidaysListAdapter(
         holder.bind(getItem(position))
 
     fun swapData(data: List<PublicHolidayDTO>) {
-        submitList(data.toMutableList())
+        submitList(data)
     }
 
     class PublicHolidaysViewHolder(

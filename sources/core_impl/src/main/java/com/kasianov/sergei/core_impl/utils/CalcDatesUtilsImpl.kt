@@ -3,6 +3,7 @@ package com.kasianov.sergei.core_impl.utils
 import com.kasianov.sergei.core_api.utils.CalcDateUtils
 import org.threeten.bp.DayOfWeek
 import org.threeten.bp.temporal.WeekFields
+import java.lang.Exception
 import java.util.*
 import javax.inject.Inject
 
@@ -134,6 +135,14 @@ class CalcDatesUtilsImpl @Inject constructor() : CalcDateUtils {
 
     override fun getDefaultYear(): String {
         return DEFAULT_YEAR
+    }
+
+    override fun millisStringToLong(millis: String): Long? {
+        return try {
+            millis.toLong()
+        } catch (e: Exception) {
+            null
+        }
     }
 
 }

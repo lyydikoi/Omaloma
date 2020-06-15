@@ -10,4 +10,6 @@ interface CalcDateUtils {
 
     fun getDefaultYear(): String
 
+    fun millisStringToLong(millisString: String): Long?
+
 }

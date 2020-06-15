@@ -10,4 +10,5 @@
     <string name="save">Save</string>
     <string name="start_date">Start date</string>
     <string name="end_date">End date</string>
+    <string name="absence">Absence</string>
 </resources>

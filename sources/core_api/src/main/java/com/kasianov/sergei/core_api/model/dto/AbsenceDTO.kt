@@ -10,13 +10,14 @@ data class AbsenceDTO(
     val type: String,
     val status: String,
     val userId: String,
+    val year: String,
     @PrimaryKey
     @ColumnInfo(name = "created_at")
-    val createdAt: Long,
+    val createdMillis: Long,
     @ColumnInfo(name = "updated_at")
-    val updateAt: Long,
+    val updateMillis: Long,
     @ColumnInfo(name = "start_date")
-    val startDate: Long,
+    var startMillis: Long,
     @ColumnInfo(name = "end_date")
-    val endDate: Long
+    var endMillis: Long
 )

@@ -38,7 +38,7 @@ suspend fun <T> getRequestResult(call: suspend () -> Response<T>): RequestResult
             if (body != null) return RequestResult.Success(
                 body
             )
-        }else if (response.errorBody() != null) {
+        } else if (response.errorBody() != null) {
             val errorBody = response.errorBody()
             return RequestResult.Error(
                 Exception("error body:  ${errorBody?.string()}")

@@ -5,14 +5,17 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.kasianov.sergei.absence.R
 import com.kasianov.sergei.absence.databinding.FragmentAbsenceDetailsBinding
 import com.kasianov.sergei.absence.di.AbsenceComponent
 import com.kasianov.sergei.core_api.AppWithFacade
 import com.kasianov.sergei.core_api.extentions.*
+import com.kasianov.sergei.core_api.model.dto.AbsenceDTO
 import com.kasianov.sergei.core_api.utils.CalcDateUtils
 import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
@@ -28,7 +31,7 @@ class AbsenceDetailsFragment : Fragment() {
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private val viewModel: AbsenceDetailsViewModel by viewModels { viewModelFactory }
     private lateinit var binding: FragmentAbsenceDetailsBinding
-    private lateinit var absenceId: String
+    private lateinit var absenceCreatedMillis: String
     private lateinit var absenceCalendar: CalendarLayout
     private val headerDateFormatter = DateTimeFormatter.ofPattern("EEE'\n'd MMM")
 
@@ -51,23 +54,22 @@ class AbsenceDetailsFragment : Fragment() {
         setUpUI()
         setObservers()
 
-        //if (absenceId.isNotBlank()) {
-            //viewModel.getAbsence(absenceId)
-        //}
+        if (absenceCreatedMillis.isNotBlank()) {
+            viewModel.getAbsence(absenceCreatedMillis)
+        }
     }
 
     private fun setObservers() {
-        /*viewModel.selectedAbsence.observe(viewLifecycleOwner, Observer {
-            it.fieldName?.let {  }
+        viewModel.selectedAbsence.observe(viewLifecycleOwner, Observer {
             updateUi(it)
-        })*/
+        })
     }
 
     private fun setUpUI() {
         absenceCalendar = binding.calendarAbsenceLayout
         absenceCalendar.setUpCalendar(
             calcDateUtils,
-            { startDate, endDate -> /*TODO: here dates are saved*/ },
+            { startDate, endDate -> viewModel.setAbsenceDates(startDate, endDate) },
             { startDate, endDate -> bindSummaryViews(startDate, endDate) }
         )
 
@@ -91,7 +93,9 @@ class AbsenceDetailsFragment : Fragment() {
         }
     }
 
-    private fun updateUi() {
-        // UI related logic here
+    private fun updateUi(it: AbsenceDTO) {
+        Toast
+            .makeText(context, "Updated ${it.startMillis}, ${it.endMillis}", Toast.LENGTH_SHORT)
+            .show()
     }
 }

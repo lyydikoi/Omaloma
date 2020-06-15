@@ -36,7 +36,8 @@ class PubHolListFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        PublicHolidaysComponent.create((requireActivity().application as AppWithFacade).getFacade())
+        PublicHolidaysComponent
+            .create((requireActivity().application as AppWithFacade).getFacade())
             .inject(this)
     }
 
@@ -47,12 +48,12 @@ class PubHolListFragment : Fragment() {
             if (!it.isNullOrEmpty()) adapter.swapData(it)
         })
 
-        viewModel.selectedPubHoliday.observe(viewLifecycleOwner,
-            EventObserver { selectedPubHol ->
-                findNavController().navigate(
-                    R.id.pubHolidayDetailsFragment,
-                    bundleOf(KEY_PUBLIC_HOLIDAY_NAME to selectedPubHol.name))
-            })
+        viewModel.selectedPubHoliday.observe(viewLifecycleOwner, EventObserver { selectedPubHol ->
+            findNavController().navigate(
+                R.id.pubHolidayDetailsFragment,
+                bundleOf(KEY_PUBLIC_HOLIDAY_NAME to selectedPubHol.name)
+            )
+        })
 
         viewModel.loading.observe(viewLifecycleOwner, Observer {
             binding.pbLoading.visibility = if (it) VISIBLE else GONE

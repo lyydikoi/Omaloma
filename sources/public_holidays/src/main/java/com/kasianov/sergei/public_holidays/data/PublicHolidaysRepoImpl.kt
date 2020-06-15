@@ -22,8 +22,9 @@ class PublicHolidaysRepoImpl @Inject constructor(
         return if (dbData.isNotEmpty()) {
             RequestResult.Success(dbData)
         } else {
-            when (val publicHolidaysResult
-                    = getRequestResult { pubHolidayApiService.getPublicHolidays(year, country) }) {
+            when (val publicHolidaysResult =
+                getRequestResult { pubHolidayApiService.getPublicHolidays(year, country) }) {
+
                 is RequestResult.Success -> {
                     saveHolidaysWithYear(year, publicHolidaysResult.data)
                     RequestResult.Success(publicHolidaysResult.data)
@@ -43,7 +44,7 @@ class PublicHolidaysRepoImpl @Inject constructor(
         return publicHolidayDao.getPublicHoliday(name, year, country)
     }
 
-    override suspend fun saveAllPublicHolidays(holidaysList: List<PublicHolidayDTO>)
-            = publicHolidayDao.insertAllPublicHolidays(holidaysList)
+    override suspend fun saveAllPublicHolidays(holidaysList: List<PublicHolidayDTO>) =
+        publicHolidayDao.insertAllPublicHolidays(holidaysList)
 
 }

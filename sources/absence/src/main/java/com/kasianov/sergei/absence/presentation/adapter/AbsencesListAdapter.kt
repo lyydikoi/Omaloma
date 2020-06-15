@@ -9,9 +9,7 @@ import com.kasianov.sergei.core_api.model.dto.AbsenceDTO
 
 class AbsencesListAdapter(
     private val interaction: (Int) -> Unit
-) : ListAdapter<AbsenceDTO, AbsenceItemViewHolder>(
-    UserDC()
-) {
+) : ListAdapter<AbsenceDTO, AbsenceItemViewHolder>(AbsencesDiffUtils()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         AbsenceItemViewHolder(
@@ -22,12 +20,16 @@ class AbsencesListAdapter(
     override fun onBindViewHolder(holder: AbsenceItemViewHolder, position: Int) =
         holder.bind(getItem(position))
 
-    private class UserDC : DiffUtil.ItemCallback<AbsenceDTO>() {
+    fun swapData(data: List<AbsenceDTO>) {
+        submitList(data)
+    }
+
+    private class AbsencesDiffUtils : DiffUtil.ItemCallback<AbsenceDTO>() {
         override fun areItemsTheSame(
             oldItem: AbsenceDTO,
             newItem: AbsenceDTO
         ): Boolean {
-            return oldItem.createdAt == newItem.createdAt
+            return oldItem.createdMillis == newItem.createdMillis
         }
 
         override fun areContentsTheSame(

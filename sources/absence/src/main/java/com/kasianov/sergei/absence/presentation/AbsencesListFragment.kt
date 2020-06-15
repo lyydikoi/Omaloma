@@ -7,15 +7,20 @@ import androidx.fragment.app.viewModels
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.kasianov.sergei.absence.R
 import com.kasianov.sergei.absence.databinding.FragmentAbsencesListBinding
 import com.kasianov.sergei.absence.di.AbsenceComponent
 import com.kasianov.sergei.absence.presentation.adapter.AbsencesListAdapter
 import com.kasianov.sergei.core_api.AppWithFacade
+import com.kasianov.sergei.core_api.extentions.EventObserver
 import javax.inject.Inject
 
+const val KEY_ABSENCE_CREATED_MILLIS = "absence_created_millis"
 
 class AbsencesListFragment : Fragment() {
 
@@ -23,7 +28,7 @@ class AbsencesListFragment : Fragment() {
     private val viewModel: AbsencesListViewModel by viewModels { viewModelFactory }
     private lateinit var binding: FragmentAbsencesListBinding
     private val adapter by lazy {
-        AbsencesListAdapter { position -> /*viewModel.setSelectedImage(position)*/ }
+        AbsencesListAdapter { position -> viewModel.setAbsenceSelected(position) }
     }
 
     override fun onAttach(context: Context) {
@@ -44,29 +49,31 @@ class AbsencesListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setUpUI()
         setObservers()
-
-        /*if (publicHolidayName.isNotBlank()) {
-            viewModel.getPublicHoliday(publicHolidayName)
-        }*/
     }
 
     private fun setObservers() {
-/*        viewModel.selectedPubHoliday.observe(viewLifecycleOwner, Observer{
-            it.localName?.let { localName -> viewModel.getWikiPageInfo(localName) }
-            updateUi(it)
-        })*/
+        viewModel.selectedAbsence.observe(viewLifecycleOwner, EventObserver { selectedAbsence ->
+            if (findNavController().currentDestination?.id == R.id.absencesListFragment) {
+                findNavController().navigate(
+                    R.id.absenceDetailsFragment,
+                    bundleOf(KEY_ABSENCE_CREATED_MILLIS to selectedAbsence.createdMillis)
+                )
+            }
+        })
+
+        viewModel.absencesList.observe(viewLifecycleOwner, Observer {
+            if (!it.isNullOrEmpty()) adapter.swapData(it)
+        })
     }
 
     private fun setUpUI() {
-
-        binding.fabNavigateToAbsence.setOnClickListener {
+        binding.fabCreateAbsence.setOnClickListener {
             if (findNavController().currentDestination?.id == R.id.absencesListFragment) {
                 findNavController().navigate(R.id.absenceDetailsFragment)
             }
         }
-        /*binding.rwBottomBar.layoutManager =
-            LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
 
-        binding.rwBottomBar.adapter = adapter*/
+        binding.rwAbsecesList.layoutManager = LinearLayoutManager(context)
+        binding.rwAbsecesList.adapter = adapter
     }
 }
