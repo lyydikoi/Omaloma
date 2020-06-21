@@ -1,9 +1,11 @@
 package com.kasianov.sergei.core_impl.utils
 
+import android.annotation.SuppressLint
 import com.kasianov.sergei.core_api.utils.CalcDateUtils
 import org.threeten.bp.DayOfWeek
 import org.threeten.bp.temporal.WeekFields
 import java.lang.Exception
+import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
 
@@ -11,6 +13,8 @@ const val DEFAULT_YEAR = "2020"
 const val DEFAULT_COUNTRY = "FI"
 
 class CalcDatesUtilsImpl @Inject constructor() : CalcDateUtils {
+    @SuppressLint("SimpleDateFormat")
+    private val normalFormatter = SimpleDateFormat("EEE dd-MMM-yyyy", Locale.getDefault())
 
     /**
      * Calculates all holiday years from given working start date. Assumes, that user is
@@ -137,9 +141,29 @@ class CalcDatesUtilsImpl @Inject constructor() : CalcDateUtils {
         return DEFAULT_YEAR
     }
 
-    override fun millisStringToLong(millis: String): Long? {
+    override fun getCurrentDate(): Date {
+        return Date()
+    }
+
+    override fun getCurrentDateString(): String {
+        return normalFormatter.format(getCurrentDate())
+    }
+
+    override fun dateToNormalDateString(date: Date): String {
+        return normalFormatter.format(date)
+    }
+
+    override fun normalDateStringToDate(dateString: String): Date? {
         return try {
-            millis.toLong()
+            normalFormatter.parse(dateString)
+        } catch (e: Exception) {
+            null
+        }
+    }
+
+    override fun millisStringToLong(millisString: String): Long? {
+        return try {
+            millisString.toLong()
         } catch (e: Exception) {
             null
         }

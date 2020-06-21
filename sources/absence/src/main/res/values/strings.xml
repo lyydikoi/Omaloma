@@ -6,9 +6,10 @@
     <string name="wed">WED</string>
     <string name="thu">THU</string>
     <string name="fri">FRI</string>
-    <string name="sat">SAT</string>
+    <string name="sut">SAT</string>
     <string name="save">Save</string>
     <string name="start_date">Start date</string>
     <string name="end_date">End date</string>
     <string name="absence">Absence</string>
+    <string name="no_date_selected">No date selected…</string>
 </resources>

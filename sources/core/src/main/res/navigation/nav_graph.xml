@@ -99,7 +99,7 @@
 
     <fragment
             android:id="@+id/absenceDetailsFragment"
-            android:name="com.kasianov.sergei.absence.presentation.AbsenceDetailsFragment"
+            android:name="com.kasianov.sergei.absence.presentation.absence_details.AbsenceDetailsFragment"
             android:label="AbsenceDetailsFragment"
             tools:layout="@layout/fragment_absence_details"/>
 

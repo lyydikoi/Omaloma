@@ -24,6 +24,7 @@ ext {
     junitVersion = '4.12'
     legacySupportVersion = '1.0.0'
     lifeCycleExtentionsVersion = '2.2.0'
+    liveDataKtxVersion = '2.2.0-alpha01'
     loggingInterceptorVersion = '3.10.0'
     materialVersion = '1.2.0-alpha05'
     mockitoVersion = '2.8.9'
@@ -36,7 +37,7 @@ ext {
     threetenVersion = '1.2.1'
     timberVersion = '4.7.1'
     truthVersion = '0.44'
-    viewModelCtxVersion = '2.2.0'
+    viewModelKtxVersion = '2.2.0'
 
     // App dependencies
     appCompat = "androidx.appcompat:appcompat:$appCompatVersion"
@@ -44,7 +45,8 @@ ext {
     material = "com.google.android.material:material:$materialVersion"
     legacySupport = "androidx.legacy:legacy-support-v4:$legacySupportVersion"
     lifeCycleExtentions = "androidx.lifecycle:lifecycle-extensions:$lifeCycleExtentionsVersion"
-    lifeCycleViewModelCtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModelCtxVersion"
+    lifeCycleViewModelCtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModelKtxVersion"
+    lifeCycleLiveDataCtx = "androidx.lifecycle:lifecycle-livedata-ktx:$liveDataKtxVersion"
     navigation = "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
     navigationUiKtx = "androidx.navigation:navigation-ui-ktx:$navigationVersion"
     androidXCoreKtx = "androidx.core:core-ktx:1.2.0"

@@ -9,6 +9,7 @@
 
     <!-- App bar -->
     <dimen name="expanded_app_bar_height">200dp</dimen>
+    <dimen name="app_bar_offset">72dp</dimen>
     <dimen name="appbar_image_offset_top">48dp</dimen>
     <dimen name="text_collapsible_appbar_title_size">20sp</dimen>
 
@@ -24,9 +25,12 @@
     <dimen name="swipe_image_height">90dp</dimen>
     <dimen name="swipe_image_padding">12dp</dimen>
 
-    <!--Chart-->
+    <!--Chart -->
     <dimen name="chart_view_size">200dp</dimen>
 
-    <!--Chart-->
+    <!--Chart -->
     <dimen name="calendar_legend_text_size">4sp</dimen>
+
+    <!-- Calendar -->
+    <dimen name="calendar_offset">8dp</dimen>
 </resources>

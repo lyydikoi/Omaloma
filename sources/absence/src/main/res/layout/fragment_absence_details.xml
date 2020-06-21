@@ -3,182 +3,92 @@
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:animateLayoutChanges="true">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="14dp"
-                android:paddingTop="2dp"
-                android:paddingEnd="14dp"
-                android:paddingBottom="10dp">
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/main_content_offset"
+            android:layout_marginTop="@dimen/main_content_offset"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_arrow_back_24" />
 
-            <TextView
-                    android:id="@+id/tvStartDate"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="8dp"
-                    android:gravity="start|center_vertical"
-                    android:minLines="2"
-                    android:textColor="@color/colorGrey"
-                    android:textSize="26sp"
-                    app:layout_constraintEnd_toStartOf="@+id/tvEndDate"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintHorizontal_chainStyle="spread"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Mon\n22 Apr" />
+        <TextView
+            android:id="@+id/tvStartDate"
+            style="@style/MainHeaderText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/main_content_offset"
+            android:layout_marginEnd="@dimen/main_content_offset"
+            android:gravity="end|center_vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/ivOpenCalendar"
+            app:layout_constraintEnd_toStartOf="@+id/ivOpenCalendar"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ivOpenCalendar"
+            tools:text="Mon 22 Apr" />
 
-            <TextView
-                    android:id="@+id/tvEndDate"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="16dp"
-                    android:gravity="end|center_vertical"
-                    android:minLines="2"
-                    android:textColor="@color/colorGrey"
-                    android:textSize="26sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/tvStartDate"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Thu\n9 May" />
+        <TextView
+            android:id="@+id/tvEndDate"
+            style="@style/MainHeaderText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/main_content_offset"
+            android:layout_marginEnd="@dimen/main_content_offset"
+            android:gravity="start|center_vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/ivOpenCalendar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/ivOpenCalendar"
+            app:layout_constraintTop_toTopOf="@+id/ivOpenCalendar"
+            tools:text="Thu 9 May" />
 
+        <ImageView
+            android:id="@+id/ivOpenCalendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/app_bar_offset"
+            android:visibility="invisible"
+            android:src="@drawable/ic_calendar_omaloma_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <View
-                    android:id="@+id/exFourHeaderDivider"
-                    android:layout_width="0dp"
-                    android:layout_height="2dp"
-                    android:layout_marginTop="16dp"
-                    android:background="#EAEAEA"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvStartDate" />
-
-            <!--<androidx.constraintlayout.widget.Group
-                    android:id="@+id/groupCalendarLegend"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="visible"
-                    app:constraint_referenced_ids="legendText1,legendText2,legendText3,legendText4,legendText5,legendText6,legendText7" />
-
-            <TextView
-                    android:id="@+id/legendText5"
-                    style="@style/CalendarLegendText"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/thu"
-                    app:layout_constraintEnd_toStartOf="@+id/legendText6"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/legendText4"
-                    app:layout_constraintTop_toBottomOf="@id/exFourHeaderDivider" />
-
-            <TextView
-                    android:id="@+id/legendText6"
-                    style="@style/CalendarLegendText"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/fri"
-                    app:layout_constraintEnd_toStartOf="@+id/legendText7"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/legendText5"
-                    app:layout_constraintTop_toBottomOf="@id/exFourHeaderDivider" />
-
-            <TextView
-                    android:id="@+id/legendText7"
-                    style="@style/CalendarLegendText"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/sat"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/legendText6"
-                    app:layout_constraintTop_toBottomOf="@id/exFourHeaderDivider" />
-
-            <TextView
-                    android:id="@+id/legendText4"
-                    style="@style/CalendarLegendText"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/wed"
-                    app:layout_constraintEnd_toStartOf="@+id/legendText5"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/legendText3"
-                    app:layout_constraintTop_toBottomOf="@id/exFourHeaderDivider" />
-
-            <TextView
-                    android:id="@+id/legendText3"
-                    style="@style/CalendarLegendText"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/tue"
-                    app:layout_constraintEnd_toStartOf="@+id/legendText4"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/legendText2"
-                    app:layout_constraintTop_toBottomOf="@id/exFourHeaderDivider" />
-
-            <TextView
-                    android:id="@+id/legendText2"
-                    style="@style/CalendarLegendText"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/mon"
-                    app:layout_constraintEnd_toStartOf="@+id/legendText3"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/legendText1"
-                    app:layout_constraintTop_toBottomOf="@id/exFourHeaderDivider" />
-
-            <TextView
-                    android:id="@+id/legendText1"
-                    style="@style/CalendarLegendText"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/sun"
-                    app:layout_constraintEnd_toStartOf="@+id/legendText2"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintHorizontal_chainStyle="spread"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/exFourHeaderDivider" />
-
-            <com.kizitonwose.calendarview.CalendarView
-                    android:id="@+id/calendarAbsence"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:clipToPadding="false"
-                    android:paddingBottom="100dp"
-                    app:cv_dayViewResource="@layout/layout_calendar_day"
-                    app:cv_monthHeaderResource="@layout/tv_calendar_header" />
-
-            <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnSaveDates"
-                    android:layout_width="0dp"
-                    android:layout_height="60dp"
-                    android:text="@string/save"
-                    app:backgroundTint="@color/colorAccent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />-->
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <include
+            android:id="@+id/include"
+            layout="@layout/calendar_day_legend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="@dimen/main_content_offset"
+            android:layout_marginEnd="@dimen/calendar_offset"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivOpenCalendar" />
 
         <com.kasianov.sergei.absence.presentation.CalendarLayout
-                android:id="@+id/calendarAbsenceLayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/exFourHeaderDivider" />
-    </LinearLayout>
+            android:id="@+id/calendarAbsenceLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/calendar_offset"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/groupCalendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:constraint_referenced_ids="calendarAbsenceLayout,include" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,0 +1,70 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/legendLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/legendText1"
+        style="@style/CalendarLegendText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/sun" />
+
+    <TextView
+        android:id="@+id/legendText2"
+        style="@style/CalendarLegendText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/mon" />
+
+    <TextView
+        android:id="@+id/legendText3"
+        style="@style/CalendarLegendText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/tue" />
+
+    <TextView
+        android:id="@+id/legendText4"
+        style="@style/CalendarLegendText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/wed" />
+
+    <TextView
+        android:id="@+id/legendText5"
+        style="@style/CalendarLegendText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/thu" />
+
+    <TextView
+        android:id="@+id/legendText6"
+        style="@style/CalendarLegendText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/fri" />
+
+    <TextView
+        android:id="@+id/legendText7"
+        style="@style/CalendarLegendText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/sut" />
+</LinearLayout>

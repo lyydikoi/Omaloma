@@ -1,128 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">-->
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <com.kizitonwose.calendarview.CalendarView
+        android:id="@+id/calendarAbsence"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingBottom="100dp"
+        app:cv_dayViewResource="@layout/layout_calendar_day"
+        app:cv_monthHeaderResource="@layout/tv_calendar_header"
+        app:layout_constraintBottom_toTopOf="@+id/btnSaveDates"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.Group
-                android:id="@+id/groupCalendarLegend"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="visible"
-                app:constraint_referenced_ids="legendText1,legendText2,legendText3,legendText4,legendText5,legendText6,legendText7" />
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSaveDates"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:text="@string/save"
+            app:backgroundTint="@color/colorAccent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-                android:id="@+id/legendText5"
-                style="@style/CalendarLegendText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/thu"
-                app:layout_constraintEnd_toStartOf="@+id/legendText6"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/legendText4"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-                android:id="@+id/legendText6"
-                style="@style/CalendarLegendText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/fri"
-                app:layout_constraintEnd_toStartOf="@+id/legendText7"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/legendText5"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-                android:id="@+id/legendText7"
-                style="@style/CalendarLegendText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/sat"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/legendText6"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-                android:id="@+id/legendText4"
-                style="@style/CalendarLegendText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/wed"
-                app:layout_constraintEnd_toStartOf="@+id/legendText5"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/legendText3"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-                android:id="@+id/legendText3"
-                style="@style/CalendarLegendText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/tue"
-                app:layout_constraintEnd_toStartOf="@+id/legendText4"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/legendText2"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-                android:id="@+id/legendText2"
-                style="@style/CalendarLegendText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/mon"
-                app:layout_constraintEnd_toStartOf="@+id/legendText3"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/legendText1"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-                android:id="@+id/legendText1"
-                style="@style/CalendarLegendText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/sun"
-                app:layout_constraintEnd_toStartOf="@+id/legendText2"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintHorizontal_chainStyle="spread"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        <com.kizitonwose.calendarview.CalendarView
-                android:id="@+id/calendarAbsence"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:clipToPadding="false"
-                android:paddingBottom="100dp"
-                app:cv_dayViewResource="@layout/layout_calendar_day"
-                app:cv_monthHeaderResource="@layout/tv_calendar_header"
-                app:layout_constraintBottom_toTopOf="@+id/btnSaveDates"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/legendText4" />
-
-        <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnSaveDates"
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:text="@string/save"
-                app:backgroundTint="@color/colorAccent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-<!--
-</layout>-->
+</androidx.constraintlayout.widget.ConstraintLayout>
