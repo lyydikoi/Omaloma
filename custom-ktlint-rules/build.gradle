@@ -1,0 +1,15 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    compileOnly "com.github.shyiko.ktlint:ktlint-core:0.27.0"
+    testCompile "junit:junit:4.13"
+    testCompile "org.assertj:assertj-core:3.12.2"
+    testCompile "com.github.shyiko.ktlint:ktlint-core:0.27.0"
+    testCompile "com.github.shyiko.ktlint:ktlint-test:0.27.0"
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"

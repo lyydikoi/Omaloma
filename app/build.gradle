@@ -111,6 +111,7 @@ dependencies {
     implementation project(':sources:public_holidays')
     implementation project(':sources:absence')
     implementation project(':sources:user')
+    implementation project(':custom-ktlint-rules')
 
     // Dependencies for local unit tests
     androidTestImplementation "androidx.test:runner:$testRunnerVeriosn"
