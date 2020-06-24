@@ -9,7 +9,7 @@ interface AbsenceRepo {
 
     suspend fun saveAbsence(absence: AbsenceDTO)
 
-    suspend fun getAllAbsences(year: String): List<AbsenceDTO>
+    val allAbsences: LiveData<List<AbsenceDTO>>
 
     suspend fun updateAbsence(absence: AbsenceDTO)
 

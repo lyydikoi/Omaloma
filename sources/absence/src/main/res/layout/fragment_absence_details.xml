@@ -14,11 +14,24 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/main_content_offset"
             android:layout_marginTop="@dimen/main_content_offset"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_arrow_back_24" />
+
+        <ImageView
+            android:id="@+id/ivCloseCalendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/main_content_offset"
+            android:layout_marginTop="@dimen/main_content_offset"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_close_24" />
 
         <TextView
             android:id="@+id/tvStartDate"
@@ -62,33 +75,24 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <include
-            android:id="@+id/include"
-            layout="@layout/calendar_day_legend"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="@dimen/main_content_offset"
-            android:layout_marginEnd="@dimen/calendar_offset"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivOpenCalendar" />
-
         <com.kasianov.sergei.absence.presentation.CalendarLayout
             android:id="@+id/calendarAbsenceLayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_margin="@dimen/calendar_offset"
+            android:layout_marginTop="@dimen/main_content_offset"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/include" />
+            app:layout_constraintTop_toBottomOf="@+id/ivOpenCalendar" />
 
-        <androidx.constraintlayout.widget.Group
-            android:id="@+id/groupCalendar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="visible"
-            app:constraint_referenced_ids="calendarAbsenceLayout,include" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSaveAbsence"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:text="@string/save"
+            app:backgroundTint="@color/colorAccent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

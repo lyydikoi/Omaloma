@@ -9,12 +9,15 @@ interface UIModelContract {
         data class Failure(val message: String) : UIState()
         data class Success(val absence: AbsenceDTO) : UIState()
         data class ChoosingDate(val startDate: String, val endDate: String?) : UIState()
+        object NavigatingBack : UIState()
     }
 
     sealed class Action {
         data class GetAbsence(val millisCreated: String?) : Action()
         data class SetDate(val startDate: String, val endDate: String?) : Action()
-        data class SaveAbsence(val data: AbsenceDTO) : Action()
+        object SaveAbsence : Action()
+        object CloseCalendar : Action()
         object ChangeDate : Action()
+        object CloseDetailsView : Action()
     }
 }

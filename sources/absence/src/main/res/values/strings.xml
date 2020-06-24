@@ -12,4 +12,5 @@
     <string name="end_date">End date</string>
     <string name="absence">Absence</string>
     <string name="no_date_selected">No date selected…</string>
+    <string name="set_dates">Set dates</string>
 </resources>

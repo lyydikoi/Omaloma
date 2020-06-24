@@ -5,24 +5,34 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <com.kizitonwose.calendarview.CalendarView
-        android:id="@+id/calendarAbsence"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:clipToPadding="false"
-        android:paddingBottom="100dp"
-        app:cv_dayViewResource="@layout/layout_calendar_day"
-        app:cv_monthHeaderResource="@layout/tv_calendar_header"
-        app:layout_constraintBottom_toTopOf="@+id/btnSaveDates"
+    <include
+        android:id="@+id/layout_calendar_legend"
+        layout="@layout/calendar_day_legend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/main_content_offset"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/ivOpenCalendar" />
+
+    <com.kizitonwose.calendarview.CalendarView
+            android:id="@+id/calendarAbsence"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:paddingBottom="100dp"
+            app:cv_dayViewResource="@layout/layout_calendar_day"
+            app:cv_monthHeaderResource="@layout/tv_calendar_header"
+            app:layout_constraintBottom_toTopOf="@+id/btnSaveDates"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_calendar_legend" />
 
     <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSaveDates"
             android:layout_width="0dp"
             android:layout_height="60dp"
-            android:text="@string/save"
+            android:text="@string/set_dates"
             app:backgroundTint="@color/colorAccent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

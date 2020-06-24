@@ -9,7 +9,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.view.children
 import com.google.android.material.snackbar.Snackbar
-import com.jakewharton.threetenabp.AndroidThreeTen.init
 import com.kasianov.sergei.absence.R
 import com.kasianov.sergei.core_api.extentions.*
 import com.kasianov.sergei.core_api.utils.CalcDateUtils
@@ -25,7 +24,6 @@ import kotlinx.android.synthetic.main.layout_calendar_day.view.*
 import kotlinx.android.synthetic.main.tv_calendar_header.view.*
 import org.threeten.bp.LocalDate
 import org.threeten.bp.YearMonth
-import org.threeten.bp.ZoneId
 import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.format.TextStyle
 import java.util.*
@@ -39,29 +37,27 @@ class CalendarLayout @JvmOverloads constructor(
 ) : LinearLayout(context, attrs, defStyleAttr) {
     private val normalDateFormatter = DateTimeFormatter.ofPattern("EEE dd-MMM-yyyy", Locale.getDefault())
 
-    private val calendarSelectedBgStart: GradientDrawable by lazy {
-        this.context.getDrawableCompat(R.drawable.shape_calendar_selected_bg_start) as GradientDrawable
-    }
-    private val calendarSelectedBgEnd: GradientDrawable by lazy {
-        this.context.getDrawableCompat(R.drawable.shape_calendar_selected_bg_end) as GradientDrawable
-    }
     private val todayDate = LocalDate.now()
     private var startDate: LocalDate? = null
     private var endDate: LocalDate? = null
-    /*private lateinit var calendarView: CalendarView*/
+    private var calendarView: CalendarView
+    private lateinit var datesSelectedInteraction: (String, String?) -> Unit
 
     init {
         LayoutInflater.from(context).inflate(R.layout.layout_calendar, this)
-        /*calendarView =
-            this.findViewById<com.kizitonwose.calendarview.CalendarView>(R.id.calendarAbsence)*/
+        calendarView = this.findViewById(R.id.calendarAbsence)
     }
 
     fun setDates(startDateString: String, endDateString: String?) {
-        /*startDate = LocalDate.parse(startDateString, normalDateFormatter)
-        endDateString?.let {
-            endDate = LocalDate.parse(it, normalDateFormatter)
+        startDate = LocalDate.parse(startDateString, normalDateFormatter)
+        if (!endDateString.isNullOrBlank() && endDateString != startDateString) {
+            endDate = LocalDate.parse(endDateString, normalDateFormatter)
         }
-        calendarView.notifyCalendarChanged()*/
+        datesSelectedInteraction(
+            startDateString,
+            endDateString
+        )
+        calendarView.notifyCalendarChanged()
     }
 
     fun setUpCalendar(
@@ -69,8 +65,15 @@ class CalendarLayout @JvmOverloads constructor(
         saveDatesInteraction: (String, String?) -> Unit,
         datesSelectedInteraction: (String, String?) -> Unit
     ) {
-        val calendarView =
-            this.findViewById<com.kizitonwose.calendarview.CalendarView>(R.id.calendarAbsence)
+        this.datesSelectedInteraction = datesSelectedInteraction
+
+        val calendarSelectedBgStart: GradientDrawable by lazy {
+            this.context.getDrawableCompat(R.drawable.shape_calendar_selected_bg_start) as GradientDrawable
+        }
+        val calendarSelectedBgEnd: GradientDrawable by lazy {
+            this.context.getDrawableCompat(R.drawable.shape_calendar_selected_bg_end) as GradientDrawable
+        }
+
         calendarView.post {
             val radius = ((calendarAbsence.width / DAYS_IN_ROW_COUNT) / 2).toFloat()
             calendarSelectedBgStart.setCornerRadiusExt(topLeft = radius, bottomLeft = radius)
@@ -79,13 +82,12 @@ class CalendarLayout @JvmOverloads constructor(
 
         // Set the First day of week depending on Locale
         val daysOfWeek = calcDateUtils.daysOfWeekFromLocale()
-        /*this.findViewById<LinearLayout>(R.id.legendLayout).children.forEachIndexed { index, view ->
+        val legendLayout = this.findViewById<LinearLayout>(R.id.layout_calendar_legend)
+        legendLayout?.children?.forEachIndexed { index, view ->
             (view as TextView).apply {
                 text = daysOfWeek[index].getDisplayName(TextStyle.SHORT, Locale.ENGLISH)
-                *//*textSize = resources.getDimension(R.dimen.calendar_legend_text_size)
-                setTextColorRes(R.color.colorTextSecondary)*//*
             }
-        }*/
+        }
 
         val currentMonth = YearMonth.now()
         calendarView.setup(currentMonth, currentMonth.plusMonths(12), daysOfWeek.first())
@@ -216,7 +218,7 @@ class CalendarLayout @JvmOverloads constructor(
         }
 
         btnSaveDates.setOnClickListener click@{
-            /*startDate?.let { sd ->
+            startDate?.let { sd ->
                 saveDatesInteraction(
                     normalDateFormatter.format(sd),
                     endDate?.let { ed -> normalDateFormatter.format(ed) }
@@ -225,19 +227,16 @@ class CalendarLayout @JvmOverloads constructor(
                 val infoText = endDate?.let {
                     "Selected: ${normalDateFormatter.format(startDate)} - ${normalDateFormatter.format(it)}"
                 } ?: "Selected: ${normalDateFormatter.format(startDate)}"
-                Snackbar.make(this, infoText, Snackbar.LENGTH_LONG).show()
 
-            } ?: Snackbar.make(this, resources.getString(R.string.no_date_selected), Snackbar.LENGTH_LONG).show()*/
+                Snackbar.make(this, infoText, Snackbar.LENGTH_LONG).show()
+            } ?: Snackbar.make(this, resources.getString(R.string.no_date_selected), Snackbar.LENGTH_LONG).show()
         }
 
-        /*startDate?.let { sd ->
+        startDate?.let { sd ->
             datesSelectedInteraction(
                 normalDateFormatter.format(sd),
                 endDate?.let { ed -> normalDateFormatter.format(ed) }
             )
-        }*/
+        }
     }
-
-    private fun LocalDate.toMillis(zone: ZoneId = ZoneId.systemDefault()) =
-        this.atStartOfDay(zone).toEpochSecond()
 }

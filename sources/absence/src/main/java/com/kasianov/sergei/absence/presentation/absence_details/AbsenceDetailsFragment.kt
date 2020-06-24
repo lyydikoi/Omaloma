@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
 import com.kasianov.sergei.absence.R
 import com.kasianov.sergei.absence.databinding.FragmentAbsenceDetailsBinding
 import com.kasianov.sergei.absence.di.AbsenceComponent
@@ -46,48 +48,57 @@ class AbsenceDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAbsenceDetailsBinding.inflate(inflater, container, false)
-
-        absenceCreatedMillis = arguments?.getString(KEY_ABSENCE_CREATED_MILLIS)
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        absenceCreatedMillis = arguments?.getString(KEY_ABSENCE_CREATED_MILLIS)
+        val args = arguments
+
         setUpUI()
 
         viewModel.uiState.observe(viewLifecycleOwner, Observer { updateUi(it) })
-        viewModel.handleAction(UIModelContract.Action.GetAbsence(absenceCreatedMillis))
-    }
 
+        if(savedInstanceState == null) {
+            viewModel.handleAction(UIModelContract.Action.GetAbsence(absenceCreatedMillis))
+        }
+    }
 
     private fun setUpUI() {
         absenceCalendar = binding.calendarAbsenceLayout
         absenceCalendar.setUpCalendar(
-            calcDateUtils,
-            { startDate, endDate ->
+            calcDateUtils = calcDateUtils,
+            saveDatesInteraction = { startDate, endDate ->
                 viewModel.handleAction(UIModelContract.Action.SetDate(startDate, endDate))
             },
-            { startDate, endDate ->
+            datesSelectedInteraction = { startDate, endDate ->
                 bindCalendarSummaryViews(startDate, endDate)
             }
         )
-        bindCalendarSummaryViews()
-
         binding.ivOpenCalendar.setOnClickListener {
             viewModel.handleAction(UIModelContract.Action.ChangeDate)
+        }
+        binding.ivCloseCalendar.setOnClickListener {
+            viewModel.handleAction(UIModelContract.Action.CloseCalendar)
+        }
+        binding.ivBack.setOnClickListener {
+            viewModel.handleAction(UIModelContract.Action.CloseDetailsView)
+        }
+        binding.btnSaveAbsence.setOnClickListener{
+            viewModel.handleAction(UIModelContract.Action.SaveAbsence)
         }
     }
 
     private fun bindCalendarSummaryViews(startDate: String? = null, endDate: String? = null) {
-        if (startDate != null) {
+        if (!startDate.isNullOrBlank()) {
             binding.tvStartDate.text = startDate
             binding.tvStartDate.setTextColorRes(R.color.colorTextSecondary)
         } else {
             binding.tvStartDate.text = getString(R.string.start_date)
             binding.tvStartDate.setTextColor(Color.GRAY)
         }
-        if (endDate != null) {
+        if (!startDate.isNullOrBlank()) {
             binding.tvEndDate.text = endDate
             binding.tvEndDate.setTextColorRes(R.color.colorTextSecondary)
         } else {
@@ -99,24 +110,28 @@ class AbsenceDetailsFragment : Fragment() {
     private fun updateUi(uiState: UIModelContract.UIState) {
         when(uiState) {
             is UIModelContract.UIState.ChoosingDate -> {
-                binding.groupCalendar.visibility = VISIBLE
-                binding.calendarAbsenceLayout.visibility = VISIBLE
                 binding.ivBack.visibility = GONE
                 binding.ivOpenCalendar.visibility = INVISIBLE
                 absenceCalendar.setDates(
                     uiState.startDate,
                     uiState.endDate
                 )
+                binding.calendarAbsenceLayout.visibility = VISIBLE
+                binding.ivCloseCalendar.visibility = VISIBLE
+                binding.btnSaveAbsence.visibility = GONE
             }
             is UIModelContract.UIState.Success -> {
-                binding.groupCalendar.visibility = GONE
+                binding.calendarAbsenceLayout.visibility = GONE
+                binding.ivCloseCalendar.visibility = GONE
                 binding.ivBack.visibility = VISIBLE
                 binding.ivOpenCalendar.visibility = VISIBLE
                 binding.calendarAbsenceLayout.setDates(
                     uiState.absence.startDate,
                     uiState.absence.endDate
                 )
+                binding.btnSaveAbsence.visibility = VISIBLE
             }
+            is UIModelContract.UIState.NavigatingBack -> findNavController().popBackStack()
         }
     }
 }

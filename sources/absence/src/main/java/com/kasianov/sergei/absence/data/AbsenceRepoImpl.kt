@@ -14,8 +14,7 @@ class AbsenceRepoImpl @Inject constructor(
 
     override suspend fun saveAbsence(absence: AbsenceDTO) = absenceDao.insertAbsence(absence)
 
-    override suspend fun getAllAbsences(year: String): List<AbsenceDTO> =
-        absenceDao.getAllAbsences(year)
+    override val allAbsences: LiveData<List<AbsenceDTO>> = absenceDao.getAllAbsences()
 
     override suspend fun updateAbsence(absence: AbsenceDTO) = absenceDao.updateAbsence(absence)
 

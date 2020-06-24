@@ -28,6 +28,7 @@ class AbsencesListFragment : Fragment() {
     private val viewModel: AbsencesListViewModel by viewModels { viewModelFactory }
     private lateinit var binding: FragmentAbsencesListBinding
     private val adapter by lazy {
+        // TODO: Change to Action handling like in AbsenceDetailsFragment
         AbsencesListAdapter { position -> viewModel.setAbsenceSelected(position) }
     }
 
@@ -52,13 +53,12 @@ class AbsencesListFragment : Fragment() {
     }
 
     private fun setObservers() {
+        // TODO: change to observe UIState like in AbsenceDetailsFragment
         viewModel.selectedAbsence.observe(viewLifecycleOwner, EventObserver { selectedAbsence ->
-            if (findNavController().currentDestination?.id == R.id.absencesListFragment) {
-                findNavController().navigate(
-                    R.id.absenceDetailsFragment,
-                    bundleOf(KEY_ABSENCE_CREATED_MILLIS to selectedAbsence.createdMillis)
-                )
-            }
+            findNavController().navigate(
+                R.id.absenceDetailsFragment,
+                bundleOf(KEY_ABSENCE_CREATED_MILLIS to selectedAbsence.createdMillis.toString())
+            )
         })
 
         viewModel.absencesList.observe(viewLifecycleOwner, Observer {
@@ -67,6 +67,7 @@ class AbsencesListFragment : Fragment() {
     }
 
     private fun setUpUI() {
+        // TODO: Change to Action handling like in AbsenceDetailsFragment
         binding.fabCreateAbsence.setOnClickListener {
             if (findNavController().currentDestination?.id == R.id.absencesListFragment) {
                 findNavController().navigate(R.id.absenceDetailsFragment)

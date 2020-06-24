@@ -7,16 +7,16 @@ import java.util.*
 
 @Entity(tableName = "absence_table")
 data class AbsenceDTO(
-    val title: String = "",
-    val type: String = "",
-    val status: String = "",
-    val userId: String = "",
-    val year: String = "",
+    var title: String = "",
+    var type: String = "",
+    var status: String = "",
+    var userId: String = "",
+    var year: String = "",
     @PrimaryKey
     @ColumnInfo(name = "created_at")
-    val createdMillis: Long = 0,
+    var createdMillis: Long = 0,
     @ColumnInfo(name = "updated_at")
-    val updateMillis: Long = 0,
+    var updateMillis: Long = 0,
     @ColumnInfo(name = "start_date")
     var startDate: String,
     @ColumnInfo(name = "end_date")

@@ -5,7 +5,6 @@ import com.kasianov.sergei.absence.data.AbsenceRepo
 import com.kasianov.sergei.core.ui.BaseViewModel
 import com.kasianov.sergei.core_api.model.dto.AbsenceDTO
 import com.kasianov.sergei.core_api.utils.CalcDateUtils
-import java.util.*
 import javax.inject.Inject
 
 class AbsenceDetailsViewModel @Inject internal constructor(
@@ -13,14 +12,16 @@ class AbsenceDetailsViewModel @Inject internal constructor(
     private val calcDateUtils: CalcDateUtils
 ): BaseViewModel() {
 
-    private val _selectedAbsence by lazy { MutableLiveData<AbsenceDTO>() }
-    private val _absenceToSave = MutableLiveData(
+    private val _selectedAbsence by lazy { MutableLiveData(
         AbsenceDTO(
             startDate = calcDateUtils.getCurrentDateString(),
-            endDate = calcDateUtils.getCurrentDateString()
+            endDate = ""
         )
-    )
+    )}
     private val _changeDatesEvent by lazy { MutableLiveData<Boolean>() }
+    private val _setDatesEvent by lazy { MutableLiveData<Boolean>() }
+    private val _closeCalendarEvent by lazy { MutableLiveData<Boolean>() }
+    private val _closeDetailsViewEvent by lazy { MutableLiveData<Boolean>() }
 
     private val _uiState: MediatorLiveData<UIModelContract.UIState>  = prepareUIStateMediator()
     val uiState: LiveData<UIModelContract.UIState>
@@ -29,13 +30,17 @@ class AbsenceDetailsViewModel @Inject internal constructor(
     fun handleAction(action: UIModelContract.Action) {
         when(action) {
             is UIModelContract.Action.GetAbsence -> getAbsence(action.millisCreated)
-            is UIModelContract.Action.ChangeDate -> { _changeDatesEvent.postValue(true) }
+            is UIModelContract.Action.ChangeDate -> _changeDatesEvent.postValue(true)
             is UIModelContract.Action.SetDate -> {
-                _absenceToSave.value?.also {
+                _selectedAbsence.value?.also {
                     it.startDate = action.startDate
                     it.endDate = action.endDate ?: action.startDate
                 }
+                _setDatesEvent.postValue(true)
             }
+            is UIModelContract.Action.CloseCalendar -> _closeCalendarEvent.postValue(true)
+            is UIModelContract.Action.CloseDetailsView -> _closeDetailsViewEvent.postValue(true)
+            is UIModelContract.Action.SaveAbsence -> saveAbsence()
         }
     }
 
@@ -49,23 +54,26 @@ class AbsenceDetailsViewModel @Inject internal constructor(
                     }
                 }
             }
-        } ?: _selectedAbsence.postValue(
-            // User is creating a new absence
-            AbsenceDTO(
-                startDate = calcDateUtils.getCurrentDateString(),
-                endDate = calcDateUtils.getCurrentDateString()
-            )
-        )
+        } ?: _changeDatesEvent.postValue(true) // User creating new absence
     }
 
-    fun setAbsenceDates(startDate: Date, endDate: Date?) {
-        val currentAbsence: AbsenceDTO? = _selectedAbsence.value
-        currentAbsence?.let { absence ->
-            absence.startDate = calcDateUtils.dateToNormalDateString(startDate)
-            endDate?.let { absence.endDate = calcDateUtils.dateToNormalDateString(endDate) }
-            _selectedAbsence.postValue(absence)
+    private fun saveAbsence() {
+        _selectedAbsence.value?.let { absence ->
+            val isNew = absence.createdMillis == 0L
+            // TODO: change this: get values from UI to create and update absences
+            absence.year = calcDateUtils.getDefaultYear()
+            absence.title = "Test absence"
+            absence.type = "Holiday"
+            if (absence.createdMillis == 0L) {
+                absence.createdMillis = calcDateUtils.getCurrentDate().time
+            } else {
+                absence.updateMillis = calcDateUtils.getCurrentDate().time
+            }
             launchDataLoad {
-                absenceRepo.updateAbsence(absence)
+                if (isNew) {
+                    absenceRepo.saveAbsence(absence)
+                } else absenceRepo.updateAbsence(absence)
+                _closeDetailsViewEvent.postValue(true)
             }
         }
     }
@@ -82,24 +90,31 @@ class AbsenceDetailsViewModel @Inject internal constructor(
             }
         }
         result.addSource(_selectedAbsence) {
-            result.value = _selectedAbsence.value?.let { absence ->
-                if (absence.createdMillis == 0L) {
-                    UIModelContract.UIState.ChoosingDate(
-                        absence.startDate,
-                        absence.endDate
-                    )
-                } else UIModelContract.UIState.Success(it)
+            result.value = _selectedAbsence.value?.let {
+                UIModelContract.UIState.Success(it)
             }
         }
         result.addSource(_changeDatesEvent) {
-            _absenceToSave.value?.let { absence ->
+            _selectedAbsence.value?.let { absence ->
                 result.value = UIModelContract.UIState.ChoosingDate(
                     absence.startDate,
                     absence.endDate
                 )
             }
         }
-
+        result.addSource(_setDatesEvent) {
+            _selectedAbsence.value?.let { absence ->
+                result.value = UIModelContract.UIState.Success(absence)
+            }
+        }
+        result.addSource(_closeCalendarEvent) {
+            _selectedAbsence.value?.let { absence ->
+                result.value = UIModelContract.UIState.Success(absence)
+            }
+        }
+        result.addSource(_closeDetailsViewEvent) {
+            result.value = UIModelContract.UIState.NavigatingBack
+        }
         return result
     }
 }
