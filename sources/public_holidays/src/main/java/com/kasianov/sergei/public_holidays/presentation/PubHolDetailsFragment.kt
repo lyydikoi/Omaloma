@@ -31,7 +31,7 @@ class PubHolDetailsFragment : Fragment() {
     private val viewModel: PubHolDetailsViewModel by viewModels { viewModelFactory }
     private lateinit var binding: FragmentPubHolidayDetailsBinding
     private val adapter by lazy {
-        ImagesListAdapter { position -> viewModel.setSelectedImage(position) }
+        ImagesListAdapter {  }
     }
 
     private var publicHolidayName= ""
@@ -51,42 +51,6 @@ class PubHolDetailsFragment : Fragment() {
         }
 
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setUpUI()
-        setObservers()
-
-        if (publicHolidayName.isNotBlank()) {
-            viewModel.getPublicHoliday(publicHolidayName)
-        }
-    }
-
-    private fun setObservers() {
-        viewModel.selectedPubHoliday.observe(viewLifecycleOwner, Observer{
-                it.localName?.let { localName -> viewModel.getWikiPageInfo(localName) }
-                updateUi(it)
-        })
-
-        viewModel.wikiArticle.observe(viewLifecycleOwner, Observer {
-            showWikiInfo(it)
-            viewModel.getImagesUrlsList(it.pageId.toString())
-        })
-
-        viewModel.wikiImagesUrlsList.observe(viewLifecycleOwner, Observer { images ->
-            binding.rwBottomBar.visibility = if (images.isNotEmpty()) VISIBLE else GONE
-            adapter.swapData(images)
-        })
-
-        viewModel.selectedImageUrl.observe(viewLifecycleOwner,
-            EventObserver { selectedImageUrl ->
-                if (selectedImageUrl.isNotBlank()) showAppBarImage(selectedImageUrl)
-            })
-
-        viewModel.loading.observe(viewLifecycleOwner, Observer {
-            binding.pbLoading.visibility = if (it) VISIBLE else GONE
-        })
     }
 
     private fun setUpUI() {
@@ -113,5 +77,4 @@ class PubHolDetailsFragment : Fragment() {
             .placeholder(R.drawable.ic_image_light_green_48dp)
             .into(binding.ivPubHolidayImage)
     }
-
 }

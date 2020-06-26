@@ -31,7 +31,7 @@ class PubHolListFragment : Fragment() {
     private val viewModel: PubHolListViewModel by viewModels { viewModelFactory }
     private lateinit var binding: FragmentPublicHolidaysListBinding
     private val adapter by lazy {
-        PublicHolidaysListAdapter { position: Int -> viewModel.setHolidaySelected(position) }
+        PublicHolidaysListAdapter {  }
     }
 
     override fun onAttach(context: Context) {
@@ -43,17 +43,6 @@ class PubHolListFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-        viewModel.publicHolidays.observe(viewLifecycleOwner, Observer {
-            if (!it.isNullOrEmpty()) adapter.swapData(it)
-        })
-
-        viewModel.selectedPubHoliday.observe(viewLifecycleOwner, EventObserver { selectedPubHol ->
-            findNavController().navigate(
-                R.id.pubHolidayDetailsFragment,
-                bundleOf(KEY_PUBLIC_HOLIDAY_NAME to selectedPubHol.name)
-            )
-        })
 
         viewModel.loading.observe(viewLifecycleOwner, Observer {
             binding.pbLoading.visibility = if (it) VISIBLE else GONE
