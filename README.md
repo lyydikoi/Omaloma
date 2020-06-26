@@ -17,7 +17,7 @@ With Omaloma App employees can see any time how many holidays they have earned a
 * Main view shows statistics about earned-, planned-, spent and remaining holidays.
 * User can view and add new absences of different type (holidays, sick leaves etc.)
 * Application calculates how many holidays employee has earned in the current year/ month already. 
-* User can check information about public holidays, additional Wikipedia information abaut those days.
+* User can check information about public holidays, additional Wikipedia information about those days.
 
 ## Architecture, language, DI etc... ##
 * This App is written in Kotlin.
@@ -29,7 +29,7 @@ With Omaloma App employees can see any time how many holidays they have earned a
 * Android Jetpack's Navigation
 
 ### Some of the branches contain experiments with technologies and archotecture ### 
-* Clean architecture (Data layer with Repository pattern, Domain layer with use cases, MVVM-Presentation layer), Koin DI
+* otus-hw-dagger2: Clean architecture (Data layer, Domain layer, MVVM-Presentation layer), Dagger DI
 
 ## Summary of set up: ##
 * This app is created with AndroidStudio using the Gradle build system.
