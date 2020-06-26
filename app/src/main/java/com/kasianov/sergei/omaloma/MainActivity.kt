@@ -6,6 +6,8 @@ import androidx.databinding.DataBindingUtil
 import com.kasianov.sergei.core_api.AppWithFacade
 import com.kasianov.sergei.omaloma.databinding.ActivityMainBinding
 import com.kasianov.sergei.omaloma.di.DaggerMainComponent
+import com.kasianov.sergei.omaloma.internal.Foo
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,4 +24,6 @@ class MainActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
     }
 
+    // TODO: this for testing Ktlint custom rule
+    lateinit var foo: Foo
 }
