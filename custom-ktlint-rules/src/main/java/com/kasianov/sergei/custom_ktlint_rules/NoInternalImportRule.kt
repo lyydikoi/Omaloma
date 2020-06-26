@@ -1,6 +1,6 @@
 package com.kasianov.sergei.custom_ktlint_rules
 
-import com.github.shyiko.ktlint.core.Rule
+import com.pinterest.ktlint.core.Rule
 import org.jetbrains.kotlin.com.intellij.lang.ASTNode
 import org.jetbrains.kotlin.psi.KtImportDirective
 import org.jetbrains.kotlin.psi.stubs.elements.KtStubElementTypes
@@ -16,8 +16,11 @@ class NoInternalImportRule : Rule("no-internal-import") {
             val importDirective = node.psi as KtImportDirective
             val path = importDirective.importPath?.pathStr
             if (path != null && path.contains("internal")) {
-                emit(node.startOffset, "Importing from an internal package",
-                    false)
+                emit(
+                    node.startOffset,
+                    "Importing from an internal package",
+                    false
+                )
             }
         }
     }

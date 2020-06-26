@@ -24,5 +24,6 @@ class MainActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
     }
 
+    // TODO: this for testing Ktlint custom rule
     lateinit var foo: Foo
 }

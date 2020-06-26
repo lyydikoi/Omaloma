@@ -2,14 +2,16 @@ apply plugin: 'java-library'
 apply plugin: 'kotlin'
 
 dependencies {
+    def ktlintVersion = '0.37.2'
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    compileOnly "com.github.shyiko.ktlint:ktlint-core:0.27.0"
-    testCompile "junit:junit:4.13"
-    testCompile "org.assertj:assertj-core:3.12.2"
-    testCompile "com.github.shyiko.ktlint:ktlint-core:0.27.0"
-    testCompile "com.github.shyiko.ktlint:ktlint-test:0.27.0"
+    compileOnly "com.pinterest.ktlint:ktlint-core:$ktlintVersion"
+    testImplementation "junit:junit:4.13"
+    testImplementation "org.assertj:assertj-core:3.12.2"
+    testImplementation "com.pinterest.ktlint:ktlint-core:$ktlintVersion"
+    testImplementation "com.pinterest.ktlint:ktlint-test:$ktlintVersion"
 }
 
-sourceCompatibility = "1.7"
-targetCompatibility = "1.7"
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
