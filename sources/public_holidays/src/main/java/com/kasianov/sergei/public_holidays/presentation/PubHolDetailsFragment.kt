@@ -46,7 +46,6 @@ class PubHolDetailsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = FragmentPubHolidayDetailsBinding.inflate(inflater, container, false)
-
         arguments?.let {
             it.getString(KEY_PUBLIC_HOLIDAY_NAME)?.let { name -> publicHolidayName = name }
         }
