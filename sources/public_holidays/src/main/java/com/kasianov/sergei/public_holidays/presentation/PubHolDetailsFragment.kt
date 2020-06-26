@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kasianov.sergei.core.fromHtml
 import com.kasianov.sergei.core_api.AppWithFacade
-import com.kasianov.sergei.core_api.extentions.EventObserver
 import com.kasianov.sergei.public_holidays.R
 import com.kasianov.sergei.public_holidays.databinding.FragmentPubHolidayDetailsBinding
 import com.kasianov.sergei.core_api.model.dto.PublicHolidayDTO
@@ -46,11 +45,25 @@ class PubHolDetailsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = FragmentPubHolidayDetailsBinding.inflate(inflater, container, false)
+
         arguments?.let {
             it.getString(KEY_PUBLIC_HOLIDAY_NAME)?.let { name -> publicHolidayName = name }
         }
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setUpUI()
+        setObservers()
+
+    }
+
+    private fun setObservers() {
+        viewModel.loading.observe(viewLifecycleOwner, Observer {
+            binding.pbLoading.visibility = if (it) VISIBLE else GONE
+        })
     }
 
     private fun setUpUI() {
@@ -77,4 +90,5 @@ class PubHolDetailsFragment : Fragment() {
             .placeholder(R.drawable.ic_image_light_green_48dp)
             .into(binding.ivPubHolidayImage)
     }
+
 }

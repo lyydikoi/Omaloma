@@ -3,6 +3,8 @@ package com.kasianov.sergei.public_holidays.di
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.kasianov.sergei.core_api.viewmodel.ViewModelKey
+import com.kasianov.sergei.public_holidays.data.PublicHolidaysRepo
+import com.kasianov.sergei.public_holidays.data.PublicHolidaysRepoImpl
 import com.kasianov.sergei.public_holidays.presentation.PubHolDetailsViewModel
 import com.kasianov.sergei.public_holidays.presentation.PubHolListViewModel
 import dagger.Binds
@@ -12,6 +14,10 @@ import javax.inject.Singleton
 
 @Module
 abstract class PublicHolidaysModule {
+
+    @Binds
+    @Singleton
+    abstract fun bindPubHolRepo(repo: PublicHolidaysRepoImpl): PublicHolidaysRepo
 
     @Singleton
     @Binds
