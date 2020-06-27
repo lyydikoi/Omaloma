@@ -1,4 +1,5 @@
- package com.kasianov.sergei.absence.presentation.absence_details
+ 
+package com.kasianov.sergei.absence.presentation.absence_details
 
 import android.content.Context
 import android.graphics.Color
@@ -11,7 +12,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.snackbar.Snackbar
 import com.kasianov.sergei.absence.R
 import com.kasianov.sergei.absence.databinding.FragmentAbsenceDetailsBinding
 import com.kasianov.sergei.absence.di.AbsenceComponent
@@ -20,8 +20,6 @@ import com.kasianov.sergei.absence.presentation.KEY_ABSENCE_CREATED_MILLIS
 import com.kasianov.sergei.core_api.AppWithFacade
 import com.kasianov.sergei.core_api.extentions.*
 import com.kasianov.sergei.core_api.utils.CalcDateUtils
-import org.threeten.bp.LocalDate
-import org.threeten.bp.format.DateTimeFormatter
 import javax.inject.Inject
 import android.view.ViewGroup as ViewGroup1
 
@@ -44,7 +42,8 @@ class AbsenceDetailsFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup1?,
+        inflater: LayoutInflater,
+        container: ViewGroup1?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAbsenceDetailsBinding.inflate(inflater, container, false)
@@ -60,7 +59,7 @@ class AbsenceDetailsFragment : Fragment() {
 
         viewModel.uiState.observe(viewLifecycleOwner, Observer { updateUi(it) })
 
-        if(savedInstanceState == null) {
+        if (savedInstanceState == null) {
             viewModel.handleAction(UIModelContract.Action.GetAbsence(absenceCreatedMillis))
         }
     }
@@ -85,7 +84,7 @@ class AbsenceDetailsFragment : Fragment() {
         binding.ivBack.setOnClickListener {
             viewModel.handleAction(UIModelContract.Action.CloseDetailsView)
         }
-        binding.btnSaveAbsence.setOnClickListener{
+        binding.btnSaveAbsence.setOnClickListener {
             viewModel.handleAction(UIModelContract.Action.SaveAbsence)
         }
     }
@@ -108,7 +107,7 @@ class AbsenceDetailsFragment : Fragment() {
     }
 
     private fun updateUi(uiState: UIModelContract.UIState) {
-        when(uiState) {
+        when (uiState) {
             is UIModelContract.UIState.ChoosingDate -> {
                 binding.ivBack.visibility = GONE
                 binding.ivOpenCalendar.visibility = INVISIBLE

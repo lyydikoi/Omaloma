@@ -6,23 +6,23 @@ import com.kasianov.sergei.omaloma.data.user.UserDataContract
 
 class FakeUserRepository : UserDataContract.UserRepository {
     override fun getUser(userId: String): LiveData<UserDTO> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
     }
 
     override fun getAllUsers(): LiveData<List<UserDTO>> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
     }
 
     override suspend fun insert(user: UserDTO) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
     }
 
     override suspend fun update(user: UserDTO) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
     }
 
     override suspend fun delete(user: UserDTO) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        TODO("not implemented") // To change body of created functions use File | Settings | File Templates.
     }
 
     private val userServiceData by lazy { LinkedHashMap<String, UserDTO>() }
@@ -60,5 +60,4 @@ class FakeUserRepository : UserDataContract.UserRepository {
 
         return Success(resultList)
     }*/
-
 }

@@ -10,25 +10,27 @@ import javax.inject.Inject
 class AbsenceDetailsViewModel @Inject internal constructor(
     private val absenceRepo: AbsenceRepo,
     private val calcDateUtils: CalcDateUtils
-): BaseViewModel() {
+) : BaseViewModel() {
 
-    private val _selectedAbsence by lazy { MutableLiveData(
-        AbsenceDTO(
-            startDate = calcDateUtils.getCurrentDateString(),
-            endDate = ""
+    private val _selectedAbsence by lazy {
+        MutableLiveData(
+            AbsenceDTO(
+                startDate = calcDateUtils.getCurrentDateString(),
+                endDate = ""
+            )
         )
-    )}
+    }
     private val _changeDatesEvent by lazy { MutableLiveData<Boolean>() }
     private val _setDatesEvent by lazy { MutableLiveData<Boolean>() }
     private val _closeCalendarEvent by lazy { MutableLiveData<Boolean>() }
     private val _closeDetailsViewEvent by lazy { MutableLiveData<Boolean>() }
 
-    private val _uiState: MediatorLiveData<UIModelContract.UIState>  = prepareUIStateMediator()
+    private val _uiState: MediatorLiveData<UIModelContract.UIState> = prepareUIStateMediator()
     val uiState: LiveData<UIModelContract.UIState>
         get() = _uiState
 
     fun handleAction(action: UIModelContract.Action) {
-        when(action) {
+        when (action) {
             is UIModelContract.Action.GetAbsence -> getAbsence(action.millisCreated)
             is UIModelContract.Action.ChangeDate -> _changeDatesEvent.postValue(true)
             is UIModelContract.Action.SetDate -> {

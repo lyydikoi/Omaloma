@@ -14,5 +14,4 @@ interface AbsenceRepo {
     suspend fun updateAbsence(absence: AbsenceDTO)
 
     suspend fun deleteAbsence(absence: AbsenceDTO)
-
 }

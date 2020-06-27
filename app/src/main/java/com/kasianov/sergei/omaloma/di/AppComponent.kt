@@ -9,7 +9,7 @@ import javax.inject.Singleton
 
 @Singleton
 @Component
-interface  AppComponent : AppProvider {
+interface AppComponent : AppProvider {
 
     companion object {
         private var appComponent: AppProvider? = null
@@ -32,5 +32,4 @@ interface  AppComponent : AppProvider {
 
         fun build(): AppComponent
     }
-
 }

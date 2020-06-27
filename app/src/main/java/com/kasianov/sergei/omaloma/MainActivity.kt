@@ -1,17 +1,15 @@
 package com.kasianov.sergei.omaloma
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.kasianov.sergei.core_api.AppWithFacade
 import com.kasianov.sergei.omaloma.databinding.ActivityMainBinding
 import com.kasianov.sergei.omaloma.di.DaggerMainComponent
-import com.kasianov.sergei.omaloma.internal.Foo
-
 
 class MainActivity : AppCompatActivity() {
 
-    private val binding : ActivityMainBinding by lazy {
+    private val binding: ActivityMainBinding by lazy {
         DataBindingUtil.setContentView(this, R.layout.activity_main) as ActivityMainBinding
     }
 
@@ -23,7 +21,4 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding.lifecycleOwner = this
     }
-
-    // TODO: this for testing Ktlint custom rule
-    lateinit var foo: Foo
 }

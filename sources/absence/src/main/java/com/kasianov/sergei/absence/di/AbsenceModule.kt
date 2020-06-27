@@ -4,8 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.kasianov.sergei.absence.data.AbsenceRepo
 import com.kasianov.sergei.absence.data.AbsenceRepoImpl
-import com.kasianov.sergei.absence.presentation.absence_details.AbsenceDetailsViewModel
 import com.kasianov.sergei.absence.presentation.AbsencesListViewModel
+import com.kasianov.sergei.absence.presentation.absence_details.AbsenceDetailsViewModel
 import com.kasianov.sergei.core_api.viewmodel.ViewModelKey
 import dagger.Binds
 import dagger.Module

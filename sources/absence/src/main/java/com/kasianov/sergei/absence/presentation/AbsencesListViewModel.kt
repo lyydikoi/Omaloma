@@ -7,15 +7,13 @@ import com.kasianov.sergei.absence.data.AbsenceRepo
 import com.kasianov.sergei.core.ui.BaseViewModel
 import com.kasianov.sergei.core_api.extentions.Event
 import com.kasianov.sergei.core_api.model.dto.AbsenceDTO
-import com.kasianov.sergei.core_api.model.dto.PublicHolidayDTO
 import com.kasianov.sergei.core_api.utils.CalcDateUtils
 import javax.inject.Inject
-import kotlin.math.abs
 
 class AbsencesListViewModel @Inject internal constructor(
     absenceRepo: AbsenceRepo,
     calcDateUtils: CalcDateUtils
-): BaseViewModel() {
+) : BaseViewModel() {
 
     val absencesList = Transformations.map(absenceRepo.allAbsences) { absencesList ->
         absencesList.filter { it.year == calcDateUtils.getDefaultYear() }

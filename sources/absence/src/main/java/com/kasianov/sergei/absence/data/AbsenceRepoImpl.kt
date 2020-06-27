@@ -19,5 +19,4 @@ class AbsenceRepoImpl @Inject constructor(
     override suspend fun updateAbsence(absence: AbsenceDTO) = absenceDao.updateAbsence(absence)
 
     override suspend fun deleteAbsence(absence: AbsenceDTO) = absenceDao.deleteAbsence(absence)
-
 }

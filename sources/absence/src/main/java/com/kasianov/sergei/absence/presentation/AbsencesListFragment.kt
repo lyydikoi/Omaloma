@@ -2,12 +2,12 @@ package com.kasianov.sergei.absence.presentation
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -39,7 +39,8 @@ class AbsencesListFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAbsencesListBinding.inflate(inflater, container, false)
@@ -54,16 +55,22 @@ class AbsencesListFragment : Fragment() {
 
     private fun setObservers() {
         // TODO: change to observe UIState like in AbsenceDetailsFragment
-        viewModel.selectedAbsence.observe(viewLifecycleOwner, EventObserver { selectedAbsence ->
-            findNavController().navigate(
-                R.id.absenceDetailsFragment,
-                bundleOf(KEY_ABSENCE_CREATED_MILLIS to selectedAbsence.createdMillis.toString())
-            )
-        })
+        viewModel.selectedAbsence.observe(
+            viewLifecycleOwner,
+            EventObserver { selectedAbsence ->
+                findNavController().navigate(
+                    R.id.absenceDetailsFragment,
+                    bundleOf(KEY_ABSENCE_CREATED_MILLIS to selectedAbsence.createdMillis.toString())
+                )
+            }
+        )
 
-        viewModel.absencesList.observe(viewLifecycleOwner, Observer {
-            if (!it.isNullOrEmpty()) adapter.swapData(it)
-        })
+        viewModel.absencesList.observe(
+            viewLifecycleOwner,
+            Observer {
+                if (!it.isNullOrEmpty()) adapter.swapData(it)
+            }
+        )
     }
 
     private fun setUpUI() {

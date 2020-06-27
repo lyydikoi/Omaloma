@@ -10,7 +10,11 @@ import android.widget.TextView
 import androidx.core.view.children
 import com.google.android.material.snackbar.Snackbar
 import com.kasianov.sergei.absence.R
-import com.kasianov.sergei.core_api.extentions.*
+import com.kasianov.sergei.core_api.extentions.getDrawableCompat
+import com.kasianov.sergei.core_api.extentions.makeInVisible
+import com.kasianov.sergei.core_api.extentions.setCornerRadiusExt
+import com.kasianov.sergei.core_api.extentions.setTextColorRes
+import com.kasianov.sergei.core_api.extentions.makeVisible
 import com.kasianov.sergei.core_api.utils.CalcDateUtils
 import com.kizitonwose.calendarview.CalendarView
 import com.kizitonwose.calendarview.model.CalendarDay
@@ -19,14 +23,17 @@ import com.kizitonwose.calendarview.model.DayOwner
 import com.kizitonwose.calendarview.ui.DayBinder
 import com.kizitonwose.calendarview.ui.MonthHeaderFooterBinder
 import com.kizitonwose.calendarview.ui.ViewContainer
-import kotlinx.android.synthetic.main.layout_calendar.view.*
-import kotlinx.android.synthetic.main.layout_calendar_day.view.*
-import kotlinx.android.synthetic.main.tv_calendar_header.view.*
+import kotlinx.android.synthetic.main.layout_calendar.view.calendarAbsence
+import kotlinx.android.synthetic.main.layout_calendar.view.btnSaveDates
+import kotlinx.android.synthetic.main.layout_calendar_day.view.tvCalendarDayText
+import kotlinx.android.synthetic.main.layout_calendar_day.view.viewCalendarDayRoundBg
+import kotlinx.android.synthetic.main.tv_calendar_header.view.tvCalendarHeaderText
 import org.threeten.bp.LocalDate
 import org.threeten.bp.YearMonth
 import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.format.TextStyle
-import java.util.*
+import java.util.Locale
+
 
 private const val DAYS_IN_ROW_COUNT = 7
 
@@ -101,7 +108,8 @@ class CalendarLayout @JvmOverloads constructor(
             init {
                 view.setOnClickListener {
                     if (day.owner == DayOwner.THIS_MONTH &&
-                        (day.date == todayDate || day.date.isAfter(todayDate))) {
+                        (day.date == todayDate || day.date.isAfter(todayDate))
+                    ) {
                         val date = day.date
                         if (startDate != null) {
                             if (date < startDate || endDate != null) {
@@ -154,7 +162,7 @@ class CalendarLayout @JvmOverloads constructor(
                                 textView.background = calendarSelectedBgStart
                             }
                             startDate != null && endDate != null
-                                    && (day.date > startDate && day.date < endDate) -> {
+                                && (day.date > startDate && day.date < endDate) -> {
                                 textView.setTextColorRes(R.color.calendarDayColor)
                                 textView.setBackgroundResource(R.drawable.shape_calendar_selected_bg_continuous_midle)
                             }
@@ -181,21 +189,27 @@ class CalendarLayout @JvmOverloads constructor(
                         // Mimic selection of inDates that are less than the startDate.
                         // Example: When 26 Feb 2019 is startDate and 5 Mar 2019 is endDate,
                         // this makes the inDates in Mar 2019 for 24 & 25 Feb 2019 look selected.
-                        if ((day.owner == DayOwner.PREVIOUS_MONTH
-                                    && startDate.monthValue == day.date.monthValue
-                                    && endDate.monthValue != day.date.monthValue) ||
+                        if ((
+                            day.owner == DayOwner.PREVIOUS_MONTH &&
+                                startDate.monthValue == day.date.monthValue &&
+                                endDate.monthValue != day.date.monthValue
+                            ) ||
                             // Mimic selection of outDates that are greater than the endDate.
                             // Example: When 25 Apr 2019 is startDate and 2 May 2019 is endDate,
                             // this makes the outDates in Apr 2019 for 3 & 4 May 2019 look selected.
-                            (day.owner == DayOwner.NEXT_MONTH
-                                    && startDate.monthValue != day.date.monthValue
-                                    && endDate.monthValue == day.date.monthValue) ||
+                            (
+                                day.owner == DayOwner.NEXT_MONTH &&
+                                    startDate.monthValue != day.date.monthValue &&
+                                    endDate.monthValue == day.date.monthValue
+                                ) ||
 
                             // Mimic selection of in and out dates of intermediate
                             // months if the selection spans across multiple months.
-                            (startDate < day.date && endDate > day.date
-                                    && startDate.monthValue != day.date.monthValue
-                                    && endDate.monthValue != day.date.monthValue)
+                            (
+                                startDate < day.date && endDate > day.date &&
+                                    startDate.monthValue != day.date.monthValue &&
+                                    endDate.monthValue != day.date.monthValue
+                                )
                         ) {
                             textView.setBackgroundResource(R.drawable.shape_calendar_selected_bg_continuous_midle)
                         }
