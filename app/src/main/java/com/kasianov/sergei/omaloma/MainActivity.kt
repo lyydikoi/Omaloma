@@ -22,8 +22,4 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding.lifecycleOwner = this
     }
-
-    fun mosdfadsfasdfasfdasfdasdfasdfasfsadfasfdsdafadsfasdfadsf() {
-        2 + 1
-    }
 }
