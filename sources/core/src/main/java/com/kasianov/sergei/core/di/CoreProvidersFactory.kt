@@ -6,19 +6,23 @@ import com.kasianov.sergei.core_api.memory.MemoryCacheProvider
 import com.kasianov.sergei.core_api.network.NetworkProvider
 import com.kasianov.sergei.core_api.repository.RepositoryProvider
 import com.kasianov.sergei.core_api.utils.UtilsProvider
-import com.kasianov.sergei.core_impl.di.*
+import com.kasianov.sergei.core_impl.di.DaggerMemoryCacheComponent
+import com.kasianov.sergei.core_impl.di.DaggerRepositoryComponent
+import com.kasianov.sergei.core_impl.di.DaggerUtilsComponent
+import com.kasianov.sergei.core_impl.di.DataBaseComponent
+import com.kasianov.sergei.core_impl.di.NetworkComponent
 
 object CoreProvidersFactory {
 
-    fun createDataBaseProvider(appProvider: AppProvider) : DataBaseProvider {
+    fun createDataBaseProvider(appProvider: AppProvider): DataBaseProvider {
         return DataBaseComponent.create(appProvider)
     }
 
-    fun createMemoryCacheProvider() : MemoryCacheProvider {
+    fun createMemoryCacheProvider(): MemoryCacheProvider {
         return DaggerMemoryCacheComponent.create()
     }
 
-    fun createNetworkServiceProvider() : NetworkProvider {
+    fun createNetworkServiceProvider(): NetworkProvider {
         return NetworkComponent.create()
     }
 
@@ -26,7 +30,7 @@ object CoreProvidersFactory {
         dataBaseProvider: DataBaseProvider,
         networkProvider: NetworkProvider,
         memoryCacheProvider: MemoryCacheProvider
-    ) : RepositoryProvider {
+    ): RepositoryProvider {
         return DaggerRepositoryComponent.builder()
             .dataBaseProvider(dataBaseProvider)
             .networkProvider(networkProvider)
@@ -34,8 +38,7 @@ object CoreProvidersFactory {
             .build()
     }
 
-    fun createUtilsProvider() : UtilsProvider {
+    fun createUtilsProvider(): UtilsProvider {
         return DaggerUtilsComponent.create()
     }
-
 }

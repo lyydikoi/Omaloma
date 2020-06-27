@@ -25,13 +25,12 @@ open class BaseViewModel : ViewModel() {
     val dataLoadException: LiveData<Exception>
         get() = _dataLoadException
 
-
     /**
      * Helper function to call data load function with a loading spinner and errors triggered in a snackbar.
      *
      * @param block lambda to actually load data.
      */
-    fun launchDataLoad(block: suspend () -> Unit) : Job {
+    fun launchDataLoad(block: suspend () -> Unit): Job {
         return viewModelScope.launch {
             _loading.value = true
             try {
@@ -55,5 +54,4 @@ open class BaseViewModel : ViewModel() {
             }
         }
     }
-
 }
