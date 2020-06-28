@@ -1,9 +1,7 @@
 package com.kasianov.sergei.core_impl.di
 
-import android.content.Context
 import com.kasianov.sergei.core_api.AppProvider
 import com.kasianov.sergei.core_api.database.DataBaseProvider
-import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
 
@@ -26,5 +24,4 @@ interface DataBaseComponent : DataBaseProvider {
                 }
         }
     }
-
 }

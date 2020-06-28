@@ -18,5 +18,4 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindWikiInfoRepo(repo: WikiInfoRepoImpl): WikiInfoRepo
-
 }

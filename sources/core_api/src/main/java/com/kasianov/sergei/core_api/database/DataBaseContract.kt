@@ -7,5 +7,4 @@ interface DataBaseContract {
     abstract fun publicHolidayDao(): PublicHolidayDao
 
     abstract fun absenceDao(): AbsenceDao
-
 }

@@ -1,11 +1,11 @@
 package com.kasianov.sergei.core_api.utils
 
 import org.threeten.bp.DayOfWeek
-import java.util.*
+import java.util.Date
 
 interface CalcDateUtils {
 
-    fun getFormattedDate(millisec: String) : String
+    fun getFormattedDate(millisec: String): String
 
     fun daysOfWeekFromLocale(): Array<DayOfWeek>
 
@@ -20,5 +20,4 @@ interface CalcDateUtils {
     fun normalDateStringToDate(dateString: String): Date?
 
     fun millisStringToLong(millisString: String): Long?
-
 }

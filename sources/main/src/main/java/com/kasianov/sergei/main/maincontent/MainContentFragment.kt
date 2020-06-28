@@ -2,11 +2,10 @@ package com.kasianov.sergei.main.maincontent
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.kasianov.sergei.main.R
 import com.kasianov.sergei.main.databinding.FragmentContentMainBinding
@@ -21,7 +20,8 @@ class MainContentFragment : Fragment() {
     private lateinit var binding: FragmentContentMainBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentContentMainBinding.inflate(inflater, container, false)
@@ -41,7 +41,7 @@ class MainContentFragment : Fragment() {
         binding.fabNavigateToAbsences.setOnClickListener {
             if (findNavController().currentDestination?.id == R.id.mainContentFragment) {
                 findNavController().navigate(R.id.absencesListFragment)
-                //findNavController().navigate(R.id.pubHolListFragment)
+                // findNavController().navigate(R.id.pubHolListFragment)
             }
         }
     }

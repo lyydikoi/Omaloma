@@ -1,4 +1,4 @@
- 
+
 package com.kasianov.sergei.absence.presentation.absence_details
 
 import android.content.Context
@@ -6,7 +6,9 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.*
+import android.view.View.GONE
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -18,7 +20,7 @@ import com.kasianov.sergei.absence.di.AbsenceComponent
 import com.kasianov.sergei.absence.presentation.CalendarLayout
 import com.kasianov.sergei.absence.presentation.KEY_ABSENCE_CREATED_MILLIS
 import com.kasianov.sergei.core_api.AppWithFacade
-import com.kasianov.sergei.core_api.extentions.*
+import com.kasianov.sergei.core_api.extentions.setTextColorRes
 import com.kasianov.sergei.core_api.utils.CalcDateUtils
 import javax.inject.Inject
 import android.view.ViewGroup as ViewGroup1

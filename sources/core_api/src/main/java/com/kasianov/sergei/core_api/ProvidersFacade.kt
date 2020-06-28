@@ -6,5 +6,10 @@ import com.kasianov.sergei.core_api.network.NetworkProvider
 import com.kasianov.sergei.core_api.repository.RepositoryProvider
 import com.kasianov.sergei.core_api.utils.UtilsProvider
 
-interface ProvidersFacade : AppProvider, DataBaseProvider, NetworkProvider,
-    MemoryCacheProvider, RepositoryProvider, UtilsProvider
+interface ProvidersFacade :
+    AppProvider,
+    DataBaseProvider,
+    NetworkProvider,
+    MemoryCacheProvider,
+    RepositoryProvider,
+    UtilsProvider

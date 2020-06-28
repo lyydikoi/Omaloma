@@ -44,28 +44,42 @@ class PubHolListFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        viewModel.publicHolidays.observe(viewLifecycleOwner, Observer {
-            if (!it.isNullOrEmpty()) adapter.swapData(it)
-        })
+        viewModel.publicHolidays.observe(
+            viewLifecycleOwner,
+            Observer {
+                if (!it.isNullOrEmpty()) adapter.swapData(it)
+            }
+        )
 
-        viewModel.selectedPubHoliday.observe(viewLifecycleOwner, EventObserver { selectedPubHol ->
-            findNavController().navigate(
-                R.id.pubHolidayDetailsFragment,
-                bundleOf(KEY_PUBLIC_HOLIDAY_NAME to selectedPubHol.name)
-            )
-        })
+        viewModel.selectedPubHoliday.observe(
+            viewLifecycleOwner,
+            EventObserver { selectedPubHol ->
+                findNavController().navigate(
+                    R.id.pubHolidayDetailsFragment,
+                    bundleOf(KEY_PUBLIC_HOLIDAY_NAME to selectedPubHol.name)
+                )
+            }
+        )
 
-        viewModel.loading.observe(viewLifecycleOwner, Observer {
-            binding.pbLoading.visibility = if (it) VISIBLE else GONE
-        })
+        viewModel.loading.observe(
+            viewLifecycleOwner,
+            Observer {
+                binding.pbLoading.visibility = if (it) VISIBLE else GONE
+            }
+        )
 
-        viewModel.errorMsg.observe(viewLifecycleOwner, Observer {
-            Toast.makeText(context, it, Toast.LENGTH_LONG).show()
-        })
+        viewModel.errorMsg.observe(
+            viewLifecycleOwner,
+            Observer {
+                Toast.makeText(context, it, Toast.LENGTH_LONG).show()
+            }
+        )
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = FragmentPublicHolidaysListBinding.inflate(inflater, container, false)
         return binding.root
@@ -73,7 +87,7 @@ class PubHolListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.rvPubHolList.layoutManager= LinearLayoutManager(context)
+        binding.rvPubHolList.layoutManager = LinearLayoutManager(context)
         binding.rvPubHolList.adapter = adapter
     }
 }

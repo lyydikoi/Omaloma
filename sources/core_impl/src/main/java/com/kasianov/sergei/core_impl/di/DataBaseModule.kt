@@ -45,5 +45,4 @@ class DataBaseModule {
     fun provideAbsenceDao(omaLomaDbContract: DataBaseContract): AbsenceDao {
         return omaLomaDbContract.absenceDao()
     }
-
 }

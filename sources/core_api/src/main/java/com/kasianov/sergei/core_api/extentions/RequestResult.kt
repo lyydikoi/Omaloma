@@ -12,7 +12,7 @@ sealed class RequestResult<out R> {
     data class Success<out T>(val data: T) : RequestResult<T>()
     data class Error(val exception: Exception) : RequestResult<Nothing>()
 
-    override fun toString() : String {
+    override fun toString(): String {
         return when (this) {
             is Success<*> -> "Success[data=$data]"
             is Error -> "Error[message=$exception]"
@@ -25,7 +25,7 @@ sealed class RequestResult<out R> {
  * non-null [RequestResult.Success.data].
  */
 val RequestResult<*>.successed
-        get() = this is RequestResult.Success && data != null
+    get() = this is RequestResult.Success && data != null
 
 /**
  * A generic method,which handles Retrofit2 response, wraps and returns [RequestResult]

@@ -12,9 +12,9 @@ import com.google.android.material.snackbar.Snackbar
 import com.kasianov.sergei.absence.R
 import com.kasianov.sergei.core_api.extentions.getDrawableCompat
 import com.kasianov.sergei.core_api.extentions.makeInVisible
+import com.kasianov.sergei.core_api.extentions.makeVisible
 import com.kasianov.sergei.core_api.extentions.setCornerRadiusExt
 import com.kasianov.sergei.core_api.extentions.setTextColorRes
-import com.kasianov.sergei.core_api.extentions.makeVisible
 import com.kasianov.sergei.core_api.utils.CalcDateUtils
 import com.kizitonwose.calendarview.CalendarView
 import com.kizitonwose.calendarview.model.CalendarDay
@@ -23,8 +23,8 @@ import com.kizitonwose.calendarview.model.DayOwner
 import com.kizitonwose.calendarview.ui.DayBinder
 import com.kizitonwose.calendarview.ui.MonthHeaderFooterBinder
 import com.kizitonwose.calendarview.ui.ViewContainer
-import kotlinx.android.synthetic.main.layout_calendar.view.calendarAbsence
 import kotlinx.android.synthetic.main.layout_calendar.view.btnSaveDates
+import kotlinx.android.synthetic.main.layout_calendar.view.calendarAbsence
 import kotlinx.android.synthetic.main.layout_calendar_day.view.tvCalendarDayText
 import kotlinx.android.synthetic.main.layout_calendar_day.view.viewCalendarDayRoundBg
 import kotlinx.android.synthetic.main.tv_calendar_header.view.tvCalendarHeaderText
@@ -33,7 +33,6 @@ import org.threeten.bp.YearMonth
 import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.format.TextStyle
 import java.util.Locale
-
 
 private const val DAYS_IN_ROW_COUNT = 7
 

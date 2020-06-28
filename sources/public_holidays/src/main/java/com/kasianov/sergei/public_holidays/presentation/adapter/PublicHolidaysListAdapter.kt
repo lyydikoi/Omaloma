@@ -1,12 +1,12 @@
 package com.kasianov.sergei.public_holidays.presentation.adapter
 
 import android.view.LayoutInflater
-import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.kasianov.sergei.public_holidays.databinding.LayoutPublicHolidayItemBinding
+import androidx.recyclerview.widget.RecyclerView
 import com.kasianov.sergei.core_api.model.dto.PublicHolidayDTO
+import com.kasianov.sergei.public_holidays.databinding.LayoutPublicHolidayItemBinding
 
 class PublicHolidaysListAdapter(
     private val interaction: (Int) -> Unit
@@ -53,11 +53,10 @@ class PublicHolidaysListAdapter(
             oldItem: PublicHolidayDTO,
             newItem: PublicHolidayDTO
         ): Boolean {
-            return oldItem.name == newItem.name
-                    && oldItem.localName == newItem.localName
-                    && oldItem.date == newItem.date
-                    && oldItem.countryCode == newItem.countryCode
+            return oldItem.name == newItem.name &&
+                oldItem.localName == newItem.localName &&
+                oldItem.date == newItem.date &&
+                oldItem.countryCode == newItem.countryCode
         }
     }
-
 }

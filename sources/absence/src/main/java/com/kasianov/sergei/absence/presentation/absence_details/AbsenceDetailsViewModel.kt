@@ -1,6 +1,8 @@
 package com.kasianov.sergei.absence.presentation.absence_details
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
 import com.kasianov.sergei.absence.data.AbsenceRepo
 import com.kasianov.sergei.core.ui.BaseViewModel
 import com.kasianov.sergei.core_api.model.dto.AbsenceDTO

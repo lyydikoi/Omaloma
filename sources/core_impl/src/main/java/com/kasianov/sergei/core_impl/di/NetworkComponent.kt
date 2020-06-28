@@ -1,7 +1,5 @@
 package com.kasianov.sergei.core_impl.di
 
-import com.kasianov.sergei.core_api.AppProvider
-import com.kasianov.sergei.core_api.database.DataBaseProvider
 import com.kasianov.sergei.core_api.network.NetworkProvider
 import dagger.Component
 import javax.inject.Singleton
@@ -23,5 +21,4 @@ interface NetworkComponent : NetworkProvider {
                 }
         }
     }
-
 }

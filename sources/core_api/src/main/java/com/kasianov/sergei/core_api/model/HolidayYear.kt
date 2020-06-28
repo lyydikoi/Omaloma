@@ -2,7 +2,7 @@ package com.kasianov.sergei.core_api.model
 
 import java.time.LocalDate
 
-data class HolidayYear (
+data class HolidayYear(
     var year: Int,
     var startDate: LocalDate,
     var endDate: LocalDate,

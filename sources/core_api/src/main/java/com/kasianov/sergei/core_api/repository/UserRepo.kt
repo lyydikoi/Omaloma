@@ -14,5 +14,4 @@ interface UserRepo {
     suspend fun updateUser(user: UserDTO)
 
     suspend fun deleteUser(user: UserDTO)
-
 }

@@ -12,5 +12,4 @@ abstract class MemoryCacheModule {
     @Binds
     @Singleton
     abstract fun bindWikiMemoryCache(memoryCache: WikiMemoryCacheImpl): WikiMemoryCache
-
 }

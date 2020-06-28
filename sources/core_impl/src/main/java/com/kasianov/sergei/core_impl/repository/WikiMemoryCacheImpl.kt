@@ -1,9 +1,9 @@
 package com.kasianov.sergei.core_impl.repository
 
+import com.kasianov.sergei.core_api.memory.WikiMemoryCache
 import com.kasianov.sergei.core_api.model.dto.WikiArticleDTO
 import com.kasianov.sergei.core_api.model.dto.WikiImageInfoDTO
-import com.kasianov.sergei.core_api.memory.WikiMemoryCache
-import java.util.*
+import java.util.Collections
 import javax.inject.Inject
 
 class WikiMemoryCacheImpl @Inject constructor() : WikiMemoryCache {
@@ -22,8 +22,8 @@ class WikiMemoryCacheImpl @Inject constructor() : WikiMemoryCache {
         imageUrlsStorage[pageId] = imagesUrls
     }
 
-    override fun getImagesUrs(pageId: String): List<WikiImageInfoDTO>
-            = imageUrlsStorage[pageId] ?: emptyList()
+    override fun getImagesUrs(pageId: String): List<WikiImageInfoDTO> =
+        imageUrlsStorage[pageId] ?: emptyList()
 
     override fun saveSearchResult(searchValue: String, pageId: String) {
         searchResultStorage[searchValue] = pageId
@@ -36,5 +36,4 @@ class WikiMemoryCacheImpl @Inject constructor() : WikiMemoryCache {
         imageUrlsStorage.clear()
         searchResultStorage.clear()
     }
-
 }

@@ -1,6 +1,6 @@
 package com.kasianov.sergei.core_api.model
 
-data class HolidayMonth (
+data class HolidayMonth(
     var month: Int,
     var isClosed: Boolean = false,
     var earnedHolidaysCount: Int = 0,

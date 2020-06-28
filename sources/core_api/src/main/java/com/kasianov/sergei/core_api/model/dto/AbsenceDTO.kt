@@ -3,7 +3,6 @@ package com.kasianov.sergei.core_api.model.dto
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.util.*
 
 @Entity(tableName = "absence_table")
 data class AbsenceDTO(

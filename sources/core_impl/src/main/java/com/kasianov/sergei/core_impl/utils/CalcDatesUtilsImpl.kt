@@ -6,7 +6,8 @@ import org.threeten.bp.DayOfWeek
 import org.threeten.bp.temporal.WeekFields
 import java.lang.Exception
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
+import java.util.Locale
 import javax.inject.Inject
 
 const val DEFAULT_YEAR = "2020"
@@ -118,9 +119,9 @@ class CalcDatesUtilsImpl @Inject constructor() : CalcDateUtils {
      *
      * return Int
      */
-    //fun getHolidayMonthCount(startMonth: Int) = if (startMonth <= 3) 4 - startMonth else 16 - startMonth
+    // fun getHolidayMonthCount(startMonth: Int) = if (startMonth <= 3) 4 - startMonth else 16 - startMonth
 
-    override fun getFormattedDate(millisec: String) : String {
+    override fun getFormattedDate(millisec: String): String {
         // TODO: needs implementation
         return "29 Jan. 2020"
     }
@@ -168,5 +169,4 @@ class CalcDatesUtilsImpl @Inject constructor() : CalcDateUtils {
             null
         }
     }
-
 }

@@ -10,5 +10,4 @@ interface WikiInfoRepo {
     suspend fun getWikiPageInfo(pageId: String): RequestResult<WikiArticleDTO>
 
     suspend fun getWikiImageUrlsList(pageId: String): RequestResult<List<String>>
-
 }

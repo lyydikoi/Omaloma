@@ -6,9 +6,8 @@ import com.kasianov.sergei.core_api.di_utils.WikiRetrofitService
 interface NetworkProvider {
 
     @WikiRetrofitService
-    fun provideWikiService() :  WikiApi
+    fun provideWikiService(): WikiApi
 
     @PubHolRetrofitService
-    fun providePublicHolidayService() : PublicHolidayApi
-
+    fun providePublicHolidayService(): PublicHolidayApi
 }

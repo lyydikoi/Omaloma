@@ -18,5 +18,4 @@ interface WikiMemoryCache {
     fun getSearchResult(searchValue: String): String?
 
     fun clearAllCache()
-
 }

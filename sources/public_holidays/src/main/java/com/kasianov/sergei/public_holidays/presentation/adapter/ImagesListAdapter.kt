@@ -9,12 +9,11 @@ import com.bumptech.glide.Glide
 import com.kasianov.sergei.public_holidays.R
 import com.kasianov.sergei.public_holidays.databinding.LayoutSwipeImageItemBinding
 
-
 class ImagesListAdapter(
     private val interaction: (Int) -> Unit
 ) : ListAdapter<String, ImagesListAdapter.ImageSwipeCardViewHolder>(ImageDiffUtilCallback()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : ImageSwipeCardViewHolder =
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageSwipeCardViewHolder =
         ImageSwipeCardViewHolder(
             LayoutSwipeImageItemBinding.inflate(LayoutInflater.from(parent.context), parent, false),
             interaction
@@ -29,7 +28,7 @@ class ImagesListAdapter(
 
     class ImageSwipeCardViewHolder(
         private val binding: LayoutSwipeImageItemBinding,
-        private val interaction:(Int) -> Unit
+        private val interaction: (Int) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(url: String) {

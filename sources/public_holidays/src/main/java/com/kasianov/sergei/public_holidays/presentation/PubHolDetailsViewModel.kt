@@ -3,12 +3,12 @@ package com.kasianov.sergei.public_holidays.presentation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
-import com.kasianov.sergei.core_api.extentions.Event
 import com.kasianov.sergei.core.ui.BaseViewModel
+import com.kasianov.sergei.core_api.extentions.Event
 import com.kasianov.sergei.core_api.extentions.RequestResult
-import com.kasianov.sergei.core_api.repository.WikiInfoRepo
 import com.kasianov.sergei.core_api.model.dto.PublicHolidayDTO
 import com.kasianov.sergei.core_api.model.dto.WikiArticleDTO
+import com.kasianov.sergei.core_api.repository.WikiInfoRepo
 import com.kasianov.sergei.public_holidays.data.PublicHolidaysRepo
 import javax.inject.Inject
 
@@ -45,17 +45,17 @@ class PubHolDetailsViewModel @Inject constructor(
     fun getWikiPageInfo(searchValue: String) {
         launchDataLoad {
             when (val searchResult = wikiInfoRepo.performWikiSearch(searchValue)) {
-                is RequestResult.Success<String> ->  getWikiArticleInfo(searchResult.data)
+                is RequestResult.Success<String> -> getWikiArticleInfo(searchResult.data)
                 is RequestResult.Error -> handleResponse(searchResult)
             }
         }
     }
 
-   private fun getWikiArticleInfo(pageId: String) {
-       launchDataLoad {
-           handleResponse(wikiInfoRepo.getWikiPageInfo(pageId), _wikiArticle)
-       }
-   }
+    private fun getWikiArticleInfo(pageId: String) {
+        launchDataLoad {
+            handleResponse(wikiInfoRepo.getWikiPageInfo(pageId), _wikiArticle)
+        }
+    }
 
     fun getImagesUrlsList(pageId: String) {
         launchDataLoad {

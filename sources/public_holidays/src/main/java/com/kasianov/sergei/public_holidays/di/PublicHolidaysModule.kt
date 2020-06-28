@@ -32,5 +32,4 @@ abstract class PublicHolidaysModule {
     @IntoMap
     @ViewModelKey(PubHolListViewModel::class)
     abstract fun bindPubHolListViewModel(viewModel: PubHolListViewModel): ViewModel
-
 }

@@ -4,8 +4,8 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.kasianov.sergei.core_api.database.DataBaseContract
 import com.kasianov.sergei.core_api.model.dto.AbsenceDTO
-import com.kasianov.sergei.core_api.model.dto.UserDTO
 import com.kasianov.sergei.core_api.model.dto.PublicHolidayDTO
+import com.kasianov.sergei.core_api.model.dto.UserDTO
 
 const val DATA_BASE_VERSION = 1
 const val DATA_BASE_NAME = "omaloma.db"

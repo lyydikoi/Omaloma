@@ -52,7 +52,7 @@ class NetworkModule {
     @Singleton
     @Provides
     @WikiRetrofitService
-    fun provideWikiRetrofitService (@WikiRetrofit retrofit: Retrofit): WikiApi {
+    fun provideWikiRetrofitService(@WikiRetrofit retrofit: Retrofit): WikiApi {
         return retrofit.create(WikiApi::class.java)
     }
 
@@ -79,7 +79,7 @@ class NetworkModule {
     @Singleton
     @Provides
     fun provideOkHttpClient(): OkHttpClient {
-        val httpClient =  OkHttpClient().newBuilder()
+        val httpClient = OkHttpClient().newBuilder()
             .readTimeout(TIMEOUT, TimeUnit.SECONDS)
             .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
 
@@ -93,5 +93,4 @@ class NetworkModule {
 
         return httpClient.build()
     }
-
 }

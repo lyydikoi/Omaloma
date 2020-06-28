@@ -37,5 +37,4 @@ interface WikiApi {
         @Query("format") format: String = "json",
         @Query("inprop") inprop: String = "url"
     ): Response<WikiPagesResponseDTO>
-
 }

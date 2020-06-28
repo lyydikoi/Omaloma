@@ -2,9 +2,9 @@ package com.kasianov.sergei.public_holidays.data
 
 import com.kasianov.sergei.core_api.database.PublicHolidayDao
 import com.kasianov.sergei.core_api.di_utils.PubHolRetrofitService
-import com.kasianov.sergei.core_api.model.dto.PublicHolidayDTO
 import com.kasianov.sergei.core_api.extentions.RequestResult
 import com.kasianov.sergei.core_api.extentions.getRequestResult
+import com.kasianov.sergei.core_api.model.dto.PublicHolidayDTO
 import com.kasianov.sergei.core_api.network.PublicHolidayApi
 import javax.inject.Inject
 
@@ -22,8 +22,10 @@ class PublicHolidaysRepoImpl @Inject constructor(
         return if (dbData.isNotEmpty()) {
             RequestResult.Success(dbData)
         } else {
-            when (val publicHolidaysResult =
-                getRequestResult { pubHolidayApiService.getPublicHolidays(year, country) }) {
+            when (
+                val publicHolidaysResult =
+                    getRequestResult { pubHolidayApiService.getPublicHolidays(year, country) }
+            ) {
 
                 is RequestResult.Success -> {
                     saveHolidaysWithYear(year, publicHolidaysResult.data)
@@ -46,5 +48,4 @@ class PublicHolidaysRepoImpl @Inject constructor(
 
     override suspend fun saveAllPublicHolidays(holidaysList: List<PublicHolidayDTO>) =
         publicHolidayDao.insertAllPublicHolidays(holidaysList)
-
 }

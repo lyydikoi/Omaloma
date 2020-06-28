@@ -1,7 +1,12 @@
 package com.kasianov.sergei.main.maincontent
 
 import android.content.Context
-import android.graphics.*
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.PointF
+import android.graphics.RectF
+import android.graphics.Typeface
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
@@ -10,7 +15,6 @@ import com.kasianov.sergei.main.R
 import kotlin.math.cos
 import kotlin.math.min
 import kotlin.math.sin
-
 
 private enum class ChartType {
     EARNED,
@@ -25,8 +29,8 @@ private enum class ChartType {
 }
 
 private const val RADIUS_OFFSET_INDICATOR = -35
-private const val CHART_STROKE_WIDTH = 50f
-private const val CHART_TEXT_SIZE = 80.0f
+private const val CHART_STROKE_WIDTH = 10f
+private const val CHART_TEXT_SIZE = 24.0f
 private const val CHART_LABEL_SIZE = 55.0f
 private const val CHART_START_ANGLE = -90.0f
 private const val TAG = "ChartViewTag"
@@ -41,7 +45,13 @@ class ChartView @JvmOverloads constructor(
 
     private var chartFillRadius = 0.0f
     private val labelPointPosition = PointF(0.0f, 0.0f)
-    private var chartArcPlaceholder = RectF(CHART_STROKE_WIDTH , CHART_STROKE_WIDTH , 0.0f, 0.0f)
+    private var chartArcPlaceholder =
+        RectF(
+            dpToPx(CHART_STROKE_WIDTH, context),
+            dpToPx(CHART_STROKE_WIDTH, context),
+            0.0f,
+            0.0f
+        )
     private var anglePerValue = 360.0f / 100
 
     private var currentChart = ChartType.EARNED
@@ -58,13 +68,13 @@ class ChartView @JvmOverloads constructor(
     private val textPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.FILL
         textAlign = Paint.Align.CENTER
-        textSize = CHART_LABEL_SIZE
+        textSize = dpToPx(CHART_LABEL_SIZE, context)
         typeface = Typeface.create("", Typeface.BOLD)
         color = Color.LTGRAY
     }
 
     private val arcPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        strokeWidth = CHART_STROKE_WIDTH
+        strokeWidth = dpToPx(CHART_STROKE_WIDTH, context)
         color = Color.BLUE
         isAntiAlias = true
         style = Paint.Style.STROKE
@@ -119,7 +129,7 @@ class ChartView @JvmOverloads constructor(
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        currentChartValue =currentChart.mapToValue()
+        currentChartValue = currentChart.mapToValue()
 
         // Draw closing chart.
         arcPaint.color = Color.LTGRAY
@@ -147,7 +157,7 @@ class ChartView @JvmOverloads constructor(
         )
 
         // Draw value text.
-        textPaint.textSize = CHART_TEXT_SIZE
+        textPaint.textSize = dpToPx(CHART_TEXT_SIZE, context)
         textPaint.color = Color.GRAY
         val valueText = "$currentChartValue%"
         val xPos = (width / 2).toFloat()
@@ -159,7 +169,7 @@ class ChartView @JvmOverloads constructor(
         for (i in ChartType.values()) {
             labelPointPosition.computeXYForMarkers(i, markerRadius)
             textPaint.color = if (i == currentChart) arcPaint.color else Color.LTGRAY
-            canvas.drawCircle(labelPointPosition.x, labelPointPosition.y, chartFillRadius/12, textPaint)
+            canvas.drawCircle(labelPointPosition.x, labelPointPosition.y, chartFillRadius / 12, textPaint)
         }
     }
 
@@ -171,7 +181,7 @@ class ChartView @JvmOverloads constructor(
         y = (radius * sin(angle)).toFloat() + height / 2
     }
 
-    private fun RectF.computeDimensForArc(canvasHeight: Int) : RectF {
+    private fun RectF.computeDimensForArc(canvasHeight: Int): RectF {
         left = canvasHeight.toFloat() / 4
         top = canvasHeight.toFloat() / 4
         right = canvasHeight.toFloat() * 3 / 4
@@ -199,9 +209,19 @@ class ChartView @JvmOverloads constructor(
         requestLayout()
         invalidate()
     }
+
+    /*private fun pxToDp(pxValue: Float, context: Context): Float {
+        val density: Float = context.resources.displayMetrics.density
+        return pxValue / density
+    }*/
+
+    private fun dpToPx(pxValue: Float, context: Context): Float {
+        val density: Float = context.resources.displayMetrics.density
+        return pxValue * density
+    }
 }
 
-private fun ChartType.mapToStringRes(): Int{
+private fun ChartType.mapToStringRes(): Int {
     return when (this) {
         ChartType.EARNED -> R.string.label_earned_days
         ChartType.SPENT -> R.string.label_spent_days

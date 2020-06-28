@@ -16,5 +16,4 @@ class ViewModelFactoryProvider @Inject constructor(
 
         return creator.get() as T
     }
-
 }

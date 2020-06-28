@@ -5,5 +5,4 @@ interface RepositoryProvider {
     fun provideWikiRepo(): WikiInfoRepo
 
     fun provideUserRepo(): UserRepo
-
 }

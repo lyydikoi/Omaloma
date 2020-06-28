@@ -17,10 +17,10 @@ import com.bumptech.glide.Glide
 import com.kasianov.sergei.core.fromHtml
 import com.kasianov.sergei.core_api.AppWithFacade
 import com.kasianov.sergei.core_api.extentions.EventObserver
-import com.kasianov.sergei.public_holidays.R
-import com.kasianov.sergei.public_holidays.databinding.FragmentPubHolidayDetailsBinding
 import com.kasianov.sergei.core_api.model.dto.PublicHolidayDTO
 import com.kasianov.sergei.core_api.model.dto.WikiArticleDTO
+import com.kasianov.sergei.public_holidays.R
+import com.kasianov.sergei.public_holidays.databinding.FragmentPubHolidayDetailsBinding
 import com.kasianov.sergei.public_holidays.di.PublicHolidaysComponent
 import com.kasianov.sergei.public_holidays.presentation.adapter.ImagesListAdapter
 import javax.inject.Inject
@@ -34,7 +34,7 @@ class PubHolDetailsFragment : Fragment() {
         ImagesListAdapter { position -> viewModel.setSelectedImage(position) }
     }
 
-    private var publicHolidayName= ""
+    private var publicHolidayName = ""
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -43,7 +43,9 @@ class PubHolDetailsFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = FragmentPubHolidayDetailsBinding.inflate(inflater, container, false)
 
@@ -65,29 +67,43 @@ class PubHolDetailsFragment : Fragment() {
     }
 
     private fun setObservers() {
-        viewModel.selectedPubHoliday.observe(viewLifecycleOwner, Observer{
+        viewModel.selectedPubHoliday.observe(
+            viewLifecycleOwner,
+            Observer {
                 it.localName?.let { localName -> viewModel.getWikiPageInfo(localName) }
                 updateUi(it)
-        })
+            }
+        )
 
-        viewModel.wikiArticle.observe(viewLifecycleOwner, Observer {
-            showWikiInfo(it)
-            viewModel.getImagesUrlsList(it.pageId.toString())
-        })
+        viewModel.wikiArticle.observe(
+            viewLifecycleOwner,
+            Observer {
+                showWikiInfo(it)
+                viewModel.getImagesUrlsList(it.pageId.toString())
+            }
+        )
 
-        viewModel.wikiImagesUrlsList.observe(viewLifecycleOwner, Observer { images ->
-            binding.rwBottomBar.visibility = if (images.isNotEmpty()) VISIBLE else GONE
-            adapter.swapData(images)
-        })
+        viewModel.wikiImagesUrlsList.observe(
+            viewLifecycleOwner,
+            Observer { images ->
+                binding.rwBottomBar.visibility = if (images.isNotEmpty()) VISIBLE else GONE
+                adapter.swapData(images)
+            }
+        )
 
-        viewModel.selectedImageUrl.observe(viewLifecycleOwner,
+        viewModel.selectedImageUrl.observe(
+            viewLifecycleOwner,
             EventObserver { selectedImageUrl ->
                 if (selectedImageUrl.isNotBlank()) showAppBarImage(selectedImageUrl)
-            })
+            }
+        )
 
-        viewModel.loading.observe(viewLifecycleOwner, Observer {
-            binding.pbLoading.visibility = if (it) VISIBLE else GONE
-        })
+        viewModel.loading.observe(
+            viewLifecycleOwner,
+            Observer {
+                binding.pbLoading.visibility = if (it) VISIBLE else GONE
+            }
+        )
     }
 
     private fun setUpUI() {
@@ -114,5 +130,4 @@ class PubHolDetailsFragment : Fragment() {
             .placeholder(R.drawable.ic_image_light_green_48dp)
             .into(binding.ivPubHolidayImage)
     }
-
 }

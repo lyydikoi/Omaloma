@@ -12,5 +12,4 @@ interface PublicHolidayApi {
         @Path("year") year: String,
         @Path("country_code") countryCode: String
     ): Response<List<PublicHolidayDTO>>
-
 }
