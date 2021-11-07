@@ -1,4 +1,3 @@
-
 package com.kasianov.sergei.absence.presentation.absence_details
 
 import android.content.Context

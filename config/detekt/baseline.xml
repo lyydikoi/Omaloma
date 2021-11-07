@@ -1,0 +1,212 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>ComplexCondition:CalendarLayout.kt$CalendarLayout.&lt;no name provided&gt;$( day.owner == DayOwner.PREVIOUS_MONTH &amp;&amp; startDate.monthValue == day.date.monthValue &amp;&amp; endDate.monthValue != day.date.monthValue ) || // Mimic selection of outDates that are greater than the endDate. // Example: When 25 Apr 2019 is startDate and 2 May 2019 is endDate, // this makes the outDates in Apr 2019 for 3 &amp; 4 May 2019 look selected. ( day.owner == DayOwner.NEXT_MONTH &amp;&amp; startDate.monthValue != day.date.monthValue &amp;&amp; endDate.monthValue == day.date.monthValue ) || // Mimic selection of in and out dates of intermediate // months if the selection spans across multiple months. ( startDate &lt; day.date &amp;&amp; endDate &gt; day.date &amp;&amp; startDate.monthValue != day.date.monthValue &amp;&amp; endDate.monthValue != day.date.monthValue )</ID>
+    <ID>ComplexMethod:CalendarLayout.kt$CalendarLayout$fun setUpCalendar( calcDateUtils: CalcDateUtils, saveDatesInteraction: (String, String?) -&gt; Unit, datesSelectedInteraction: (String, String?) -&gt; Unit )</ID>
+    <ID>EmptyClassBlock:CalcDatesUtilsTest.kt$CalcDatesUtilsTest${ /** * Unit tests for [CalcDatesUtilsImpl.getHolidayMonthCount] */ /**@Test fun getHolidayMonthCountStartYear_isCorrect() { val startMonth = arrayListOf&lt;Int&gt;(1, 2, 3) startMonth.forEach { val result = CalcDatesUtilsImpl.getHolidayMonthCount(it) assertThat(result, `is` (4 - it)) } } @Test fun getHolidayMonthCountEndYear_isCorrect() { val startMonth = arrayListOf&lt;Int&gt;(4, 5, 6, 7, 8, 9, 10, 11, 12) var result: Int startMonth.forEach { result = CalcDatesUtilsImpl.getHolidayMonthCount(it) assertThat(result, `is` (16 - it)) } } /** * Unit tests for [CalcDatesUtilsImpl.getHolidayMonths] */ @Test fun getHolidayMonthsStartYear_isCorrect() { // Given: // Input test dates. val a = LocalDate.parse("2017-12-05") val b = LocalDate.parse("2017-03-03") val c = LocalDate.parse("2017-06-05") // Right values for test dates. val holMonthsCountA = 4 val holMonthsCountB = 1 val holMonthsCountC = 10 val startDates = arrayListOf&lt;LocalDate&gt;(a, b, c) // When: get holiday months for all dates. for (i in 1..startDates.size) { var testDate = startDates[i-1] var holidayMonths = CalcDatesUtilsImpl.getHolidayMonths(testDate) // Then: assert, that result has expected number of holiday months. assertThat(holidayMonths, `is`(notNullValue())) val holMonthsCount = if (i == 1) holMonthsCountA else (if (i == 2) holMonthsCountB else holMonthsCountC) assertThat(holidayMonths.size, `is`(holMonthsCount)) holidayMonths.forEach { assertThat(it, instanceOf(HolidayMonth::class.java)) } } } /** * Unit texts for [CalcDatesUtilsImpl.isHolidayYearClosed] */ /*@Test fun isHolidyYearClosed_correct() { // Input test dates. val a = LocalDate.parse("2017-12-05") val b = LocalDate.parse("2099-12-05") // Right values for test dates. val isClosedA = true val isClosedB = false val testDates = arrayListOf&lt;LocalDate&gt;(a, b) for (i in 1..testDates.size) { var testDate = testDates[i-1] var isClosed = CalcDatesUtils.isHolidayYearClosed(testDate) var rightResult = if (i == 1) isClosedA else isClosedB assertThat(isClosed, `is`(rightResult)) } }*/ /** * Unit tests for [CalcDatesUtilsImpl.getHolidayYearEndByStart] */ @Test fun getHolidayYearEnd_correct() { // Input test dates. val a = LocalDate.parse("2019-04-01") val b = LocalDate.parse("2020-04-01") // Right values for test dates. val endDateA = LocalDate.of(2020, 3, 31) val endDateB = LocalDate.of(2021, 3, 31) // When.. val resultA = CalcDatesUtilsImpl.getHolidayYearEndByStart(a) val resultB = CalcDatesUtilsImpl.getHolidayYearEndByStart(b) // Then... assertThat(resultA, `is`(endDateA)) assertThat(resultB, `is`(endDateB)) } /** * Unit tests for [CalcDatesUtilsImpl.getHolidayYearStart] */ @Test fun getHolidayYearStart_correct() { // Input test dates. val a = LocalDate.parse("2019-01-05") val b = LocalDate.parse("2020-05-01") // Right values for test dates. val startDateA = LocalDate.of(2018, 4, 1) val startDateB = LocalDate.of(2020, 4, 1) // When.. val resultA = CalcDatesUtilsImpl.getHolidayYearStart(a) val resultB = CalcDatesUtilsImpl.getHolidayYearStart(b) // Then... assertThat(resultA, `is`(startDateA)) assertThat(resultB, `is`(startDateB)) } /** * Unit tests for [CalcDatesUtilsImpl.getHolidayYear] */ /*@Test fun getHolidayYear_correct() { // Input test date. val date = LocalDate.parse("2019-01-05") // When.. val result = CalcDatesUtils.getHolidayYear(date) // Then... assertThat(result, instanceOf(HolidayYear::class.java)) }*/ */ }</ID>
+    <ID>FinalNewline:com.kasianov.sergei.custom_ktlint_rules.CustomRuleSetProvider.kt:1</ID>
+    <ID>FinalNewline:com.kasianov.sergei.custom_ktlint_rules.NoInternalImportRule.kt:1</ID>
+    <ID>FinalNewline:com.kasianov.sergei.custom_ktlint_rules.NoInternalImportRuleTest.kt:1</ID>
+    <ID>ForbiddenComment:AbsenceDetailsViewModel.kt$AbsenceDetailsViewModel$// TODO: change this: get values from UI to create and update absences</ID>
+    <ID>ForbiddenComment:AbsenceFragment.kt$AbsenceFragment$// TODO: NOT implemented yet.</ID>
+    <ID>ForbiddenComment:AbsenceItemViewHolder.kt$AbsenceItemViewHolder$// TODO: Bind the data with View</ID>
+    <ID>ForbiddenComment:AbsencesListFragment.kt$AbsencesListFragment$// TODO: Change to Action handling like in AbsenceDetailsFragment</ID>
+    <ID>ForbiddenComment:AbsencesListFragment.kt$AbsencesListFragment$// TODO: change to observe UIState like in AbsenceDetailsFragment</ID>
+    <ID>ForbiddenComment:CalcDatesUtilsImpl.kt$CalcDatesUtilsImpl$// TODO: needs implementation</ID>
+    <ID>ForbiddenComment:DatePickerDialogFragment.kt$DatePickerDialogFragment$// TODO: NOT implemented yet.</ID>
+    <ID>ForbiddenComment:MainContentFragment.kt$MainContentFragment$// TODO: NOT implemented yet.</ID>
+    <ID>ForbiddenComment:MainContentFragment.kt$MainContentFragment$// TODO: this is for testing only</ID>
+    <ID>ForbiddenComment:PubHolListViewModel.kt$// TODO: move this to settings</ID>
+    <ID>ForbiddenComment:UserDetailsFragment.kt$UserDetailsFragment$// TODO: NOT implemented yet.</ID>
+    <ID>ForbiddenComment:UserDetailsViewModel.kt$UserDetailsViewModel$// TODO: NOT implemented yet.</ID>
+    <ID>ForbiddenComment:UserItemViewHolder.kt$UserItemViewHolder$// TODO: Bind the data with View</ID>
+    <ID>ForbiddenComment:UsersListFragment.kt$UsersListFragment$// TODO: NOT implemented yet.</ID>
+    <ID>ForbiddenComment:UsersListViewModel.kt$UsersListViewModel$// TODO: NOT implemented yet.</ID>
+    <ID>FunctionNaming:MainContentFragmentTest.kt$MainContentFragmentTest$@Test fun clickOpenProfileButton_navigateProfileFragment()</ID>
+    <ID>LongMethod:CalendarLayout.kt$CalendarLayout$fun setUpCalendar( calcDateUtils: CalcDateUtils, saveDatesInteraction: (String, String?) -&gt; Unit, datesSelectedInteraction: (String, String?) -&gt; Unit )</ID>
+    <ID>LongMethod:CalendarLayout.kt$CalendarLayout.&lt;no name provided&gt;$override fun bind(container: DayViewContainer, day: CalendarDay)</ID>
+    <ID>LongParameterList:WikiApi.kt$WikiApi$( @Query("pageids") pageids: String, @Query("action") action: String = "query", @Query("prop") prop: String = "imageinfo", @Query("iiprop") iiprop: String = "url", @Query("generator") generator: String = "images", @Query("format") format: String = "json", @Query("inprop") inprop: String = "url" )</ID>
+    <ID>LongParameterList:WikiApi.kt$WikiApi$( @Query("srsearch") srsearch: String, @Query("action") action: String = "query", @Query("list") list: String = "search", @Query("srlimit") srlimit: String = "1", @Query("srnamespace") srnamespace: String = "0", @Query("format") format: String = "json" )</ID>
+    <ID>MagicNumber:CalendarLayout.kt$CalendarLayout$12</ID>
+    <ID>MagicNumber:ChartView.kt$ChartView$0.8</ID>
+    <ID>MagicNumber:ChartView.kt$ChartView$100</ID>
+    <ID>MagicNumber:ChartView.kt$ChartView$12</ID>
+    <ID>MagicNumber:ChartView.kt$ChartView$3</ID>
+    <ID>MagicNumber:ChartView.kt$ChartView$360.0f</ID>
+    <ID>MagicNumber:ChartView.kt$ChartView$4</ID>
+    <ID>MagicNumber:ChartView.kt$ChartView$6</ID>
+    <ID>MagicNumber:ChartView.kt$ChartView$8.0</ID>
+    <ID>MagicNumber:ChartView.kt$ChartView$9</ID>
+    <ID>MagicNumber:MainContentFragment.kt$MainContentFragment$100f</ID>
+    <ID>MagicNumber:MainContentFragment.kt$MainContentFragment$10f</ID>
+    <ID>MagicNumber:MainContentFragment.kt$MainContentFragment$30f</ID>
+    <ID>MaxLineLength:MainContentFragmentTest.kt$MainContentFragmentTest$// Mockito.verify(navController).navigate(MainContentFragmentDirections.actionContentMainToHolidaysList().actionId)</ID>
+    <ID>MaxLineLength:MainContentFragmentTest.kt$MainContentFragmentTest$val scenario = launchFragmentInContainer&lt;com.kasianov.sergei.main.maincontent.MainContentFragment&gt;(Bundle(), R.style.AppTheme)</ID>
+    <ID>MaximumLineLength:com.kasianov.sergei.omaloma.maincontent.MainContentFragmentTest.kt:33</ID>
+    <ID>NewLineAtEndOfFile:CustomRuleSetProvider.kt$com.kasianov.sergei.custom_ktlint_rules.CustomRuleSetProvider.kt</ID>
+    <ID>NewLineAtEndOfFile:NoInternalImportRule.kt$com.kasianov.sergei.custom_ktlint_rules.NoInternalImportRule.kt</ID>
+    <ID>NewLineAtEndOfFile:NoInternalImportRuleTest.kt$com.kasianov.sergei.custom_ktlint_rules.NoInternalImportRuleTest.kt</ID>
+    <ID>NoLineBreakBeforeAssignment:com.kasianov.sergei.custom_ktlint_rules.CustomRuleSetProvider.kt:8</ID>
+    <ID>OptionalAbstractKeyword:DataBaseContract.kt$DataBaseContract$abstract</ID>
+    <ID>PackageName:com.kasianov.sergei.absence.presentation.absence_details.AbsenceDetailsFragment.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.absence.presentation.absence_details.AbsenceDetailsViewModel.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.absence.presentation.absence_details.UIModelContract.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.AppProvider.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.AppWithFacade.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.ExampleInstrumentedTest.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.ExampleUnitTest.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.ProvidersFacade.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.database.AbsenceDao.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.database.DataBaseContract.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.database.DataBaseProvider.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.database.PublicHolidayDao.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.database.UserDao.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.di_utils.FragmentScope.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.di_utils.LoggedUserScope.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.di_utils.Qualifiers.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.extentions.Event.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.extentions.EventObserver.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.extentions.RequestResult.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.extentions.UiExtenxions.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.memory.MemoryCacheProvider.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.memory.WikiMemoryCache.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.model.Company.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.model.HolidayMonth.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.model.HolidayYear.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.model.dto.AbsenceDTO.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.model.dto.PublicHolidayDTO.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.model.dto.UserDTO.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.model.dto.UserWithAbsencesDTO.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.model.dto.WikiPageDtos.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.model.dto.WikiSearchDtos.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.network.NetworkProvider.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.network.PublicHolidayApi.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.network.WikiApi.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.repository.RepositoryProvider.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.repository.UserRepo.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.repository.WikiInfoRepo.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.utils.CalcDateUtils.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.utils.GraphicsUtils.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.utils.UtilsProvider.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_api.viewmodel.ViewModelKey.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_impl.ExampleInstrumentedTest.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_impl.ExampleUnitTest.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_impl.OmaLomaDb.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_impl.di.DataBaseComponent.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_impl.di.DataBaseModule.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_impl.di.MemoryCacheComponent.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_impl.di.MemoryCacheModule.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_impl.di.NetworkComponent.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_impl.di.NetworkModule.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_impl.di.RepositoryComponent.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_impl.di.RepositoryModule.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_impl.di.UtilsComponent.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_impl.di.UtilsModule.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_impl.repository.UserRepoImpl.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_impl.repository.WikiInfoRepoImpl.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_impl.repository.WikiMemoryCacheImpl.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_impl.utils.CalcDatesUtilsImpl.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.core_impl.utils.GraphicsUtilsImpl.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.custom_ktlint_rules.CustomRuleSetProvider.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.custom_ktlint_rules.NoInternalImportRule.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.custom_ktlint_rules.NoInternalImportRuleTest.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.public_holidays.ExampleInstrumentedTest.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.public_holidays.ExampleUnitTest.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.public_holidays.data.PublicHolidaysRepo.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.public_holidays.data.PublicHolidaysRepoImpl.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.public_holidays.di.PublicHolidaysComponent.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.public_holidays.di.PublicHolidaysModule.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.public_holidays.di.ViewModelFactoryProvider.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.public_holidays.presentation.PubHolDetailsFragment.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.public_holidays.presentation.PubHolDetailsViewModel.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.public_holidays.presentation.PubHolListFragment.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.public_holidays.presentation.PubHolListViewModel.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.public_holidays.presentation.adapter.ImagesListAdapter.kt:1</ID>
+    <ID>PackageName:com.kasianov.sergei.public_holidays.presentation.adapter.PublicHolidaysListAdapter.kt:1</ID>
+    <ID>PackageNaming:AbsenceDTO.kt$package com.kasianov.sergei.core_api.model.dto</ID>
+    <ID>PackageNaming:AbsenceDao.kt$package com.kasianov.sergei.core_api.database</ID>
+    <ID>PackageNaming:AbsenceDetailsFragment.kt$package com.kasianov.sergei.absence.presentation.absence_details</ID>
+    <ID>PackageNaming:AbsenceDetailsViewModel.kt$package com.kasianov.sergei.absence.presentation.absence_details</ID>
+    <ID>PackageNaming:AppProvider.kt$package com.kasianov.sergei.core_api</ID>
+    <ID>PackageNaming:AppWithFacade.kt$package com.kasianov.sergei.core_api</ID>
+    <ID>PackageNaming:CalcDateUtils.kt$package com.kasianov.sergei.core_api.utils</ID>
+    <ID>PackageNaming:CalcDatesUtilsImpl.kt$package com.kasianov.sergei.core_impl.utils</ID>
+    <ID>PackageNaming:Company.kt$package com.kasianov.sergei.core_api.model</ID>
+    <ID>PackageNaming:CustomRuleSetProvider.kt$package com.kasianov.sergei.custom_ktlint_rules</ID>
+    <ID>PackageNaming:DataBaseComponent.kt$package com.kasianov.sergei.core_impl.di</ID>
+    <ID>PackageNaming:DataBaseContract.kt$package com.kasianov.sergei.core_api.database</ID>
+    <ID>PackageNaming:DataBaseModule.kt$package com.kasianov.sergei.core_impl.di</ID>
+    <ID>PackageNaming:DataBaseProvider.kt$package com.kasianov.sergei.core_api.database</ID>
+    <ID>PackageNaming:Event.kt$package com.kasianov.sergei.core_api.extentions</ID>
+    <ID>PackageNaming:EventObserver.kt$package com.kasianov.sergei.core_api.extentions</ID>
+    <ID>PackageNaming:FragmentScope.kt$package com.kasianov.sergei.core_api.di_utils</ID>
+    <ID>PackageNaming:GraphicsUtils.kt$package com.kasianov.sergei.core_api.utils</ID>
+    <ID>PackageNaming:GraphicsUtilsImpl.kt$package com.kasianov.sergei.core_impl.utils</ID>
+    <ID>PackageNaming:HolidayMonth.kt$package com.kasianov.sergei.core_api.model</ID>
+    <ID>PackageNaming:HolidayYear.kt$package com.kasianov.sergei.core_api.model</ID>
+    <ID>PackageNaming:ImagesListAdapter.kt$package com.kasianov.sergei.public_holidays.presentation.adapter</ID>
+    <ID>PackageNaming:LoggedUserScope.kt$package com.kasianov.sergei.core_api.di_utils</ID>
+    <ID>PackageNaming:MemoryCacheComponent.kt$package com.kasianov.sergei.core_impl.di</ID>
+    <ID>PackageNaming:MemoryCacheModule.kt$package com.kasianov.sergei.core_impl.di</ID>
+    <ID>PackageNaming:MemoryCacheProvider.kt$package com.kasianov.sergei.core_api.memory</ID>
+    <ID>PackageNaming:NetworkComponent.kt$package com.kasianov.sergei.core_impl.di</ID>
+    <ID>PackageNaming:NetworkModule.kt$package com.kasianov.sergei.core_impl.di</ID>
+    <ID>PackageNaming:NetworkProvider.kt$package com.kasianov.sergei.core_api.network</ID>
+    <ID>PackageNaming:NoInternalImportRule.kt$package com.kasianov.sergei.custom_ktlint_rules</ID>
+    <ID>PackageNaming:OmaLomaDb.kt$package com.kasianov.sergei.core_impl</ID>
+    <ID>PackageNaming:ProvidersFacade.kt$package com.kasianov.sergei.core_api</ID>
+    <ID>PackageNaming:PubHolDetailsFragment.kt$package com.kasianov.sergei.public_holidays.presentation</ID>
+    <ID>PackageNaming:PubHolDetailsViewModel.kt$package com.kasianov.sergei.public_holidays.presentation</ID>
+    <ID>PackageNaming:PubHolListFragment.kt$package com.kasianov.sergei.public_holidays.presentation</ID>
+    <ID>PackageNaming:PubHolListViewModel.kt$package com.kasianov.sergei.public_holidays.presentation</ID>
+    <ID>PackageNaming:PublicHolidayApi.kt$package com.kasianov.sergei.core_api.network</ID>
+    <ID>PackageNaming:PublicHolidayDTO.kt$package com.kasianov.sergei.core_api.model.dto</ID>
+    <ID>PackageNaming:PublicHolidayDao.kt$package com.kasianov.sergei.core_api.database</ID>
+    <ID>PackageNaming:PublicHolidaysComponent.kt$package com.kasianov.sergei.public_holidays.di</ID>
+    <ID>PackageNaming:PublicHolidaysListAdapter.kt$package com.kasianov.sergei.public_holidays.presentation.adapter</ID>
+    <ID>PackageNaming:PublicHolidaysModule.kt$package com.kasianov.sergei.public_holidays.di</ID>
+    <ID>PackageNaming:PublicHolidaysRepo.kt$package com.kasianov.sergei.public_holidays.data</ID>
+    <ID>PackageNaming:PublicHolidaysRepoImpl.kt$package com.kasianov.sergei.public_holidays.data</ID>
+    <ID>PackageNaming:Qualifiers.kt$package com.kasianov.sergei.core_api.di_utils</ID>
+    <ID>PackageNaming:RepositoryComponent.kt$package com.kasianov.sergei.core_impl.di</ID>
+    <ID>PackageNaming:RepositoryModule.kt$package com.kasianov.sergei.core_impl.di</ID>
+    <ID>PackageNaming:RepositoryProvider.kt$package com.kasianov.sergei.core_api.repository</ID>
+    <ID>PackageNaming:RequestResult.kt$package com.kasianov.sergei.core_api.extentions</ID>
+    <ID>PackageNaming:UIModelContract.kt$package com.kasianov.sergei.absence.presentation.absence_details</ID>
+    <ID>PackageNaming:UiExtenxions.kt$package com.kasianov.sergei.core_api.extentions</ID>
+    <ID>PackageNaming:UserDTO.kt$package com.kasianov.sergei.core_api.model.dto</ID>
+    <ID>PackageNaming:UserDao.kt$package com.kasianov.sergei.core_api.database</ID>
+    <ID>PackageNaming:UserRepo.kt$package com.kasianov.sergei.core_api.repository</ID>
+    <ID>PackageNaming:UserRepoImpl.kt$package com.kasianov.sergei.core_impl.repository</ID>
+    <ID>PackageNaming:UserWithAbsencesDTO.kt$package com.kasianov.sergei.core_api.model.dto</ID>
+    <ID>PackageNaming:UtilsComponent.kt$package com.kasianov.sergei.core_impl.di</ID>
+    <ID>PackageNaming:UtilsModule.kt$package com.kasianov.sergei.core_impl.di</ID>
+    <ID>PackageNaming:UtilsProvider.kt$package com.kasianov.sergei.core_api.utils</ID>
+    <ID>PackageNaming:ViewModelFactoryProvider.kt$package com.kasianov.sergei.public_holidays.di</ID>
+    <ID>PackageNaming:ViewModelKey.kt$package com.kasianov.sergei.core_api.viewmodel</ID>
+    <ID>PackageNaming:WikiApi.kt$package com.kasianov.sergei.core_api.network</ID>
+    <ID>PackageNaming:WikiInfoRepo.kt$package com.kasianov.sergei.core_api.repository</ID>
+    <ID>PackageNaming:WikiInfoRepoImpl.kt$package com.kasianov.sergei.core_impl.repository</ID>
+    <ID>PackageNaming:WikiMemoryCache.kt$package com.kasianov.sergei.core_api.memory</ID>
+    <ID>PackageNaming:WikiMemoryCacheImpl.kt$package com.kasianov.sergei.core_impl.repository</ID>
+    <ID>PackageNaming:WikiPageDtos.kt$package com.kasianov.sergei.core_api.model.dto</ID>
+    <ID>PackageNaming:WikiSearchDtos.kt$package com.kasianov.sergei.core_api.model.dto</ID>
+    <ID>ParameterListWrapping:com.kasianov.sergei.custom_ktlint_rules.NoInternalImportRule.kt:12</ID>
+    <ID>ParameterListWrapping:com.kasianov.sergei.custom_ktlint_rules.NoInternalImportRule.kt:13</ID>
+    <ID>ReturnCount:RequestResult.kt$ suspend fun &lt;T&gt; getRequestResult(call: suspend () -&gt; Response&lt;T&gt;): RequestResult&lt;T&gt;</ID>
+    <ID>ReturnCount:WikiInfoRepoImpl.kt$WikiInfoRepoImpl$override suspend fun getWikiImageUrlsList(pageId: String): RequestResult&lt;List&lt;String&gt;&gt;</ID>
+    <ID>SwallowedException:CalcDatesUtilsImpl.kt$CalcDatesUtilsImpl$catch (e: Exception) { null }</ID>
+    <ID>TooGenericExceptionCaught:BaseViewModel.kt$BaseViewModel$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:CalcDatesUtilsImpl.kt$CalcDatesUtilsImpl$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:RequestResult.kt$e: Exception</ID>
+    <ID>UnusedPrivateMember:AbsenceDetailsFragment.kt$AbsenceDetailsFragment$val args = arguments</ID>
+    <ID>UnusedPrivateMember:ChartView.kt$ChartView$val heightMode = MeasureSpec.getMode(heightMeasureSpec)</ID>
+    <ID>UnusedPrivateMember:ChartView.kt$ChartView$val heightSize = MeasureSpec.getSize(heightMeasureSpec)</ID>
+    <ID>UnusedPrivateMember:ChartView.kt$ChartView$val widthSize = MeasureSpec.getSize(widthMeasureSpec)</ID>
+    <ID>UnusedPrivateMember:FakeUserRepository.kt$FakeUserRepository$private val userServiceData by lazy { LinkedHashMap&lt;String, UserDTO&gt;() }</ID>
+    <ID>UnusedPrivateMember:NetworkModule.kt$NetworkModule$gsonBuilder: GsonBuilder</ID>
+    <ID>UnusedPrivateMember:UserDetailsFragment.kt$UserDetailsFragment$// private val viewModel: UserDetailsViewModel by viewModels { viewModelFactory } private lateinit var viewModel: UserDetailsViewModel</ID>
+    <ID>VarCouldBeVal:CalendarLayout.kt$CalendarLayout.DayViewContainer$lateinit var day: CalendarDay // Will be set when this container is bound.</ID>
+  </CurrentIssues>
+</SmellBaseline>
